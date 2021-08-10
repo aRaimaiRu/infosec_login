@@ -1,25 +1,54 @@
-import logo from './logo.svg';
+import React,{useState} from 'react';
+import Header from './components/Header'
+import Footer from './components/Footer'
+import LoginContent from './components/page/Login/Content'
+import RegisterContent from './components/page/Register/content'
+import Home from './components/page/Home/content'
+import E401 from './components/page/Error/content'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useRouteMatch,
+  useParams
+} from "react-router-dom";
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  const [token, setToken] = useState();
+
+  if(!token) {
+    return (
+      <div>
+    <Router>
+        <Switch>
+            <Route path="/login">
+            <Header></Header>
+              <LoginContent setToken={setToken} />
+            </Route>
+            <Route path="/register">
+            <Header></Header>
+              <RegisterContent setToken={setToken} />
+            </Route> 
+            <Route path="*" component={E401} status={401}/>
+        </Switch>
+      <Footer></Footer>
+    </Router>
     </div>
-  );
+    )
+  }
+  return (
+  <div>
+    <Router>
+    <Switch>
+      <Route path="/home">
+        <Home token={token}></Home>
+      </Route>
+     
+    </Switch>
+  </Router>
+  </div>);
 }
 
 export default App;

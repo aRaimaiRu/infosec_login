@@ -1,0 +1,39 @@
+.marg0auto{
+    margin: auto;
+}
+.flexend{
+    display: flex;
+    justify-content: flex-end;
+}
+.center {
+    display: flex;
+    align-items: center;
+    height: 200px;
+    flex-direction: row-reverse;
+  }
+
+
+.loginform{
+
+    flex-direction: column;
+    justify-content: space-around;
+}
+/* justify = horizontal   algin-item = vertical */
+.width50P{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    height: 100%;
+    width: 50%;
+}
+.size-lg{
+    height: 30rem;
+    width: 25rem;
+
+}
+ul.circle {list-style-type: circle;}
+
+.colorRed{
+    color: red;
+}
