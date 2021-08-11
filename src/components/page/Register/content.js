@@ -1,6 +1,8 @@
 import React,{useState} from "react";
 import PropTypes from "prop-types";
 import "./Content.css";
+import md5 from "md5";
+import {valEmail, valPassword } from "../../../utils/validate"
 function RegisterContent(props) {
   const [data,setData] = useState({
     email:"",
@@ -22,15 +24,18 @@ function RegisterContent(props) {
   }
   const emailPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
 
-  const validate = ()=>{
-    setErrortxt("Invalid Email or Password!");
-    
-    if(!emailPattern.test(data.email.toLowerCase())) return;
-    //check username length
-    if(data.password.length <1) return;
-    //check password length
-    if(data.password.length <8 || data.password.length >64) return;
+  const summit = ()=>{
+    if(!valEmail(data.email)) {
+      setErrortxt("Invalid Email or Password!"); 
+      return
+    };
+    if(!valPassword(data.password)){
+      setErrortxt("Invalid Email or Password!"); 
+      return
+    };
     setErrortxt("");
+    let hash = md5(data.password);
+    console.log(hash);
     
 
   }
@@ -114,7 +119,7 @@ function RegisterContent(props) {
                         <button
               class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               type="button"
-              onClick={validate}
+              onClick={summit}
             >
               Sign In
             </button>
