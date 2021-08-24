@@ -50,13 +50,14 @@ function RegisterContent(props) {
             backgroundColor: "white",
             overflow:"auto"
           }}
-        >
+        ><center>
           <div class="mb-4">
+          
             <label
               class="block text-grey-darker text-sm font-bold mb-2"
               for="username"
             >
-              Email
+              <p>Email</p>
             </label>
             <input
               class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker"
@@ -72,7 +73,7 @@ function RegisterContent(props) {
               class="block text-grey-darker text-sm font-bold mb-2"
               for="password"
             >
-              Password
+            <p>Password</p>
             </label>
             <input
               class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-3"
@@ -89,13 +90,13 @@ function RegisterContent(props) {
               class="block text-grey-darker text-sm font-bold mb-2"
               for="password"
             >
-              Name
+              <p>Name</p>
             </label>
             <input
               class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-3"
-              id="password"
-              type="password"
-              placeholder="******************"
+              id="Name"
+              type="Text"
+              placeholder="Name"
               value={data.name}
               onChange={(e)=>handleChange("name",e.target.value)}
             />
@@ -106,17 +107,26 @@ function RegisterContent(props) {
               class="block text-grey-darker text-sm font-bold mb-2"
               for="password"
             >
-              Surname
+              <p>Surname</p>
             </label>
             <input
               class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-3"
-              id="password"
-              type="password"
-              placeholder="******************"
+              id="Surname"
+              type="Text"
+              placeholder="Surname"
               value={data.surname}
               onChange={(e)=>handleChange("surname",e.target.value)}
             />
-                        <button
+            <br></br>
+            <br></br>
+            <button
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              type="button"
+              onClick={summit}
+            >
+              Register
+            </button>
+            <button
               class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               type="button"
               onClick={summit}
@@ -124,19 +134,7 @@ function RegisterContent(props) {
               Sign In
             </button>
           </div>
-          <p class="text-red text-xs colorRed">{errortxt}</p>
-        </form>
-        
-      </div>
-      <div className="width50P">
-        <div
-          class="loginform bg-white size-lg"
-          style={{
-            justifyContent: "space-evenly",
-            padding: "50px",
-            backgroundColor: "white",
-          }}
-        >
+          </center>
           <ul className="circle">
             <li>Email validation</li>
             <li>Password Length more {'>'}8  {'<=64'}</li>
@@ -144,9 +142,15 @@ function RegisterContent(props) {
             <li>secret password</li>
             <li>Strong password</li>
           </ul>
+        </form>
 
-        </div>
       </div>
+      
+        
+          
+
+        
+      
     </div>
   );
 }

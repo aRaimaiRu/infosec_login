@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import {valEmail, valPassword } from "../../../utils/validate"
 import "./Content.css";
 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
+
 const saltRounds = 10;
 function LoginContent(props) {
   const [data,setData] = useState({
@@ -51,15 +53,13 @@ function LoginContent(props) {
             backgroundColor: "white",
           }}
         >
+        <center>
           <div class="mb-4">
-            <label
-              
-              for="username"
-            >
-              Email
-            </label>
+          
+           <p>Email</p>
+           <label for="username"></label>
+            
             <input
-              
               id="username"
               type="text"
               placeholder="Email"
@@ -67,15 +67,12 @@ function LoginContent(props) {
               onChange={(e)=>handleChange("email",e.target.value)}
             />
           </div>
+         
           <div class="mb-6">
-            <label
-              
-              for="password"
-            >
-              Password
+            <label for="password">
+            <p>Password</p>
             </label>
             <input
-              
               id="password"
               type="password"
               placeholder="******************"
@@ -85,42 +82,43 @@ function LoginContent(props) {
             <p class="text-red text-xs colorRed">{errortxt}</p>
           </div>
           <div className="flex items-center justify-between">
+            <button type="button"onClick={summit}
+            >
+              Sign In
+            </button>
+            <br></br>
+            <br></br>
             <button
               
               type="button"
               onClick={summit}
             >
-              Sign In
+              register
             </button>
+            <br></br>
             <a
               
               href="#"
             >
               Forgot Password?
             </a>
-          </div>
-        </form>
-      </div>
-      <div className="width50P">
-        <div
-          class="loginform bg-white size-lg"
-          style={{
-            justifyContent: "space-evenly",
-            padding: "50px",
-            backgroundColor: "white",
-          }}
-        >
-          <ul className="circle">
+        
+           
+        </div>
+      </center>
+        <ul className="circle">
             <li>Email validation</li>
             <li>Password Length more {'>'}8  {'<=64'}</li>
             <li>Must have Email and Password</li>
             <li>secret password</li>
             <li>Strong password</li>
-          </ul>
-
-        </div>
+      </ul>
+        </form>
       </div>
+
+
     </div>
+    
   );
 }
 

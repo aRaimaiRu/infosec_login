@@ -24,7 +24,7 @@ function App() {
     <Router>
         <Switch>
             <Route path="/login">
-            <Header></Header>
+            <Header>kut</Header>
               <LoginContent setToken={setToken} />
             </Route>
             <Route path="/register">
