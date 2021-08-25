@@ -50,11 +50,11 @@ function LoginContent(props) {
       password:hash
     }).then(res=>res.json()
     ).then(res=>{
-      console.log("token =",res.token)
       props.setToken(res?.token)
     }).catch(e=>{
       console.log("error =",e)
     })
+    window.location.replace("/home");
 
 
   }
