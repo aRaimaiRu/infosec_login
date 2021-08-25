@@ -3,7 +3,8 @@ import md5 from "md5";
 import PropTypes from "prop-types";
 import { valEmail, valPassword } from "../../../utils/validate"
 import "./Content.css";
-
+import {login} from "../../../utils/userAPI"
+import { Link } from "react-router-dom";
 const saltRounds = 10;
 function LoginContent(props) {
   const [data, setData] = useState({
@@ -13,7 +14,6 @@ function LoginContent(props) {
   const [errortxt, setErrortxt] = useState("");
 
   const handleChange = (type, value) => {
-    console.log(data);
     setData({
       ...data,
       [type]: value
@@ -22,9 +22,18 @@ function LoginContent(props) {
     )
 
   }
+  const sendLogin = async ()=>{
+    let result = login({
+      username:data.email,
+      password:data.password
+    })
+    result = JSON.parse(result)
+    alert(result);
+    props.setToken(result.setToken);
+  }
   const emailPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
 
-  const summit = () => {
+  const submit = () => {
 
     if (!valEmail(data.email)) {
       setErrortxt("Invalid Email or Password!");
@@ -36,7 +45,16 @@ function LoginContent(props) {
     };
     setErrortxt("");
     let hash = md5(data.password);
-    console.log(hash);
+    console.log("hash =",hash);
+    login({username:data.email,
+      password:hash
+    }).then(res=>res.json()
+    ).then(res=>{
+      console.log("token =",res.token)
+      props.setToken(res?.token)
+    }).catch(e=>{
+      console.log("error =",e)
+    })
 
 
   }
@@ -79,18 +97,21 @@ function LoginContent(props) {
             </div>
 
             <div className="flex items-center justify-between">
+              
               <button class="btn btn-primary btn-md mx-sm-2"
-                type="button" onClick={summit}
+                type="button"
+                onClick={()=>submit()} 
               >
                 Sign In
               </button>
+              <Link to="/register">
 
               <button class="btn btn-outline-primary my-2 my-sm-0 mx-sm-2"
                 type="button"
-                onClick={summit}
+
               >
                 register
-              </button>
+              </button></Link>
               <br></br>
               <a
 

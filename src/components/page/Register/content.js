@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import "./Content.css";
 import md5 from "md5";
 import { valEmail, valPassword } from "../../../utils/validate"
+import {register} from "../../../utils/userAPI"
+import { Link } from "react-router-dom";
 function RegisterContent(props) {
   const [data, setData] = useState({
     email: "",
@@ -24,7 +26,8 @@ function RegisterContent(props) {
   }
   const emailPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
 
-  const summit = () => {
+  const submit = async () => {
+    
     if (!valEmail(data.email)) {
       setErrortxt("Invalid Email or Password!");
       return
@@ -33,12 +36,30 @@ function RegisterContent(props) {
       setErrortxt("Invalid Email or Password!");
       return
     };
+    alert("summit");
     setErrortxt("");
     let hash = md5(data.password);
-    console.log(hash);
+    register({
+      firstName:data.name,
+      lastName:data.surname,
+      username:data.email,
+      password: hash
+    }).then(
+      res=>res.json()
+    ).then(res=>{
+      alert(res.message)
+      
+    }).catch(e=>{
+      console.log(e)
+    })
+   
+  
 
 
   }
+
+
+
   return (
     <div className="bgorange marg0auto center" style={{ height: "50rem" }}>
       <div className="width50P">
@@ -131,18 +152,20 @@ function RegisterContent(props) {
               <button
                 class="btn btn-primary btn-md mx-sm-2"
                 type="button"
-                onClick={summit}
+                onClick={()=>submit()}
               >
                 Register
               </button>
+              <Link to="/login">
               <button
                 class="btn btn-outline-primary my-2 my-sm-0 mx-sm-2"
                 type="button"
-                onClick={summit}
+             
               >
                 Sign In
-              </button>
+              </button></Link>
             </div>
+            <p className="colorRed">{errortxt}</p>
           </center>
           <hr></hr>
           <ul className="circle">
