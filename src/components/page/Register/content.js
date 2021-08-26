@@ -36,7 +36,7 @@ function RegisterContent(props) {
       setErrortxt("Invalid Email or Password!");
       return
     };
-    alert("summit");
+    alert("submit");
     setErrortxt("");
     let hash = md5(data.password);
     register({

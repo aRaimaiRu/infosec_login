@@ -50,7 +50,7 @@ function LoginContent(props) {
       password:hash
     }).then(res=>res.json()
     ).then(res=>{
-      props.setToken(res?.token)
+      if(res.token)props.setToken(res?.token)
     }).catch(e=>{
       console.log("error =",e)
     })
