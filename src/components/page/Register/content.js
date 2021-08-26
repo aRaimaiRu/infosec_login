@@ -42,16 +42,18 @@ function RegisterContent(props) {
   return (
     <div className="bgorange marg0auto center" style={{ height: "50rem" }}>
       <div className="width50P">
+        
         <form
           class="loginform bg-white size-lg"
           style={{
             justifyContent: "space-evenly",
-            padding: "50px",
+            padding: "100px",
             backgroundColor: "white",
             overflow: "auto"
           }}
         ><center>
             <form class="form-inline">
+            <header>Shop</header>
               <div class="form-group row mb-4">
                 <label
                   class="block text-grey-darker text-sm font-bold col-sm-2"
