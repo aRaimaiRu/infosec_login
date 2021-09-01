@@ -1,16 +1,20 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "./Content.css";
-import md5 from "md5";
-import { valEmail, valPassword } from "../../../utils/validate"
+
+import { valEmail, valPassword,valName } from "../../../utils/validate"
 import {register} from "../../../utils/userAPI"
 import { Link } from "react-router-dom";
+const bcrypt = require('bcryptjs');
+const saltRounds = bcrypt.genSaltSync(10);
+
 function RegisterContent(props) {
   const [data, setData] = useState({
     email: "",
     password: "",
     name: "",
-    surname: ""
+    surname: "",
+    address:""
   })
   const [errortxt, setErrortxt] = useState("");
 
@@ -24,34 +28,39 @@ function RegisterContent(props) {
     )
 
   }
-  const emailPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
 
   const submit = async () => {
-    
-    if (!valEmail(data.email)) {
+
+    if(!(valEmail(data.email) && valPassword(data.password) )) {
       setErrortxt("Invalid Email or Password!");
       return
     };
-    if (!valPassword(data.password)) {
-      setErrortxt("Invalid Email or Password!");
+    if (!(valName(data.name) && valName(data.surname) && valName(data.address))) {
+      setErrortxt("Invalid name or address");
       return
     };
-    alert("submit");
-    setErrortxt("");
-    let hash = md5(data.password);
-    register({
-      firstName:data.name,
-      lastName:data.surname,
-      username:data.email,
-      password: hash
-    }).then(
-      res=>res.json()
-    ).then(res=>{
-      alert(res.message)
-      
-    }).catch(e=>{
-      console.log(e)
-    })
+      bcrypt.hash(data.password, "10", function(err, hash) {
+          handleChange("password",hash)
+          alert("submit");
+          setErrortxt("");
+          register({
+            firstName:data.name,
+            lastName:data.surname,
+            username:data.email,
+            password: data.password,
+            address:data.address
+          }).then(
+            res=>res.json()
+          ).then(res=>{
+            alert(res.message)
+            
+          }).catch(e=>{
+            console.log(e)
+          })
+      });
+
+
+
    
   
 
@@ -145,6 +154,25 @@ function RegisterContent(props) {
                     placeholder="Surname"
                     value={data.surname}
                     onChange={(e) => handleChange("surname", e.target.value)}
+                  /></div>
+              </div>
+            </form>
+            <form class="form-inline">
+              <div class="form-group row mb-4">
+                <label
+                  class="block text-grey-darker text-sm font-bold col-sm-2"
+                  for="password"
+                >
+                  address
+                </label>
+                <div class="col-sm-9">
+                  <input
+                    class="form-control mr-sm-2"
+                    id="address"
+                    type="Text"
+                    placeholder="address"
+                    value={data.address}
+                    onChange={(e) => handleChange("address", e.target.value)}
                   /></div>
               </div>
             </form>
