@@ -5,7 +5,7 @@ import { valEmail, valPassword } from "../../../utils/validate"
 import "./Content.css";
 import {login} from "../../../utils/userAPI"
 import { Link } from "react-router-dom";
-const saltRounds = 10;
+
 function LoginContent(props) {
   const [data, setData] = useState({
     email: "",
@@ -35,26 +35,25 @@ function LoginContent(props) {
 
   const submit = () => {
 
-    if (!valEmail(data.email)) {
+    if (!(valEmail(data.email) &&valPassword(data.password))) {
       setErrortxt("Invalid Email or Password!");
       return
     };
-    if (!valPassword(data.password)) {
-      setErrortxt("Invalid Email or Password!");
-      return
-    };
-    setErrortxt("");
-    let hash = md5(data.password);
-    console.log("hash =",hash);
-    login({username:data.email,
-      password:hash
-    }).then(res=>res.json()
-    ).then(res=>{
-      if(res.token)props.setToken(res?.token)
-    }).catch(e=>{
-      console.log("error =",e)
-    })
-    window.location.replace("/home");
+
+      setErrortxt("");
+      //send api
+      login({username:data.email,
+        password:md5(data.password)
+      }).then(res=>res.json())
+      .then(res=>{
+        console.log("res",res)
+        if(res.token)props.setToken(res?.token)
+      })
+      .catch(e=>{
+        console.log("error =",e)
+      })
+
+    
 
 
   }

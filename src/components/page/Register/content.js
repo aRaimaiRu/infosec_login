@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "./Content.css";
-
+import md5 from "md5";
 import { valEmail, valPassword,valName } from "../../../utils/validate"
 import {register} from "../../../utils/userAPI"
 import { Link } from "react-router-dom";
@@ -19,7 +19,7 @@ function RegisterContent(props) {
   const [errortxt, setErrortxt] = useState("");
 
   const handleChange = (type, value) => {
-    console.log(data);
+
     setData({
       ...data,
       [type]: value
@@ -39,25 +39,25 @@ function RegisterContent(props) {
       setErrortxt("Invalid name or address");
       return
     };
-      bcrypt.hash(data.password, "10", function(err, hash) {
-          handleChange("password",hash)
-          alert("submit");
-          setErrortxt("");
-          register({
-            firstName:data.name,
-            lastName:data.surname,
-            username:data.email,
-            password: data.password,
-            address:data.address
-          }).then(
-            res=>res.json()
-          ).then(res=>{
-            alert(res.message)
-            
-          }).catch(e=>{
-            console.log(e)
-          })
-      });
+
+      alert("submit");
+      setErrortxt("");
+      register({
+        firstName:data.name,
+        lastName:data.surname,
+        username:data.email,
+        password: md5(data.password),
+        address:data.address
+      }).then(
+        res=>res.json()
+      ).then(res=>{
+        alert(res.message)
+        
+      }).catch(e=>{
+        console.log(e)
+      })
+
+ 
 
 
 
