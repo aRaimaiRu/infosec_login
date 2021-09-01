@@ -7,6 +7,7 @@ import Home from './components/page/Home/content'
 import E401 from './components/page/Error/content'
 import useToken from './useToken'
 import CustomerOwn from "./components/page/customerOwn/content"
+import OwnShop from "./components/page/OwnShop/content"
 import {
   BrowserRouter as Router,
   Switch,
@@ -45,11 +46,15 @@ function App() {
   <div>
     <Router>
     <Switch>
+      <Route path="/shop/:shopid">
+        <OwnShop></OwnShop>
+
+      </Route>
       <Route path="/">
         {/* <Home token={token}></Home> */}
         <CustomerOwn></CustomerOwn>
-        
       </Route>
+
      
     </Switch>
   </Router>

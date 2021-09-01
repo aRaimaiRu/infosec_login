@@ -28,6 +28,47 @@ async function register(data) {
     });
   }
 
+  // http://localhost:3002/api/shop/2
+  async function getShop(shopid) {
+    return fetch(`http://${process.env.HOSTAPI || "localhost"}:${process.env.PORT || "3002"}/api/shop/${shopid}`, {
+      method: "GET",
+      headers: {
+        "Authorization": 'Bearer '+localStorage.getItem("x-auth-token").replace (/"/g,''),
+        "Content-Type": "application/json",
+      },
+    });
+  }
+
+  // http://localhost:3002/api/shop/contact/1
+  async function getIsContact(shopid) {
+    return fetch(`http://${process.env.HOSTAPI || "localhost"}:${process.env.PORT || "3002"}/api/shop/contact/${shopid}`, {
+      method: "GET",
+      headers: {
+        "Authorization": 'Bearer '+localStorage.getItem("x-auth-token").replace (/"/g,''),
+        "Content-Type": "application/json",
+      },
+    });
+  }
+  // http://localhost:3002/api/shop/contact/2(:shopid)
+  async function UserContact(shopid) {
+    return fetch(`http://${process.env.HOSTAPI || "localhost"}:${process.env.PORT || "3002"}/api/shop/contact/${shopid}`, {
+      method: "POST",
+      headers: {
+        "Authorization": 'Bearer '+localStorage.getItem("x-auth-token").replace (/"/g,''),
+        "Content-Type": "application/json",
+      },
+    });
+  }
+// http://localhost:3002/api/shop/approve
+async function UserContact(shopid) {
+  return fetch(`http://${process.env.HOSTAPI || "localhost"}:${process.env.PORT || "3002"}/api/shop/contact/${shopid}`, {
+    method: "POST",
+    headers: {
+      "Authorization": 'Bearer '+localStorage.getItem("x-auth-token").replace (/"/g,''),
+      "Content-Type": "application/json",
+    },
+  });
+}
 
 
-export { login,register,getOwnData };
+export { login,register,getOwnData,getShop ,UserContact,getIsContact};
