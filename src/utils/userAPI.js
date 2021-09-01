@@ -68,7 +68,7 @@ async function changeShopStatus(shopid,status) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      shopid,
+      shopId:shopid,
       status
   
   }),
@@ -76,4 +76,4 @@ async function changeShopStatus(shopid,status) {
 }
 
 
-export { login,register,getOwnData,getShop ,UserContact,getIsContact};
+export { login,register,getOwnData,getShop ,UserContact,getIsContact,changeShopStatus};

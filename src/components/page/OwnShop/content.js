@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from "react";
 import "./content.css";
 import PropTypes from "prop-types";
-import {getShop,getOwnData,UserContact,getIsContact} from "../../../utils/userAPI"
+import {getShop,getOwnData,UserContact,getIsContact,changeShopStatus} from "../../../utils/userAPI"
 import {
     BrowserRouter as Router,
     Switch,
@@ -83,6 +83,12 @@ function Content(props) {
             setIsAlreadyContact(true)
         }
     }
+
+    const changeShopStatusCall = async()=>{
+        let res = await changeShopStatus(shopid,data.status=="pending"?"closed":data.status=="closed"?"pending":"")
+        let resjson = await res.json()
+        console.log("change shop status =",resjson)
+    }
   return (
 <div class="wrapper">
         <nav id="sidebar" className={toggle?"active bd-sidebar":"bd-sidebar"} style={{position:"sticky",height:"970px"}} >
@@ -125,9 +131,9 @@ function Content(props) {
                         <span>Contact</span>
                     </button>}
 
-                    {(situation==3)&&<button type="button" id="sidebarCollapse" class="btn btn-info" onClick={()=>{Contact()}} disabled={isAlreadyContact}>
+                    {(situation==3)&&<button type="button" id="sidebarCollapse" class="btn btn-info" onClick={()=>{changeShopStatusCall()}} >
                         <i class="fas fa-align-left"></i>
-                        <span>Contact</span>
+                        <span>{shopid,data.status=="pending"?"closed":data.status=="closed"?"pending":""}</span>
                     </button>} 
                     </div>
                     {/* <div className="flexitem">
