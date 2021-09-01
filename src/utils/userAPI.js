@@ -60,13 +60,18 @@ async function register(data) {
     });
   }
 // http://localhost:3002/api/shop/approve
-async function UserContact(shopid) {
-  return fetch(`http://${process.env.HOSTAPI || "localhost"}:${process.env.PORT || "3002"}/api/shop/contact/${shopid}`, {
+async function changeShopStatus(shopid,status) {
+  return fetch(`http://${process.env.HOSTAPI || "localhost"}:${process.env.PORT || "3002"}/api/shop/approve`, {
     method: "POST",
     headers: {
       "Authorization": 'Bearer '+localStorage.getItem("x-auth-token").replace (/"/g,''),
       "Content-Type": "application/json",
     },
+    body: JSON.stringify({
+      shopid,
+      status
+  
+  }),
   });
 }
 
