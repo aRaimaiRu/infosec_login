@@ -17,7 +17,7 @@ import {
   useParams
 } from "react-router-dom";
 import './App.css';
-
+import ShopRegister from "./components/page/registerShop/content"
 function App() {
   const { token, setToken, deleteToken } = useToken();
 
@@ -46,6 +46,9 @@ function App() {
   <div>
     <Router>
     <Switch>
+      <Route path="/ShopRegister">
+        <ShopRegister />
+      </Route>
       <Route path="/shop/:shopid">
         <OwnShop></OwnShop>
 

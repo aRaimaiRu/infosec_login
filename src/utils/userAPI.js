@@ -74,6 +74,19 @@ async function changeShopStatus(shopid,status) {
   }),
   });
 }
-
-
-export { login,register,getOwnData,getShop ,UserContact,getIsContact,changeShopStatus};
+// http://localhost:3002/api/user/register/shop
+async function registerShop({name,address}) {
+  return fetch(`http://${process.env.HOSTAPI || "localhost"}:${process.env.PORT || "3002"}/api/user/register/shop`, {
+    method: "POST",
+    headers: {
+      "Authorization": 'Bearer '+localStorage.getItem("x-auth-token").replace (/"/g,''),
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      name,
+      address
+  
+  }),
+  });
+}
+export { login,register,getOwnData,getShop ,UserContact,getIsContact,changeShopStatus,registerShop};

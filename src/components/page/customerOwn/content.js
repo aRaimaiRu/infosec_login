@@ -24,6 +24,9 @@ function Content(props) {
         },
         []
     )
+    const redirectToCreateShop = ()=>{
+        window.location.replace("/ShopRegister")
+    }
   return (
 <div class="wrapper">
         <nav id="sidebar" className={toggle?"active bd-sidebar":"bd-sidebar"} style={{position:"sticky",height:"970px"}} >
@@ -66,7 +69,7 @@ function Content(props) {
                     </button>
                     </div>
                     <div className="flexitem">
-                    <button type="button" id="sidebarCollapse" class="btn btn-info" onClick={()=>{setToggle(toggle=>!toggle)}}>
+                    <button type="button" id="sidebarCollapse" class="btn btn-info" onClick={()=>{redirectToCreateShop()}}>
                         <i class="fas fa-align-left"></i>
                         <span>Create Shop</span>
                     </button>
