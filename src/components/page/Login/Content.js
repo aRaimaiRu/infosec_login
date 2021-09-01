@@ -28,7 +28,6 @@ function LoginContent(props) {
       password:data.password
     })
     result = JSON.parse(result)
-    alert(result);
     props.setToken(result.setToken);
   }
   const emailPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
@@ -46,8 +45,7 @@ function LoginContent(props) {
         password:md5(data.password)
       }).then(res=>res.json())
       .then(res=>{
-        console.log("res",res)
-        if(res.token)props.setToken(res?.token)
+        if(res.token)props.setToken(res.token)
       })
       .catch(e=>{
         console.log("error =",e)

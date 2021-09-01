@@ -1,0 +1,12 @@
+.row {
+    display: flex;
+  }
+  
+  .column33 {
+    flex: 33%;
+  }
+
+  .flexbtw {
+      display: flex;
+      justify-content: space-between;
+  }
