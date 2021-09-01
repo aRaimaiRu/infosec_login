@@ -18,6 +18,16 @@ async function register(data) {
     });
   }
 
+  async function getOwnData() {
+    return fetch(`http://${process.env.HOSTAPI || "localhost"}:${process.env.PORT || "3002"}/api/user/current`, {
+      method: "GET",
+      headers: {
+        "Authorization": 'Bearer '+localStorage.getItem("x-auth-token").replace (/"/g,''),
+        "Content-Type": "application/json",
+      },
+    });
+  }
 
 
-export { login,register };
+
+export { login,register,getOwnData };
