@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import md5 from "md5";
-import PropTypes from "prop-types";
 import { valEmail, valPassword } from "../../../utils/validate"
 import "./Content.css";
 import {login} from "../../../utils/userAPI"
 import { Link } from "react-router-dom";
-
+import sha256 from "sha256";
 function LoginContent(props) {
   const [data, setData] = useState({
     email: "",
@@ -42,13 +40,20 @@ function LoginContent(props) {
       setErrortxt("");
       //send api
       login({username:data.email,
-        password:md5(data.password)
+        password:sha256(data.password)
       }).then(res=>res.json())
       .then(res=>{
-        if(res.token)props.setToken(res.token)
+        if(res.token){
+          props.setToken(res.token)
+
+        }else {
+          alert(res.message)
+        }
+        
+      
       })
       .catch(e=>{
-        console.log("error =",e)
+        alert(e)
       })
 
     

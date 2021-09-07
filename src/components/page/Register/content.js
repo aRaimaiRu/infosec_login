@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "./Content.css";
-import md5 from "md5";
+import sha256 from "sha256";
 import { valEmail, valPassword,valName } from "../../../utils/validate"
 import {register} from "../../../utils/userAPI"
 import { Link } from "react-router-dom";
-const bcrypt = require('bcryptjs');
-const saltRounds = bcrypt.genSaltSync(10);
+
+
 
 function RegisterContent(props) {
   const [data, setData] = useState({
@@ -39,14 +39,13 @@ function RegisterContent(props) {
       setErrortxt("Invalid name or address");
       return
     };
-
       alert("submit");
       setErrortxt("");
       register({
         firstName:data.name,
         lastName:data.surname,
         username:data.email,
-        password: md5(data.password),
+        password: sha256(data.password),
         address:data.address
       }).then(
         res=>res.json()
