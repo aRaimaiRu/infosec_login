@@ -146,4 +146,45 @@ async function logout(token,setToken) {
 
 }
 
-export { login,register,getOwnData,getShop ,UserContact,getIsContact,changeShopStatus,registerShop,refreshToken,callrefreshToken,logout};
+// http://localhost:3002/api/role/
+async function getAllRole(token) {
+  return fetch(`http://${process.env.HOSTAPI || "localhost"}:${process.env.PORT || "3002"}/api/role/`, {
+    method: "GET",
+    headers: {
+      "Authorization": 'Bearer '+token.replace (/"/g,''),
+      "Content-Type": "application/json",
+    },
+    credentials: 'include'
+  })
+  .then(data=>data.json())
+  .then(data=>{
+    if(data.message){
+      alert(data.message)
+    }else{
+      return data
+    }
+  })
+  .catch(e=>alert(e))
+}
+// http://localhost:3002/api/role/update
+async function updateRolePermission(token,data) {
+  return fetch(`http://${process.env.HOSTAPI || "localhost"}:${process.env.PORT || "3002"}/api/role/update`, {
+    method: "PUT",
+    headers: {
+      "Authorization": 'Bearer '+token.replace (/"/g,''),
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({...data}),
+    credentials: 'include'
+  })
+  .then(data=>data.json())
+  .then(data=>{
+    if(data.message){
+      alert(data.message)
+    }else{
+      return data
+    }
+  })
+  .catch(e=>alert(e))
+}
+export { login,register,getOwnData,getShop ,UserContact,getIsContact,changeShopStatus,registerShop,refreshToken,callrefreshToken,logout,getAllRole,updateRolePermission};

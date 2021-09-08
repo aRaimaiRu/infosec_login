@@ -20,6 +20,7 @@ import {
 } from "react-router-dom";
 import "./App.css";
 import ShopRegister from "./components/page/registerShop/content";
+import ManageRole from "./components/page/manageRolePermission/content"
 function App() {
   const [token,setToken] = useRecoilState(tokenState)
   if(token){
@@ -63,6 +64,14 @@ function App() {
               <Route path="/shop/:shopid">
                 <OwnShop></OwnShop>
               </Route>
+              <Route path="/admin/RolePermission">
+                <CustomerOwn>
+                    <ManageRole>
+
+                    </ManageRole>
+                </CustomerOwn>
+              </Route>
+
               <Route path="/">
                 {/* <Home token={token}></Home> */}
                 <CustomerOwn></CustomerOwn>

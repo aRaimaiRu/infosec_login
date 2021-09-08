@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import "./Content.css";
+
 import sha256 from "sha256";
 import { valEmail, valPassword,valName } from "../../../utils/validate"
 import {register} from "../../../utils/userAPI"
