@@ -1,4 +1,6 @@
 import React,{useState,useEffect} from "react";
+import { useRecoilState } from 'recoil';
+import { tokenState } from '../../../store';
 import "./content.css";
 import PropTypes from "prop-types";
 import {getShop,getOwnData,UserContact,getIsContact,changeShopStatus} from "../../../utils/userAPI"
@@ -10,6 +12,7 @@ import {
     useParams
   } from "react-router-dom";
 function Content(props) {
+    const [token,setToken] = useRecoilState(tokenState);
     const [toggle,setToggle] = useState(true);
     const [isAlreadyContact,setIsAlreadyContact] = useState(false);
 
@@ -32,10 +35,10 @@ function Content(props) {
 
     useEffect(
         async ()=>{
-            let res = await getShop(shopid)
+            let res = await getShop(shopid,token)
             let resjson = await res.json()
             setData({...resjson})
-            let res2 = await getOwnData()
+            let res2 = await getOwnData(token)
             let res2json = await res2.json()
             if(res2json.id == data.ownerId){
                 setSituation(1)
@@ -43,7 +46,7 @@ function Content(props) {
                 setSituation(3)
             }else {
                 setSituation(2)
-                let res3 = await getIsContact(shopid)
+                let res3 = await getIsContact(shopid,token)
                 let res3json = await res3.json()
                 if(res3json.isAlreadyContact==1)setIsAlreadyContact(true)
             }
@@ -77,7 +80,7 @@ function Content(props) {
         []
     )
     const Contact = async ()=>{
-        let res = await UserContact(shopid);
+        let res = await UserContact(shopid,token);
         let resjson = await res.json();
         if(resjson === 'successful contact shop'){
             setIsAlreadyContact(true)
@@ -85,7 +88,7 @@ function Content(props) {
     }
 
     const changeShopStatusCall = async()=>{
-        let res = await changeShopStatus(shopid,data.status=="pending"?"closed":data.status=="closed"?"pending":"")
+        let res = await changeShopStatus(shopid,data.status=="pending"?"closed":data.status=="closed"?"pending":"",token)
         let resjson = await res.json()
         console.log("change shop status =",resjson)
     }

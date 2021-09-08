@@ -1,8 +1,11 @@
 import React,{useState,useEffect} from "react";
 import "./content.css";
+import { useRecoilState } from 'recoil';
+import { tokenState } from '../../../store';
 import PropTypes from "prop-types";
 import {getOwnData} from "../../../utils/userAPI"
 function Content(props) {
+    const [token,setToken] = useRecoilState(tokenState);
     const [toggle,setToggle] = useState(true);
     const [data,setData] = useState(
         {
@@ -14,7 +17,7 @@ function Content(props) {
 
     useEffect(
         ()=>{
-            getOwnData()
+            getOwnData(token)
             .then(res=>res.json())
             .then(res=>{
                 setData({name:res.firstName,surname:res.lastName})

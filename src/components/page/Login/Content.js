@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { useRecoilState } from 'recoil';
+import { tokenState } from '../../../store';
 import { valEmail, valPassword } from "../../../utils/validate"
 import "./Content.css";
 import {login} from "../../../utils/userAPI"
 import { Link } from "react-router-dom";
 import sha256 from "sha256";
 function LoginContent(props) {
+  const [token, setToken] = useRecoilState(tokenState);
   const [data, setData] = useState({
     email: "",
     password: ""
@@ -44,6 +47,7 @@ function LoginContent(props) {
       }).then(res=>res.json())
       .then(res=>{
         if(res.token){
+          setToken(res.token)
           props.setToken(res.token)
 
         }else {

@@ -1,3 +1,10 @@
+// import { useRecoilState } from 'recoil';
+// import { tokenState } from '../store';
+
+
+
+
+
 async function register(data) {
     return fetch(`http://${process.env.HOSTAPI || "localhost"}:${process.env.PORT || "3002"}/api/user/register`, {
       method: "POST",
@@ -18,53 +25,53 @@ async function register(data) {
     });
   }
 
-  async function getOwnData() {
+  async function getOwnData(token) {
     return fetch(`http://${process.env.HOSTAPI || "localhost"}:${process.env.PORT || "3002"}/api/user/current`, {
       method: "GET",
       headers: {
-        "Authorization": 'Bearer '+localStorage.getItem("x-auth-token").replace (/"/g,''),
+        "Authorization": 'Bearer '+token.replace (/"/g,''),
         "Content-Type": "application/json",
       },
     });
   }
 
   // http://localhost:3002/api/shop/2
-  async function getShop(shopid) {
+  async function getShop(shopid,token) {
     return fetch(`http://${process.env.HOSTAPI || "localhost"}:${process.env.PORT || "3002"}/api/shop/${shopid}`, {
       method: "GET",
       headers: {
-        "Authorization": 'Bearer '+localStorage.getItem("x-auth-token").replace (/"/g,''),
+        "Authorization": 'Bearer '+token.replace (/"/g,''),
         "Content-Type": "application/json",
       },
     });
   }
 
   // http://localhost:3002/api/shop/contact/1
-  async function getIsContact(shopid) {
+  async function getIsContact(shopid,token) {
     return fetch(`http://${process.env.HOSTAPI || "localhost"}:${process.env.PORT || "3002"}/api/shop/contact/${shopid}`, {
       method: "GET",
       headers: {
-        "Authorization": 'Bearer '+localStorage.getItem("x-auth-token").replace (/"/g,''),
+        "Authorization": 'Bearer '+token.replace (/"/g,''),
         "Content-Type": "application/json",
       },
     });
   }
   // http://localhost:3002/api/shop/contact/2(:shopid)
-  async function UserContact(shopid) {
+  async function UserContact(shopid,token) {
     return fetch(`http://${process.env.HOSTAPI || "localhost"}:${process.env.PORT || "3002"}/api/shop/contact/${shopid}`, {
       method: "POST",
       headers: {
-        "Authorization": 'Bearer '+localStorage.getItem("x-auth-token").replace (/"/g,''),
+        "Authorization": 'Bearer '+token.replace (/"/g,''),
         "Content-Type": "application/json",
       },
     });
   }
 // http://localhost:3002/api/shop/approve
-async function changeShopStatus(shopid,status) {
+async function changeShopStatus(shopid,status,token) {
   return fetch(`http://${process.env.HOSTAPI || "localhost"}:${process.env.PORT || "3002"}/api/shop/approve`, {
     method: "POST",
     headers: {
-      "Authorization": 'Bearer '+localStorage.getItem("x-auth-token").replace (/"/g,''),
+      "Authorization": 'Bearer '+token.replace (/"/g,''),
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
@@ -75,11 +82,11 @@ async function changeShopStatus(shopid,status) {
   });
 }
 // http://localhost:3002/api/user/register/shop
-async function registerShop({name,address}) {
+async function registerShop({name,address},token) {
   return fetch(`http://${process.env.HOSTAPI || "localhost"}:${process.env.PORT || "3002"}/api/user/register/shop`, {
     method: "POST",
     headers: {
-      "Authorization": 'Bearer '+localStorage.getItem("x-auth-token").replace (/"/g,''),
+      "Authorization": 'Bearer '+token.replace (/"/g,''),
       "Content-Type": "application/json",
     },
     body: JSON.stringify({

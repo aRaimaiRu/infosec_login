@@ -1,5 +1,7 @@
 import React,{useState} from "react";
 import ReactDOM from "react-dom";
+import { useRecoilState } from 'recoil';
+import { tokenState } from '../../../store';
 import Modal from "react-modal";
 import {registerShop} from "../../../utils/userAPI"
 //<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"></link>;
@@ -17,6 +19,7 @@ const customStyles = {
 // Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
 
 function Content() {
+  const [token,setToken] = useRecoilState(tokenState);
     const [data, setData] = useState({
         name: "",
         address: ""
@@ -45,7 +48,7 @@ function Content() {
     setIsOpen(false);
   }
   const callRegisterShop = async()=>{
-    let res=  await registerShop({...data}) 
+    let res=  await registerShop({...data},token) 
     let resjson = await res.json()
     console.log("callRegisterShop = ",resjson)
   }

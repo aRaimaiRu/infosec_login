@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 
 
 function RegisterContent(props) {
+ 
   const [data, setData] = useState({
     email: "",
     password: "",
