@@ -21,6 +21,7 @@ async function register(data) {
       headers: {
         "Content-Type": "application/json",
       },
+      credentials: 'include',
       body: JSON.stringify({...data}),
     });
   }
@@ -96,4 +97,53 @@ async function registerShop({name,address},token) {
   }),
   });
 }
-export { login,register,getOwnData,getShop ,UserContact,getIsContact,changeShopStatus,registerShop};
+
+// http://localhost:3002/api/user/refreshToken
+async function refreshToken(token) {
+  return fetch(`http://${process.env.HOSTAPI || "localhost"}:${process.env.PORT || "3002"}/api/user/refreshToken`, {
+    method: "GET",
+    headers: {
+      "Authorization": 'Bearer '+token.replace (/"/g,''),
+      "Content-Type": "application/json",
+    },
+    credentials: 'include'
+  });
+}
+
+async function callrefreshToken(token,setToken){
+  refreshToken(token)
+  .then(res=>res.json())
+  .then(res=>{
+    if(res.token){
+      setToken(res.token)
+    }else{
+      console.log(res.message)
+    }
+    return res
+  })
+  .catch(e=>alert(e))
+}
+
+
+// http://localhost:3002/api/user/refreshToken
+async function logout(token,setToken) {
+  return fetch(`http://${process.env.HOSTAPI || "localhost"}:${process.env.PORT || "3002"}/api/user/logout`, {
+    method: "POST",
+    headers: {
+      "Authorization": 'Bearer '+token.replace (/"/g,''),
+      "Content-Type": "application/json",
+    },
+    credentials: 'include'
+  })
+  .then(res=>res.json())
+  .then(res=>{
+    setToken()
+    console.log("res  logout=",res)
+    alert("logout",res)
+    return res
+  })
+  .catch(e=>alert(e))
+
+}
+
+export { login,register,getOwnData,getShop ,UserContact,getIsContact,changeShopStatus,registerShop,refreshToken,callrefreshToken,logout};

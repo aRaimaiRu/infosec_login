@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { useRecoilState,RecoilRoot } from 'recoil';
 import { tokenState } from '../src/store';
 import Header from "./components/Header";
@@ -7,9 +7,9 @@ import LoginContent from "./components/page/Login/Content";
 import RegisterContent from "./components/page/Register/content";
 import Home from "./components/page/Home/content";
 import E401 from "./components/page/Error/content";
-import useToken from "./useToken";
 import CustomerOwn from "./components/page/customerOwn/content";
 import OwnShop from "./components/page/OwnShop/content";
+import {callrefreshToken } from "./utils/userAPI"
 import {
   BrowserRouter as Router,
   Switch,
@@ -22,6 +22,15 @@ import "./App.css";
 import ShopRegister from "./components/page/registerShop/content";
 function App() {
   const [token,setToken] = useRecoilState(tokenState)
+  if(token){
+    console.log("auto call refresh Token")
+    setInterval(callrefreshToken(token,setToken), 1000*60*50);
+  }
+  useEffect(async()=>{
+     callrefreshToken(token,setToken)
+  },[])
+
+
   return (
     <>
 

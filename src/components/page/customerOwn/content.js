@@ -4,7 +4,7 @@ import "./content.css";
 import { useRecoilState } from 'recoil';
 import { tokenState } from '../../../store';
 import PropTypes from "prop-types";
-import {getOwnData} from "../../../utils/userAPI"
+import {getOwnData,refreshToken,logout} from "../../../utils/userAPI"
 function Content(props) {
     let history = useHistory();
     const [token,setToken] = useRecoilState(tokenState);
@@ -36,6 +36,15 @@ function Content(props) {
     const Toshop = (shopid)=>{
         history.push('/shop/'+shopid)
 
+    }
+
+    const reToken =()=>{
+        refreshToken(token)
+        .then(res=>res.json())
+        .then(res=>{
+            console.log(res)
+        })
+        .catch(e=>console.log("error = ",e))
     }
   return (
 <div class="wrapper">
@@ -88,6 +97,18 @@ function Content(props) {
                     <button type="button" id="sidebarCollapse" class="btn btn-info" onClick={()=>{Toshop(5)}}>
                         <i class="fas fa-align-left"></i>
                         <span>Shop5</span>
+                    </button>
+                    </div>
+                    <div className="flexitem">
+                    <button type="button" id="sidebarCollapse" class="btn btn-info" onClick={()=>{reToken()}}>
+                        <i class="fas fa-align-left"></i>
+                        <span>RefreshToken</span>
+                    </button>
+                    </div>
+                    <div className="flexitem">
+                    <button type="button" id="sidebarCollapse" class="btn btn-info" onClick={()=>{logout(token,setToken)}}>
+                        <i class="fas fa-align-left"></i>
+                        <span>Logout</span>
                     </button>
                     </div>
                     {/* <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

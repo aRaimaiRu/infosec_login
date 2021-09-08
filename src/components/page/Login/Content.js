@@ -48,7 +48,6 @@ function LoginContent(props) {
       .then(res=>{
         if(res.token){
           setToken(res.token)
-          props.setToken(res.token)
 
         }else {
           alert(res.message)
