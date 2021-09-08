@@ -13,6 +13,7 @@ import {
   } from "react-router-dom";
 function Content(props) {
     const [token,setToken] = useRecoilState(tokenState);
+    console.log("shop Token =",token)
     const [toggle,setToggle] = useState(true);
     const [isAlreadyContact,setIsAlreadyContact] = useState(false);
 

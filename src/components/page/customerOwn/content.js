@@ -1,10 +1,12 @@
 import React,{useState,useEffect} from "react";
+import { useHistory } from "react-router-dom";
 import "./content.css";
 import { useRecoilState } from 'recoil';
 import { tokenState } from '../../../store';
 import PropTypes from "prop-types";
 import {getOwnData} from "../../../utils/userAPI"
 function Content(props) {
+    let history = useHistory();
     const [token,setToken] = useRecoilState(tokenState);
     const [toggle,setToggle] = useState(true);
     const [data,setData] = useState(
@@ -28,7 +30,12 @@ function Content(props) {
         []
     )
     const redirectToCreateShop = ()=>{
-        window.location.replace("/ShopRegister")
+        history.push('/ShopRegister')
+
+    }
+    const Toshop = (shopid)=>{
+        history.push('/shop/'+shopid)
+
     }
   return (
 <div class="wrapper">
@@ -75,6 +82,12 @@ function Content(props) {
                     <button type="button" id="sidebarCollapse" class="btn btn-info" onClick={()=>{redirectToCreateShop()}}>
                         <i class="fas fa-align-left"></i>
                         <span>Create Shop</span>
+                    </button>
+                    </div>
+                    <div className="flexitem">
+                    <button type="button" id="sidebarCollapse" class="btn btn-info" onClick={()=>{Toshop(5)}}>
+                        <i class="fas fa-align-left"></i>
+                        <span>Shop5</span>
                     </button>
                     </div>
                     {/* <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
