@@ -72,43 +72,23 @@ function RegisterContent(props) {
   return (
     <div className="bgorange marg0auto center" style={{ height: "50rem" }}>
       <div className="width50P">
-        
         <form
           class="loginform bg-white size-lg"
           style={{
             justifyContent: "space-evenly",
-            padding: "100px",
+            padding: "50px",
             backgroundColor: "white",
             overflow: "auto"
           }}
         ><center>
-            <form class="form-inline">
-            <header>Shop</header>
-              <div class="form-group row mb-4">
-                <label
-                  class="block text-grey-darker text-sm font-bold col-sm-2"
-                  for="username"
-                >
-                  Email
-                </label>
-                <div class="col-sm-10">
-                  <input
-                    class="form-control mr-sm-2"
-                    id="username"
-                    type="text"
-                    placeholder="Email"
-                    value={data.email}
-                    onChange={(e) => handleChange("email", e.target.value)}
-                  /></div>
-              </div>
-            </form>
+            
             <form class="form-inline">
               <div class="form-group row mb-4">
                 <label
                   class="block text-grey-darker text-sm font-bold col-sm-2"
                   for="password"
                 >
-                  Password
+                  New Password
                 </label>
                 <div class="col-sm-9">
                   <input
@@ -127,54 +107,16 @@ function RegisterContent(props) {
                   class="block text-grey-darker text-sm font-bold col-sm-2"
                   for="password"
                 >
-                  Name
-                </label>
-                <div class="col-sm-10">
-                  <input
-                    class="form-control mr-sm-2"
-                    id="Name"
-                    type="Text"
-                    placeholder="Name"
-                    value={data.name}
-                    onChange={(e) => handleChange("name", e.target.value)}
-                  /></div>
-              </div>
-            </form>
-            <form class="form-inline">
-              <div class="form-group row mb-4">
-                <label
-                  class="block text-grey-darker text-sm font-bold col-sm-2"
-                  for="password"
-                >
-                  Surname
+                  New Password Again
                 </label>
                 <div class="col-sm-9">
                   <input
                     class="form-control mr-sm-2"
-                    id="Surname"
-                    type="Text"
-                    placeholder="Surname"
-                    value={data.surname}
-                    onChange={(e) => handleChange("surname", e.target.value)}
-                  /></div>
-              </div>
-            </form>
-            <form class="form-inline">
-              <div class="form-group row mb-4">
-                <label
-                  class="block text-grey-darker text-sm font-bold col-sm-2"
-                  for="password"
-                >
-                  address
-                </label>
-                <div class="col-sm-9">
-                  <input
-                    class="form-control mr-sm-2"
-                    id="address"
-                    type="Text"
-                    placeholder="address"
-                    value={data.address}
-                    onChange={(e) => handleChange("address", e.target.value)}
+                    id="password"
+                    type="password"
+                    placeholder="******************"
+                    value={data.password}
+                    onChange={(e) => handleChange("password", e.target.value)}
                   /></div>
               </div>
             </form>
@@ -184,27 +126,13 @@ function RegisterContent(props) {
                 type="button"
                 onClick={()=>submit()}
               >
-                Register
+               Change Password
               </button>
-              <Link to="/login">
-              <button
-                class="btn btn-outline-primary my-2 my-sm-0 mx-sm-2"
-                type="button"
-             
-              >
-                Sign In
-              </button></Link>
             </div>
             <p className="colorRed">{errortxt}</p>
           </center>
           <hr></hr>
-          <ul className="circle">
-            <li>Email validation</li>
-            <li>Password Length more {'>'}8  {'<=64'}</li>
-            <li>Must have Email and Password</li>
-            <li>secret password</li>
-            <li>Strong password</li>
-          </ul>
+         
         </form>
       </div>
     </div>
