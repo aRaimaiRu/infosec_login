@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+require('dotenv').config()
 import { useRecoilState,RecoilRoot } from 'recoil';
 import './index.css';
 import App from './App';
