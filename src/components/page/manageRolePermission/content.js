@@ -44,6 +44,11 @@ function Content(props) {
 }
   return (
     <div >
+      <p>Column =  Table Name</p>
+      <p>Field = CRUD </p>
+      <p>0 = not permit </p>
+      <p>1 = permit to self data in Table</p>
+      <p>2 = permit To all Data in Table </p>
       {data&&<table class="table table-dark table-hover" style={{width:"500px"}}>
           <tr>
           {Object.keys(data[0]).map(h=>
