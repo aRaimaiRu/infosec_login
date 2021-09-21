@@ -1,21 +1,19 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-
 import sha256 from "sha256";
 import { valEmail, valPassword,valName } from "../../../utils/validate"
-import {register} from "../../../utils/userAPI"
-import { Link } from "react-router-dom";
+import {resetpassword} from "../../../utils/userAPI"
+import { Link,useLocation  } from "react-router-dom";
 
-
+function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
 
 function RegisterContent(props) {
- 
+  const query = useQuery()
   const [data, setData] = useState({
-    email: "",
     password: "",
-    name: "",
-    surname: "",
-    address:""
+    repassword: "",
   })
   const [errortxt, setErrortxt] = useState("");
 
@@ -32,26 +30,18 @@ function RegisterContent(props) {
 
   const submit = async () => {
 
-    if(!(valEmail(data.email) && valPassword(data.password) )) {
+    if(!(valPassword(data.password) )) {
       setErrortxt("Invalid Email or Password!");
       return
     };
-    if (!(valName(data.name) && valName(data.surname) && valName(data.address))) {
-      setErrortxt("Invalid name or address");
+    if (data.password != data.repassword) {
+      setErrortxt("Password != repassword");
       return
     };
-      alert("submit");
       setErrortxt("");
-      register({
-        firstName:data.name,
-        lastName:data.surname,
-        username:data.email,
-        password: sha256(data.password),
-        address:data.address
-      }).then(
-        res=>res.json()
-      ).then(res=>{
-        alert(res.message)
+      resetpassword(query.get("token"),{password:sha256(data.password)})
+      .then(res=>{
+        alert("Reset Password Successful")
         
       }).catch(e=>{
         console.log(e)
@@ -115,8 +105,8 @@ function RegisterContent(props) {
                     id="password"
                     type="password"
                     placeholder="******************"
-                    value={data.password}
-                    onChange={(e) => handleChange("password", e.target.value)}
+                    value={data.repassword}
+                    onChange={(e) => handleChange("repassword", e.target.value)}
                   /></div>
               </div>
             </form>

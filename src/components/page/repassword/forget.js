@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import sha256 from "sha256";
 import { valEmail, valPassword,valName } from "../../../utils/validate"
-import {register} from "../../../utils/userAPI"
+import {forgotpassword} from "../../../utils/userAPI"
 import { Link } from "react-router-dom";
 
 
@@ -12,10 +12,6 @@ function RegisterContent(props) {
  
   const [data, setData] = useState({
     email: "",
-    password: "",
-    name: "",
-    surname: "",
-    address:""
   })
   const [errortxt, setErrortxt] = useState("");
 
@@ -27,35 +23,15 @@ function RegisterContent(props) {
     }
 
     )
-
   }
 
   const submit = async () => {
 
-    if(!(valEmail(data.email) && valPassword(data.password) )) {
+    if(!(valEmail(data.email))) {
       setErrortxt("Invalid Email or Password!");
       return
     };
-    if (!(valName(data.name) && valName(data.surname) && valName(data.address))) {
-      setErrortxt("Invalid name or address");
-      return
-    };
-      alert("submit");
-      setErrortxt("");
-      register({
-        firstName:data.name,
-        lastName:data.surname,
-        username:data.email,
-        password: sha256(data.password),
-        address:data.address
-      }).then(
-        res=>res.json()
-      ).then(res=>{
-        alert(res.message)
-        
-      }).catch(e=>{
-        console.log(e)
-      })
+  let res = await forgotpassword(data.email);
 
  
 
@@ -110,7 +86,7 @@ function RegisterContent(props) {
                 type="button"
                 onClick={()=>submit()}
               >
-                Forget Password ?
+                Submit
               </button>
             
             </div>

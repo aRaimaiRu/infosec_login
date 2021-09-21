@@ -187,4 +187,47 @@ async function updateRolePermission(token,data) {
   })
   .catch(e=>alert(e))
 }
-export { login,register,getOwnData,getShop ,UserContact,getIsContact,changeShopStatus,registerShop,refreshToken,callrefreshToken,logout,getAllRole,updateRolePermission};
+// http://localhost:3002/api/user/sendforgetpasswordemail
+async function forgotpassword(username){
+  return fetch(`http://${process.env.HOSTAPI || "localhost"}:${process.env.PORT || "3002"}/api/user/sendforgetpasswordemail`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({username}),
+    credentials: 'include'
+  })
+  .then(data=>data.json())
+  .then(data=>{
+    if(data.message){
+      alert(data.message)
+    }else{
+      return data
+    }
+  })
+  .catch(e=>alert(e))
+
+}
+// http://localhost:3002/api/user/repassword
+async function resetpassword(token,data) {
+  return fetch(`http://${process.env.HOSTAPI || "localhost"}:${process.env.PORT || "3002"}/api/user/repassword`, {
+    method: "PUT",
+    headers: {
+      "Authorization": 'Bearer '+token.replace (/"/g,''),
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({...data}),
+    credentials: 'include'
+  })
+  .then(data=>data.json())
+  .then(data=>{
+    if(data.message){
+      alert(data.message)
+    }else{
+      return data
+    }
+  })
+  .catch(e=>alert(e))
+}
+export { login,register,getOwnData,getShop ,UserContact,getIsContact,changeShopStatus,registerShop,
+  refreshToken,callrefreshToken,logout,getAllRole,updateRolePermission,forgotpassword,resetpassword};

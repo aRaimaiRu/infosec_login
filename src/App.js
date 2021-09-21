@@ -10,6 +10,8 @@ import E401 from "./components/page/Error/content";
 import CustomerOwn from "./components/page/customerOwn/content";
 import OwnShop from "./components/page/OwnShop/content";
 import {callrefreshToken } from "./utils/userAPI"
+import ForgotPassword from "./components/page/repassword/forget"
+import Repassword from "./components/page/repassword/repassword"
 import {
   BrowserRouter as Router,
   Switch,
@@ -46,6 +48,12 @@ function App() {
               <Route path="/register">
                 <Header></Header>
                 <RegisterContent setToken={setToken} />
+              </Route>
+              <Route path="/forgotpassword">
+                <ForgotPassword></ForgotPassword>
+              </Route>
+              <Route path="/repassword">
+                <Repassword></Repassword>
               </Route>
               <Route path="*" component={E401} status={401} />
             </Switch>
