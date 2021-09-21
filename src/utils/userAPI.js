@@ -2,11 +2,11 @@
 // import { tokenState } from '../store';
 
 
-
+const HOSTAPI = "localhost"
 
 
 async function register(data) {
-    return fetch(`http://${process.env.HOSTAPI || "localhost"}:${"3002"}/api/user/register`, {
+    return fetch(`http://${HOSTAPI || "localhost"}:${"3002"}/api/user/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -16,7 +16,7 @@ async function register(data) {
   }
 
   async function login(data) {
-    return fetch(`http://${process.env.HOSTAPI || "localhost"}:${"3002"}/api/user/authenticate`, {
+    return fetch(`http://${HOSTAPI || "localhost"}:${"3002"}/api/user/authenticate`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -27,7 +27,7 @@ async function register(data) {
   }
 
   async function getOwnData(token) {
-    return fetch(`http://${process.env.HOSTAPI || "localhost"}:${"3002"}/api/user/current`, {
+    return fetch(`http://${HOSTAPI || "localhost"}:${"3002"}/api/user/current`, {
       method: "GET",
       headers: {
         "Authorization": 'Bearer '+token.replace (/"/g,''),
@@ -38,7 +38,7 @@ async function register(data) {
 
   // http://localhost:3002/api/shop/2
   async function getShop(shopid,token) {
-    return fetch(`http://${process.env.HOSTAPI || "localhost"}:${"3002"}/api/shop/${shopid}`, {
+    return fetch(`http://${HOSTAPI || "localhost"}:${"3002"}/api/shop/${shopid}`, {
       method: "GET",
       headers: {
         "Authorization": 'Bearer '+token.replace (/"/g,''),
@@ -49,7 +49,7 @@ async function register(data) {
 
   // http://localhost:3002/api/shop/contact/1
   async function getIsContact(shopid,token) {
-    return fetch(`http://${process.env.HOSTAPI || "localhost"}:${"3002"}/api/shop/contact/${shopid}`, {
+    return fetch(`http://${HOSTAPI || "localhost"}:${"3002"}/api/shop/contact/${shopid}`, {
       method: "GET",
       headers: {
         "Authorization": 'Bearer '+token.replace (/"/g,''),
@@ -59,7 +59,7 @@ async function register(data) {
   }
   // http://localhost:3002/api/shop/contact/2(:shopid)
   async function UserContact(shopid,token) {
-    return fetch(`http://${process.env.HOSTAPI || "localhost"}:${"3002"}/api/shop/contact/${shopid}`, {
+    return fetch(`http://${HOSTAPI || "localhost"}:${"3002"}/api/shop/contact/${shopid}`, {
       method: "POST",
       headers: {
         "Authorization": 'Bearer '+token.replace (/"/g,''),
@@ -69,7 +69,7 @@ async function register(data) {
   }
 // http://localhost:3002/api/shop/approve
 async function changeShopStatus(shopid,status,token) {
-  return fetch(`http://${process.env.HOSTAPI || "localhost"}:${"3002"}/api/shop/approve`, {
+  return fetch(`http://${HOSTAPI || "localhost"}:${"3002"}/api/shop/approve`, {
     method: "POST",
     headers: {
       "Authorization": 'Bearer '+token.replace (/"/g,''),
@@ -84,7 +84,7 @@ async function changeShopStatus(shopid,status,token) {
 }
 // http://localhost:3002/api/user/register/shop
 async function registerShop({name,address},token) {
-  return fetch(`http://${process.env.HOSTAPI || "localhost"}:${"3002"}/api/user/register/shop`, {
+  return fetch(`http://${HOSTAPI || "localhost"}:${"3002"}/api/user/register/shop`, {
     method: "POST",
     headers: {
       "Authorization": 'Bearer '+token.replace (/"/g,''),
@@ -100,7 +100,7 @@ async function registerShop({name,address},token) {
 
 // http://localhost:3002/api/user/refreshToken
 async function refreshToken(token) {
-  return fetch(`http://${process.env.HOSTAPI || "localhost"}:${"3002"}/api/user/refreshToken`, {
+  return fetch(`http://${HOSTAPI || "localhost"}:${"3002"}/api/user/refreshToken`, {
     method: "GET",
     headers: {
       "Authorization": 'Bearer '+token.replace (/"/g,''),
@@ -127,7 +127,7 @@ async function callrefreshToken(token,setToken){
 
 // http://localhost:3002/api/user/refreshToken
 async function logout(token,setToken) {
-  return fetch(`http://${process.env.HOSTAPI || "localhost"}:${"3002"}/api/user/logout`, {
+  return fetch(`http://${HOSTAPI || "localhost"}:${"3002"}/api/user/logout`, {
     method: "POST",
     headers: {
       "Authorization": 'Bearer '+token.replace (/"/g,''),
@@ -148,7 +148,7 @@ async function logout(token,setToken) {
 
 // http://localhost:3002/api/role/
 async function getAllRole(token) {
-  return fetch(`http://${process.env.HOSTAPI || "localhost"}:${"3002"}/api/role/`, {
+  return fetch(`http://${HOSTAPI || "localhost"}:${"3002"}/api/role/`, {
     method: "GET",
     headers: {
       "Authorization": 'Bearer '+token.replace (/"/g,''),
@@ -168,7 +168,7 @@ async function getAllRole(token) {
 }
 // http://localhost:3002/api/role/update
 async function updateRolePermission(token,data) {
-  return fetch(`http://${process.env.HOSTAPI || "localhost"}:${"3002"}/api/role/update`, {
+  return fetch(`http://${HOSTAPI || "localhost"}:${"3002"}/api/role/update`, {
     method: "PUT",
     headers: {
       "Authorization": 'Bearer '+token.replace (/"/g,''),
@@ -189,7 +189,7 @@ async function updateRolePermission(token,data) {
 }
 // http://localhost:3002/api/user/sendforgetpasswordemail
 async function forgotpassword(username){
-  return fetch(`http://${process.env.HOSTAPI || "localhost"}:${"3002"}/api/user/sendforgetpasswordemail`, {
+  return fetch(`http://${HOSTAPI || "localhost"}:${"3002"}/api/user/sendforgetpasswordemail`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -210,7 +210,7 @@ async function forgotpassword(username){
 }
 // http://localhost:3002/api/user/repassword
 async function resetpassword(token,data) {
-  return fetch(`http://${process.env.HOSTAPI || "localhost"}:${"3002"}/api/user/repassword`, {
+  return fetch(`http://${HOSTAPI || "localhost"}:${"3002"}/api/user/repassword`, {
     method: "PUT",
     headers: {
       "Authorization": 'Bearer '+token.replace (/"/g,''),
