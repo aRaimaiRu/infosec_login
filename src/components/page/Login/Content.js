@@ -118,12 +118,9 @@ function LoginContent(props) {
                 register
               </button></Link>
               <br></br>
-              <a
-
-                href="#"
-              >
+              <Link to="/forgotpassword">
                 Forgot Password?
-              </a>
+              </Link>
             </div>
 
           </center>

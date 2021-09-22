@@ -2,7 +2,7 @@
 // import { tokenState } from '../store';
 
 
-const HOSTAPI = "localhost"
+const HOSTAPI = "159.138.252.91"
 
 
 async function register(data) {
