@@ -26,12 +26,12 @@ import ShopRegister from './components/page/registerShop/content';
 import ManageRole from './components/page/manageRolePermission/content';
 function App() {
   const [token, setToken] = useRecoilState(tokenState);
-  if (token) {
-    console.log('auto call refresh Token', token);
-    setInterval(callrefreshToken(token, setToken), 1000 * 60 * 50);
-  }
+  // if (token) {
+  //   console.log('auto call refresh Token', token);
+  //   setInterval(callrefreshToken(token, setToken), 1000 * 60 * 50);
+  // }
   useEffect(async () => {
-    callrefreshToken(token, setToken);
+    callrefreshToken(setToken);
   }, []);
 
   return (
