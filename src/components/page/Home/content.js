@@ -1,6 +1,7 @@
 import React from 'react';
 import Productdetaillayout from '../../productdetaillayout';
 import homestyle from '../../../styles/HomePage.module.css';
+import searchstyle from '../../../styles/search.module.css';
 import EmblaCarousel from '../../EmblaCarousel';
 function HomeContent(props) {
   const SLIDE_COUNT = 2;
@@ -26,6 +27,17 @@ function HomeContent(props) {
       </div>
       <h1 style={{ alignSelf: 'start' }}>ข่าวสาร</h1>
       <EmblaCarousel slides={slides}></EmblaCarousel>
+      <h1>รายการสินค้า</h1>
+      <div className={searchstyle.searchresultcontainer}>
+        <img
+          src="/images/SneakerRed.jpg"
+          className={searchstyle.imageresult}
+        ></img>
+        <img
+          src="/images/SneakerRed.jpg"
+          className={searchstyle.imageresult}
+        ></img>
+      </div>
     </Productdetaillayout>
   );
 }

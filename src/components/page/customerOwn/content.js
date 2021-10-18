@@ -16,7 +16,7 @@ function Content(props) {
   });
 
   useEffect(() => {
-    getOwnData(token.token)
+    getOwnData(token)
       .then((res) => res.json())
       .then((res) => {
         setData({ name: res.firstName, surname: res.lastName });

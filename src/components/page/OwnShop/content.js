@@ -41,7 +41,7 @@ function Content(props) {
     let res = await getShop(shopid, token);
     let resjson = await res.json();
     setData({ ...resjson });
-    let res2 = await getOwnData(token.token);
+    let res2 = await getOwnData(token);
     let res2json = await res2.json();
     if (res2json.id == data.ownerId) {
       setSituation(1);

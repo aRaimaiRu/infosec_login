@@ -1,7 +1,8 @@
 .webcontainer {
   width: 100vw;
   padding: 0 0;
-  height: 100vh;
+  min-height: 100vh;
+  height: fit-content;
   /* background-image: url('/loginBG.jpg'); */
   background-position: center;
   background-repeat: no-repeat;
