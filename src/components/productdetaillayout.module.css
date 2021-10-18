@@ -1,0 +1,23 @@
+.webcontainer {
+  width: 100vw;
+  padding: 0 0;
+  height: 100vh;
+  /* background-image: url('/loginBG.jpg'); */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+}

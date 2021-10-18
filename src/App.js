@@ -1,17 +1,18 @@
-import React, { useState,useEffect } from "react";
-import { useRecoilState,RecoilRoot } from 'recoil';
+import React, { useState, useEffect } from 'react';
+import { useRecoilState, RecoilRoot } from 'recoil';
 import { tokenState } from '../src/store';
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import LoginContent from "./components/page/Login/Content";
-import RegisterContent from "./components/page/Register/content";
-import Home from "./components/page/Home/content";
-import E401 from "./components/page/Error/content";
-import CustomerOwn from "./components/page/customerOwn/content";
-import OwnShop from "./components/page/OwnShop/content";
-import {callrefreshToken } from "./utils/userAPI"
-import ForgotPassword from "./components/page/repassword/forget"
-import Repassword from "./components/page/repassword/repassword"
+import Header from './components/Header';
+import Footer from './components/Footer';
+import LoginContent from './components/page/Login/Content';
+import RegisterContent from './components/page/Register/content';
+import Home from './components/page/Home/content';
+import E401 from './components/page/Error/content';
+import CustomerOwn from './components/page/customerOwn/content';
+import OwnShop from './components/page/OwnShop/content';
+import { callrefreshToken } from './utils/userAPI';
+import ForgotPassword from './components/page/repassword/forget';
+import Repassword from './components/page/repassword/repassword';
+import HomeContent from './components/page/Home/content';
 import {
   BrowserRouter as Router,
   Switch,
@@ -19,47 +20,47 @@ import {
   Link,
   useRouteMatch,
   useParams,
-} from "react-router-dom";
-import "./App.css";
-import ShopRegister from "./components/page/registerShop/content";
-import ManageRole from "./components/page/manageRolePermission/content"
+} from 'react-router-dom';
+import './App.css';
+import ShopRegister from './components/page/registerShop/content';
+import ManageRole from './components/page/manageRolePermission/content';
 function App() {
-  const [token,setToken] = useRecoilState(tokenState)
-  if(token){
-    console.log("auto call refresh Token")
-    setInterval(callrefreshToken(token,setToken), 1000*60*50);
+  const [token, setToken] = useRecoilState(tokenState);
+  if (token) {
+    console.log('auto call refresh Token', token);
+    setInterval(callrefreshToken(token, setToken), 1000 * 60 * 50);
   }
-  useEffect(async()=>{
-     callrefreshToken(token,setToken)
-  },[])
-
+  useEffect(async () => {
+    callrefreshToken(token, setToken);
+  }, []);
 
   return (
     <>
-
       {!token && (
-        <div>
-          <Router>
-            <Switch>
-              <Route path="/login">
-                <Header>kut</Header>
-                <LoginContent setToken={setToken} />
-              </Route>
-              <Route path="/register">
-                <Header></Header>
-                <RegisterContent setToken={setToken} />
-              </Route>
-              <Route path="/forgotpassword">
-                <ForgotPassword></ForgotPassword>
-              </Route>
-              <Route path="/repassword">
-                <Repassword></Repassword>
-              </Route>
-              <Route path="*" component={E401} status={401} />
-            </Switch>
-            <Footer></Footer>
-          </Router>
-        </div>
+        <Router>
+          <Switch>
+            <Route path="/login">
+              <Header></Header>
+              <LoginContent setToken={setToken} />
+            </Route>
+            <Route path="/register">
+              <Header></Header>
+              <RegisterContent setToken={setToken} />
+            </Route>
+            <Route path="/forgotpassword">
+              <ForgotPassword></ForgotPassword>
+            </Route>
+            <Route path="/repassword">
+              <Repassword></Repassword>
+            </Route>
+            <Route path="/">
+              <Header></Header>
+              <HomeContent setToken={setToken} />
+            </Route>
+            <Route path="*" component={E401} status={401} />
+          </Switch>
+          <Footer></Footer>
+        </Router>
       )}
       {/* if have token show below*/}
       {token && (
@@ -74,9 +75,7 @@ function App() {
               </Route>
               <Route path="/admin/RolePermission">
                 <CustomerOwn>
-                    <ManageRole>
-
-                    </ManageRole>
+                  <ManageRole></ManageRole>
                 </CustomerOwn>
               </Route>
 
@@ -88,9 +87,8 @@ function App() {
           </Router>
         </div>
       )}
-  </>
+    </>
   );
-
 }
 
 export default App;
