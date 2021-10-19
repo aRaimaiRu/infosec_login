@@ -102,6 +102,7 @@ function LoginContent(props) {
           <Link href="/forgotpassword">
             <a className={loginstyle.font12}>ลืมรหัสผ่าน</a>
           </Link>
+          <p style={{ color: 'red' }}>{errortxt}</p>
         </div>
       </form>
     </Layout>
