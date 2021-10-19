@@ -6,31 +6,25 @@ import './Content.css';
 import { login } from '../../../utils/userAPI';
 import { Link } from 'react-router-dom';
 import sha256 from 'sha256';
+import { Controller, useForm } from 'react-hook-form';
+import Layout from '../../loginlayout';
+import loginstyle from '../../../styles/loginpage.module.css';
 function LoginContent(props) {
+  const { register, handleSubmit } = useForm();
   const [token, setToken] = useRecoilState(tokenState);
-  const [data, setData] = useState({
-    email: '',
-    password: '',
-  });
+
   const [errortxt, setErrortxt] = useState('');
 
-  const handleChange = (type, value) => {
-    setData({
-      ...data,
-      [type]: value,
-    });
-  };
-  const sendLogin = async () => {
-    let result = login({
-      username: data.email,
-      password: data.password,
-    });
-    result = JSON.parse(result);
-    props.setToken(result.setToken);
-  };
-  const emailPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+  // const sendLogin = async () => {
+  //   let result = login({
+  //     username: data.email,
+  //     password: data.password,
+  //   });
+  //   result = JSON.parse(result);
+  //   props.setToken(result.setToken);
+  // };
 
-  const submit = () => {
+  const submit = (data) => {
     if (!(valEmail(data.email) && valPassword(data.password))) {
       setErrortxt('Invalid Email or Password!');
       return;
@@ -53,77 +47,64 @@ function LoginContent(props) {
       });
   };
   return (
-    <div className="bgorange marg0auto center" style={{ height: '50rem' }}>
-      <div className="width50P">
-        <form
-          class="loginform bg-white size-lg"
-          style={{
-            justifyContent: 'space-evenly',
-            padding: '10px',
-            backgroundColor: 'white',
-          }}
+    <Layout>
+      <div className={loginstyle.legoimage}>LEGO</div>
+      <form
+        className={loginstyle.inputcontainer}
+        onSubmit={handleSubmit(submit)}
+      >
+        <label>อีเมลล์</label>
+        <input
+          type="text"
+          className={loginstyle.inputwidth100}
+          {...register('email')}
+        />
+        <label>รหัสผ่าน</label>
+        <input
+          type="password"
+          className={loginstyle.inputwidth100}
+          {...register('password')}
+        />
+        {/* <div
+          className={loginstyle.loginwithcontainer}
+          style={{ margin: '10px 0' }}
         >
-          <center>
-            <div>
-              <label for="username"></label>
-              <p>Email</p>
-              <input
-                class="form-control mr-sm-2"
-                id="username"
-                type="text"
-                placeholder="Email"
-                value={data.email}
-                onChange={(e) => handleChange('email', e.target.value)}
-              />
-            </div>
-
-            <div>
-              <label for="password"></label>
-              <p>Password</p>
-              <input
-                class="form-control mr-sm-2"
-                id="password"
-                type="password"
-                placeholder="******************"
-                value={data.password}
-                onChange={(e) => handleChange('password', e.target.value)}
-              />
-              <p class="text-red text-xs colorRed">{errortxt}</p>
-            </div>
-
-            <div className="flex items-center justify-between">
-              <button
-                class="btn btn-primary btn-md mx-sm-2"
-                type="button"
-                onClick={() => submit()}
-              >
-                Sign In
-              </button>
-              <Link to="/register">
-                <button
-                  class="btn btn-outline-primary my-2 my-sm-0 mx-sm-2"
-                  type="button"
-                >
-                  register
-                </button>
-              </Link>
-              <br></br>
-              <Link to="/forgotpassword">Forgot Password?</Link>
-            </div>
-          </center>
-          <hr></hr>
-          <ul className="circle">
-            <li>Email validation</li>
-            <li>
-              Password Length more {'>'}8 {'<=64'}
-            </li>
-            <li>Must have Email and Password</li>
-            <li>secret password</li>
-            <li>Strong password</li>
-          </ul>
-        </form>
-      </div>
-    </div>
+          <img
+            src="/images/facebookicon.png"
+            alt="facebookicon"
+            width={30}
+            height={30}
+          />
+          <img
+            src="/images/googleicon.png"
+            alt="googleicon"
+            width={30}
+            height={30}
+          />
+        </div> */}
+        <div className={loginstyle.flexcolumncenter}>
+          <button
+            className={loginstyle.roundbutton}
+            style={{ margin: '10px 0' }}
+            type="submit"
+            value="submit"
+          >
+            เข้าสู่ระบบ
+          </button>
+          <Link href="/register">
+            <button
+              className={loginstyle.roundbutton}
+              style={{ margin: '5px 0' }}
+            >
+              สมัครสมาชิก
+            </button>
+          </Link>
+          <Link href="/forgotpassword">
+            <a className={loginstyle.font12}>ลืมรหัสผ่าน</a>
+          </Link>
+        </div>
+      </form>
+    </Layout>
   );
 }
 

@@ -33,10 +33,9 @@ function App() {
   useEffect(async () => {
     callrefreshToken(setToken);
   }, []);
-
   return (
     <>
-      {!token && (
+      {token.firstName === undefined && (
         <Router>
           <Switch>
             <Route path="/login">
@@ -63,7 +62,7 @@ function App() {
         </Router>
       )}
       {/* if have token show below*/}
-      {token && (
+      {token.firstName !== undefined && (
         <div>
           <Router>
             <Switch>

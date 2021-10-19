@@ -1,0 +1,28 @@
+/* .logincontainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+} */
+
+.background {
+  width: 100vw;
+  padding: 0 0;
+  height: 100vh;
+  /* background-image: url('/images/loginBG.jpg'); */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logincontainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

@@ -16,7 +16,7 @@ function HomeContent(props) {
   return (
     <Productdetaillayout>
       <div className={homestyle.homenavbar}>
-        {token.firstName && (
+        {token.firstName !== undefined && (
           <div className={homestyle.divider}>
             <h1>{token.firstName}</h1>
           </div>
@@ -29,7 +29,7 @@ function HomeContent(props) {
           <h1>รายการสินค้า</h1>
         </div>
         {/* login   /   logout */}
-        {token === undefined ? (
+        {token.firstName === undefined ? (
           <div
             className={homestyle.divider}
             style={{ border: 'none' }}
