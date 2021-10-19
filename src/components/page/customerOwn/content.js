@@ -128,7 +128,7 @@ function Content(props) {
                 id="sidebarCollapse"
                 class="btn btn-info"
                 onClick={() => {
-                  logout(token, setToken);
+                  logout(setToken);
                 }}
               >
                 <i class="fas fa-align-left"></i>

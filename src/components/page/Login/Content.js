@@ -42,6 +42,7 @@ function LoginContent(props) {
       .then((res) => res.json())
       .then((res) => {
         if (res.token) {
+          console.log('login res=', res);
           setToken(res);
         } else {
           alert(res.message);

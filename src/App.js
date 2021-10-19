@@ -80,8 +80,8 @@ function App() {
               </Route>
 
               <Route path="/">
-                {/* <Home token={token}></Home> */}
-                <CustomerOwn></CustomerOwn>
+                <Header></Header>
+                <HomeContent setToken={setToken} />
               </Route>
             </Switch>
           </Router>

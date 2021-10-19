@@ -126,11 +126,10 @@ async function callrefreshToken(setToken) {
 }
 
 // http://localhost:3002:3002/api/user/refreshToken
-async function logout(token, setToken) {
+async function logout(setToken) {
   return fetch(`http://${HOSTAPI || 'localhost:3002'}/api/user/logout`, {
     method: 'POST',
     headers: {
-      Authorization: 'Bearer ' + token.replace(/"/g, ''),
       'Content-Type': 'application/json',
     },
     credentials: 'include',

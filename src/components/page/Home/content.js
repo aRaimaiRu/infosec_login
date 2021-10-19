@@ -12,6 +12,7 @@ function HomeContent(props) {
   const slides = Array.from(Array(SLIDE_COUNT).keys());
   let history = useHistory();
   const [token, setToken] = useRecoilState(tokenState);
+  console.log('hometoken =', token);
   return (
     <Productdetaillayout>
       <div className={homestyle.homenavbar}>
@@ -22,7 +23,7 @@ function HomeContent(props) {
           <h1>รายการสินค้า</h1>
         </div>
         {/* login   /   logout */}
-        {token.name === undefined ? (
+        {token === undefined ? (
           <div
             className={homestyle.divider}
             style={{ border: 'none' }}
