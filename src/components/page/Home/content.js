@@ -37,7 +37,7 @@ function HomeContent(props) {
           <div
             className={homestyle.divider}
             style={{ border: 'none' }}
-            onClick={() => logout()}
+            onClick={() => logout(setToken)}
           >
             <h1>logout</h1>
           </div>
