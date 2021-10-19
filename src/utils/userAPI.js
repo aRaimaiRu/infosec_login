@@ -3,7 +3,7 @@
 
 const HOSTAPI = '';
 
-async function register(data) {
+async function registerapi(data) {
   return fetch(`http://${HOSTAPI || 'localhost:3002'}/api/user/register`, {
     method: 'POST',
     headers: {
@@ -231,7 +231,7 @@ async function resetpassword(token, data) {
 }
 export {
   login,
-  register,
+  registerapi,
   getOwnData,
   getShop,
   UserContact,

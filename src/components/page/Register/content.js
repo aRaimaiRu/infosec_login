@@ -1,213 +1,130 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-
-import sha256 from "sha256";
-import { valEmail, valPassword,valName } from "../../../utils/validate"
-import {register} from "../../../utils/userAPI"
-import { Link } from "react-router-dom";
-
-
-
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { Controller, useForm } from 'react-hook-form';
+import sha256 from 'sha256';
+import { valEmail, valPassword, valName } from '../../../utils/validate';
+import { registerapi } from '../../../utils/userAPI';
+import { Link } from 'react-router-dom';
+import Layout from '../../loginlayout';
+import loginstyle from '../../../styles/loginpage.module.css';
 function RegisterContent(props) {
- 
-  const [data, setData] = useState({
-    email: "",
-    password: "",
-    name: "",
-    surname: "",
-    address:""
-  })
-  const [errortxt, setErrortxt] = useState("");
+  const { register, handleSubmit } = useForm();
 
-  const handleChange = (type, value) => {
+  const [errortxt, setErrortxt] = useState('');
 
-    setData({
-      ...data,
-      [type]: value
+  const submit = async (data) => {
+    if (!(valEmail(data.email) && valPassword(data.password))) {
+      setErrortxt('Invalid Email or Password!');
+      return;
     }
-
-    )
-
-  }
-
-  const submit = async () => {
-
-    if(!(valEmail(data.email) && valPassword(data.password) )) {
-      setErrortxt("Invalid Email or Password!");
-      return
-    };
-    if (!(valName(data.name) && valName(data.surname) && valName(data.address))) {
-      setErrortxt("Invalid name or address");
-      return
-    };
-      alert("submit");
-      setErrortxt("");
-      register({
-        firstName:data.name,
-        lastName:data.surname,
-        username:data.email,
-        password: sha256(data.password),
-        address:data.address
-      }).then(
-        res=>res.json()
-      ).then(res=>{
-        alert(res.message)
-        
-      }).catch(e=>{
-        console.log(e)
+    if (
+      !(valName(data.name) && valName(data.lastname) && valName(data.address))
+    ) {
+      setErrortxt('Invalid name or address');
+      return;
+    }
+    alert('submit');
+    setErrortxt('');
+    registerapi({
+      firstName: data.name,
+      lastName: data.lastname,
+      username: data.email,
+      password: sha256(data.password),
+      address: data.address,
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        alert(res.message);
       })
-
- 
-
-
-
-   
-  
-
-
-  }
-
-
+      .catch((e) => {
+        console.log(e);
+      });
+  };
 
   return (
-    <div className="bgorange marg0auto center" style={{ height: "50rem" }}>
-      <div className="width50P">
-        
-        <form
-          class="loginform bg-white size-lg"
-          style={{
-            justifyContent: "space-evenly",
-            padding: "100px",
-            backgroundColor: "white",
-            overflow: "auto"
-          }}
-        ><center>
-            <form class="form-inline">
-            <header>Shop</header>
-              <div class="form-group row mb-4">
-                <label
-                  class="block text-grey-darker text-sm font-bold col-sm-2"
-                  for="username"
-                >
-                  Email
-                </label>
-                <div class="col-sm-10">
-                  <input
-                    class="form-control mr-sm-2"
-                    id="username"
-                    type="text"
-                    placeholder="Email"
-                    value={data.email}
-                    onChange={(e) => handleChange("email", e.target.value)}
-                  /></div>
-              </div>
-            </form>
-            <form class="form-inline">
-              <div class="form-group row mb-4">
-                <label
-                  class="block text-grey-darker text-sm font-bold col-sm-2"
-                  for="password"
-                >
-                  Password
-                </label>
-                <div class="col-sm-9">
-                  <input
-                    class="form-control mr-sm-2"
-                    id="password"
-                    type="password"
-                    placeholder="******************"
-                    value={data.password}
-                    onChange={(e) => handleChange("password", e.target.value)}
-                  /></div>
-              </div>
-            </form>
-            <form class="form-inline">
-              <div class="form-group row mb-4">
-                <label
-                  class="block text-grey-darker text-sm font-bold col-sm-2"
-                  for="password"
-                >
-                  Name
-                </label>
-                <div class="col-sm-10">
-                  <input
-                    class="form-control mr-sm-2"
-                    id="Name"
-                    type="Text"
-                    placeholder="Name"
-                    value={data.name}
-                    onChange={(e) => handleChange("name", e.target.value)}
-                  /></div>
-              </div>
-            </form>
-            <form class="form-inline">
-              <div class="form-group row mb-4">
-                <label
-                  class="block text-grey-darker text-sm font-bold col-sm-2"
-                  for="password"
-                >
-                  Surname
-                </label>
-                <div class="col-sm-9">
-                  <input
-                    class="form-control mr-sm-2"
-                    id="Surname"
-                    type="Text"
-                    placeholder="Surname"
-                    value={data.surname}
-                    onChange={(e) => handleChange("surname", e.target.value)}
-                  /></div>
-              </div>
-            </form>
-            <form class="form-inline">
-              <div class="form-group row mb-4">
-                <label
-                  class="block text-grey-darker text-sm font-bold col-sm-2"
-                  for="password"
-                >
-                  address
-                </label>
-                <div class="col-sm-9">
-                  <input
-                    class="form-control mr-sm-2"
-                    id="address"
-                    type="Text"
-                    placeholder="address"
-                    value={data.address}
-                    onChange={(e) => handleChange("address", e.target.value)}
-                  /></div>
-              </div>
-            </form>
-            <div className="flex items-center justify-between">
-              <button
-                class="btn btn-primary btn-md mx-sm-2"
-                type="button"
-                onClick={()=>submit()}
-              >
-                Register
-              </button>
-              <Link to="/login">
-              <button
-                class="btn btn-outline-primary my-2 my-sm-0 mx-sm-2"
-                type="button"
-             
-              >
-                Sign In
-              </button></Link>
-            </div>
-            <p className="colorRed">{errortxt}</p>
-          </center>
-          <hr></hr>
-          <ul className="circle">
-            <li>Email validation</li>
-            <li>Password Length more {'>'}8  {'<=64'}</li>
-            <li>Must have Email and Password</li>
-            <li>secret password</li>
-            <li>Strong password</li>
-          </ul>
-        </form>
-      </div>
-    </div>
+    <Layout>
+      <form
+        className={loginstyle.inputcontainer}
+        onSubmit={handleSubmit(submit)}
+      >
+        <h1> สมัครสมาชิก</h1>
+        <label>อีเมลล์</label>
+        <input
+          type="text"
+          className={loginstyle.inputwidth100}
+          {...register('email')}
+        />
+        <label>รหัสผ่าน</label>
+        <input
+          type="password"
+          className={loginstyle.inputwidth100}
+          {...register('password')}
+        />
+        <label>ยืนยันรหัสผ่าน</label>
+        <input
+          type="password"
+          className={loginstyle.inputwidth100}
+          {...register('repassword')}
+        />
+        {/* name lastname */}
+        <div className={loginstyle.loginwithcontainer}>
+          <div
+            className={loginstyle.inputcontainer}
+            style={{ marginRight: '10px' }}
+          >
+            <label>ชื่อ</label>
+            <input
+              type="text"
+              className={loginstyle.inputwidth100}
+              {...register('name')}
+            />
+          </div>
+          <div
+            className={loginstyle.inputcontainer}
+            style={{ marginLeft: '10px' }}
+          >
+            <label>นามสกุล</label>
+            <input
+              type="text"
+              className={loginstyle.inputwidth100}
+              {...register('lastname')}
+            />
+          </div>
+        </div>
+
+        <label>ที่อยู่</label>
+        <input
+          type="text"
+          className={loginstyle.inputwidth100}
+          {...register('address')}
+        />
+        <label>เบอร์โทร</label>
+        <input
+          type="text"
+          className={loginstyle.inputwidth100}
+          {...register('tel')}
+        />
+        <div
+          className={loginstyle.loginwithcontainer}
+          style={{ margin: '10px 0' }}
+        >
+          <input type="checkbox" required />
+          <span className={loginstyle.font12}> ข้าพเจ้ายอมรับเงื่อนไข</span>
+        </div>
+        <div className={loginstyle.flexcolumncenter}>
+          {/* <Link href="/register"> */}
+          <button
+            className={loginstyle.roundbutton}
+            style={{ margin: '5px 0' }}
+            type="submit"
+            value="submit"
+          >
+            สมัครสมาชิก
+          </button>
+          {/* </Link> */}
+        </div>
+      </form>
+    </Layout>
   );
 }
 

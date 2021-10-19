@@ -15,15 +15,6 @@ function LoginContent(props) {
 
   const [errortxt, setErrortxt] = useState('');
 
-  // const sendLogin = async () => {
-  //   let result = login({
-  //     username: data.email,
-  //     password: data.password,
-  //   });
-  //   result = JSON.parse(result);
-  //   props.setToken(result.setToken);
-  // };
-
   const submit = (data) => {
     if (!(valEmail(data.email) && valPassword(data.password))) {
       setErrortxt('Invalid Email or Password!');
@@ -91,7 +82,7 @@ function LoginContent(props) {
           >
             เข้าสู่ระบบ
           </button>
-          <Link href="/register">
+          <Link to="/register">
             <button
               className={loginstyle.roundbutton}
               style={{ margin: '5px 0' }}
@@ -99,8 +90,8 @@ function LoginContent(props) {
               สมัครสมาชิก
             </button>
           </Link>
-          <Link href="/forgotpassword">
-            <a className={loginstyle.font12}>ลืมรหัสผ่าน</a>
+          <Link to="/forgotpassword">
+            <p className={loginstyle.font12}>ลืมรหัสผ่าน</p>
           </Link>
           <p style={{ color: 'red' }}>{errortxt}</p>
         </div>
