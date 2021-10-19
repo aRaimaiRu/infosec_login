@@ -16,6 +16,12 @@ function HomeContent(props) {
   return (
     <Productdetaillayout>
       <div className={homestyle.homenavbar}>
+        {token.firstName && (
+          <div className={homestyle.divider}>
+            <h1>{token.firstName}</h1>
+          </div>
+        )}
+
         <div className={homestyle.divider}>
           <h1>เปิดร้าน</h1>
         </div>

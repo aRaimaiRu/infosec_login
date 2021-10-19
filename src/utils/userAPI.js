@@ -116,7 +116,7 @@ async function callrefreshToken(setToken) {
     .then((res) => res.json())
     .then((res) => {
       if (res.token) {
-        setToken(res.token);
+        setToken(res);
       } else {
         console.log(res.message);
       }

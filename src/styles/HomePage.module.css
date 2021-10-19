@@ -1,20 +1,20 @@
-.homenavbar{
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    color: var(--pink);
+.homenavbar {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  color: var(--pink);
+  flex-wrap: wrap;
 }
-.divider{
-    display: inline-block;
-    align-self: start;
-    padding: 10px;
-    font-size: 12px;
-    border-right: 1px solid pink;
-    flex-grow: 1;
-    
+.divider {
+  display: inline-block;
+  align-self: start;
+  padding: 10px;
+  font-size: 12px;
+  border-right: 1px solid pink;
+  flex-grow: 1;
 }
 
-.divider > h1{
-    justify-self: center;
-    text-align: center;
+.divider > h1 {
+  justify-self: center;
+  text-align: center;
 }
