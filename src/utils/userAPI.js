@@ -136,7 +136,7 @@ async function logout(setToken) {
   })
     .then((res) => res.json())
     .then((res) => {
-      setToken();
+      setToken({});
       console.log('res  logout=', res);
       alert('logout', res);
       return res;
