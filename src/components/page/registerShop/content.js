@@ -16,7 +16,7 @@ function Content() {
   const [errortxt, setErrortxt] = useState('');
   const submit = (data) => {
     console.log(data);
-    realRegisterShop(token.token, data.logo);
+    realRegisterShop(token.token, data);
     alert('submit');
   };
   return (
@@ -58,9 +58,9 @@ function Content() {
         {/* name lastname */}
 
         <label>Prompt Pay QRCode</label>
-        <input type="file" {...register('qrcodelink')} />
+        <input type="file" {...register('qrcodelink')} required />
         <label>Logo</label>
-        <input type="file" {...register('logo')} />
+        <input type="file" {...register('logo')} required />
         <div
           className={loginstyle.loginwithcontainer}
           style={{ margin: '10px 0' }}

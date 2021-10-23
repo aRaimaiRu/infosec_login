@@ -233,16 +233,14 @@ async function resetpassword(token, data) {
 // http://localhost:3002:3002/api/user/repassword
 async function realRegisterShop(token, data) {
   let myformdata = new FormData();
-  for (let key in data) {
-    myformdata.append(key, data[key]);
-  }
+  // for (let key in data) {
+  //   myformdata.append(key, data[key]);
+  // }
+  myformdata.append('logo', data.logo);
 
   return fetch(`http://${HOSTAPI || 'localhost:3002'}/api/shop/register`, {
     method: 'POST',
-    headers: {
-      Authorization: 'Bearer ' + token.replace(/"/g, ''),
-      'Content-Type': 'multipart/form-data',
-    },
+    headers: {},
     body: myformdata,
   })
     .then((data) => data.json())

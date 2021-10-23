@@ -13,6 +13,7 @@ import { callrefreshToken } from './utils/userAPI';
 import ForgotPassword from './components/page/repassword/forget';
 import Repassword from './components/page/repassword/repassword';
 import HomeContent from './components/page/Home/content';
+import { Controller, useForm } from 'react-hook-form';
 import {
   BrowserRouter as Router,
   Switch,
@@ -25,19 +26,54 @@ import './App.css';
 import ShopRegister from './components/page/registerShop/content';
 import ManageRole from './components/page/manageRolePermission/content';
 function App() {
+  const { register, handleSubmit } = useForm();
   const [token, setToken] = useRecoilState(tokenState);
   // if (token) {
   //   console.log('auto call refresh Token', token);
   //   setInterval(callrefreshToken(token, setToken), 1000 * 60 * 50);
   // }
-  useEffect(async () => {
-    callrefreshToken(setToken);
-  }, []);
+  // useEffect(async () => {
+  //   callrefreshToken(setToken);
+  // }, []);
+
+  const onsubmit = (data) => {
+    const mydata = new FormData();
+    mydata.append('avatar', data.avatar[0]);
+    fetch(`http://localhost:3002/api/shop/register`, {
+      method: 'POST',
+      headers: {},
+      body: mydata,
+    })
+      .then((data) => data.json())
+      .then((data) => {
+        if (data.message) {
+          alert(data.message);
+        } else {
+          return data;
+        }
+      })
+      .catch((e) => alert(e));
+  };
   return (
     <>
       {token.firstName === undefined && (
         <Router>
           <Switch>
+            <Route path="*">
+              <form
+                // action="/profile"
+                // method="post"
+                // enctype="multipart/form-data"
+                onSubmit={handleSubmit(onsubmit)}
+              >
+                <input type="file" name="avatar" {...register('avatar')} />
+                <input
+                  type="submit"
+                  value="Get me the stats!"
+                  class="btn btn-default"
+                />
+              </form>
+            </Route>
             <Route path="/login">
               <Header></Header>
               <LoginContent setToken={setToken} />
