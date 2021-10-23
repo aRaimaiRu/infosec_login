@@ -7,6 +7,7 @@ import { getOwnData, refreshToken, logout } from '../../../utils/userAPI';
 import { useHistory, Link } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { tokenState } from '../../../store';
+import SearchBar from '../../searchbar';
 function HomeContent(props) {
   const SLIDE_COUNT = 2;
   const slides = Array.from(Array(SLIDE_COUNT).keys());
@@ -15,16 +16,27 @@ function HomeContent(props) {
   console.log('hometoken =', token);
   return (
     <Productdetaillayout>
+      <SearchBar></SearchBar>
       <div className={homestyle.homenavbar}>
+        {/* Name User */}
         {token.firstName !== undefined && (
           <div className={homestyle.divider}>
             <h1>{token.firstName}</h1>
           </div>
         )}
-
-        <div className={homestyle.divider}>
-          <h1>เปิดร้าน</h1>
-        </div>
+        {/* END Name User */}
+        {/* Customer */}
+        {token.Role === 'Customer' && (
+          <div
+            className={homestyle.divider}
+            onClick={() => {
+              history.push('/ShopRegister');
+            }}
+          >
+            <h1>เปิดร้าน</h1>
+          </div>
+        )}
+        {/* END Customer */}
         <div className={homestyle.divider}>
           <h1>รายการสินค้า</h1>
         </div>

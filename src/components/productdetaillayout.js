@@ -14,7 +14,6 @@ export default function Productdetaillayout({ children, footer }) {
             className={style.container}
             style={{ width: '66%', height: '100%', position: 'relative' }}
           >
-            <SearchBar></SearchBar>
             {children}
           </div>
           {footer}

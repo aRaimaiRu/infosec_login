@@ -229,6 +229,32 @@ async function resetpassword(token, data) {
     })
     .catch((e) => alert(e));
 }
+
+// http://localhost:3002:3002/api/user/repassword
+async function realRegisterShop(token, data) {
+  let myformdata = new FormData();
+  for (let key in data) {
+    myformdata.append(key, data[key]);
+  }
+
+  return fetch(`http://${HOSTAPI || 'localhost:3002'}/api/shop/register`, {
+    method: 'POST',
+    headers: {
+      Authorization: 'Bearer ' + token.replace(/"/g, ''),
+      'Content-Type': 'multipart/form-data',
+    },
+    body: myformdata,
+  })
+    .then((data) => data.json())
+    .then((data) => {
+      if (data.message) {
+        alert(data.message);
+      } else {
+        return data;
+      }
+    })
+    .catch((e) => alert(e));
+}
 export {
   login,
   registerapi,
@@ -245,4 +271,5 @@ export {
   updateRolePermission,
   forgotpassword,
   resetpassword,
+  realRegisterShop,
 };

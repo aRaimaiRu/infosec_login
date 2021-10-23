@@ -1,0 +1,12 @@
+.Gridheader {
+  display: grid;
+  align-self: start;
+  width: 100%;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  align-items: center;
+  row-gap: 50px;
+  column-gap: 50px;
+  flex-wrap: wrap;
+  color: var(--pink);
+}

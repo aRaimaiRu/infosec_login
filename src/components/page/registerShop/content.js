@@ -1,93 +1,87 @@
-import React,{useState} from "react";
-import ReactDOM from "react-dom";
+import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
 import { useRecoilState } from 'recoil';
 import { tokenState } from '../../../store';
-import Modal from "react-modal";
-import {registerShop} from "../../../utils/userAPI"
-//<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"></link>;
-const customStyles = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-  },
-};
-
+import { registerShop, realRegisterShop } from '../../../utils/userAPI';
+import { Link } from 'react-router-dom';
+import Layout from '../../productdetaillayout';
+import { Controller, useForm } from 'react-hook-form';
+import loginstyle from '../../../styles/loginpage.module.css';
+import PageDetails from '../../../styles/PageDetails.module.css';
 // Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
 
 function Content() {
-  const [token,setToken] = useRecoilState(tokenState);
-    const [data, setData] = useState({
-        name: "",
-        address: ""
-      })
-  const [modalIsOpen, setIsOpen] = useState(false);
-  const handleChange = (type, value) => {
-    setData({
-      ...data,
-      [type]: value
-    }
-
-    )
-
-  }
-
-  function openModal() {
-    setIsOpen(true);
-  }
-
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    
-  }
-
-  function closeModal() {
-    setIsOpen(false);
-  }
-  const callRegisterShop = async()=>{
-    let res=  await registerShop({...data},token) 
-    let resjson = await res.json()
-    console.log("callRegisterShop = ",resjson)
-  }
-
+  const [token, setToken] = useRecoilState(tokenState);
+  const { register, handleSubmit } = useForm();
+  const [errortxt, setErrortxt] = useState('');
+  const submit = (data) => {
+    console.log(data);
+    realRegisterShop(token.token, data.logo);
+    alert('submit');
+  };
   return (
-    <div>
-      <button onClick={openModal}>Open Modal</button>
-      <Modal
-        isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
-        onRequestClose={closeModal}
-        style={customStyles}
-        contentLabel="Example Modal"
+    <Layout>
+      <div className={PageDetails.Gridheader}>
+        <h1></h1>
+        <h1>เปิดร้าน</h1>
+        <h1>ย้อนกลับ {'>'}</h1>
+      </div>
+      <form
+        className={loginstyle.inputcontainer}
+        onSubmit={handleSubmit(submit)}
+        style={{ color: 'black' }}
       >
-        <div class="w3-container w3-teal">
-          <h2>Input Form</h2>
+        <label>Shop name</label>
+        <input
+          type="text"
+          className={loginstyle.inputwidth100}
+          {...register('name')}
+        />
+        <label>Shop description</label>
+        <textarea
+          className={loginstyle.inputwidth100}
+          {...register('description')}
+          style={{ height: '120px' }}
+        />
+        <label>Shop address</label>
+        <input
+          type="text"
+          className={loginstyle.inputwidth100}
+          {...register('address')}
+        />
+        <label>Shop tel</label>
+        <input
+          type="text"
+          className={loginstyle.inputwidth100}
+          {...register('shoptel')}
+        />
+        {/* name lastname */}
+
+        <label>Prompt Pay QRCode</label>
+        <input type="file" {...register('qrcodelink')} />
+        <label>Logo</label>
+        <input type="file" {...register('logo')} />
+        <div
+          className={loginstyle.loginwithcontainer}
+          style={{ margin: '10px 0' }}
+        >
+          <input type="checkbox" required />
+          <span className={loginstyle.font12}> ข้าพเจ้ายอมรับเงื่อนไข</span>
         </div>
-
-        <form class="w3-container">
-          <label>Shop Name</label>
-          <input class="w3-input" type="text" 
-          value={data.name}
-          onChange={(e) => handleChange("name", e.target.value)}
-          />
-
-          <label>Address</label>
-          <input class="w3-input" type="text"
-          value={data.address}
-          onChange={(e) => handleChange("address", e.target.value)}
-           />
-        </form>
-        <button class="w3-btn w3-blue" onClick={closeModal}>
-          close
-        </button>
-        <button class="w3-btn w3-blue"
-        onClick={()=>{callRegisterShop()}}
-        >Register</button>
-      </Modal>
-    </div>
+        <div className={loginstyle.flexcolumncenter}>
+          {/* <Link href="/register"> */}
+          <button
+            className={loginstyle.roundbutton}
+            style={{ margin: '5px 0' }}
+            type="submit"
+            value="submit"
+          >
+            ขอเปิดร้านค้า
+          </button>
+          {/* </Link> */}
+        </div>
+      </form>
+    </Layout>
   );
 }
 
