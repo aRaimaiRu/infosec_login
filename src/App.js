@@ -32,34 +32,34 @@ function App() {
   //   console.log('auto call refresh Token', token);
   //   setInterval(callrefreshToken(token, setToken), 1000 * 60 * 50);
   // }
-  // useEffect(async () => {
-  //   callrefreshToken(setToken);
-  // }, []);
+  useEffect(async () => {
+    callrefreshToken(setToken);
+  }, []);
 
-  const onsubmit = (data) => {
-    const mydata = new FormData();
-    mydata.append('avatar', data.avatar[0]);
-    fetch(`http://localhost:3002/api/shop/register`, {
-      method: 'POST',
-      headers: {},
-      body: mydata,
-    })
-      .then((data) => data.json())
-      .then((data) => {
-        if (data.message) {
-          alert(data.message);
-        } else {
-          return data;
-        }
-      })
-      .catch((e) => alert(e));
-  };
+  // const onsubmit = (data) => {
+  //   const mydata = new FormData();
+  //   mydata.append('avatar', data.avatar[0]);
+  //   fetch(`http://localhost:3002/api/shop/register`, {
+  //     method: 'POST',
+  //     headers: {},
+  //     body: mydata,
+  //   })
+  //     .then((data) => data.json())
+  //     .then((data) => {
+  //       if (data.message) {
+  //         alert(data.message);
+  //       } else {
+  //         return data;
+  //       }
+  //     })
+  //     .catch((e) => alert(e));
+  // };
   return (
     <>
       {token.firstName === undefined && (
         <Router>
           <Switch>
-            <Route path="*">
+            {/* <Route path="*">
               <form
                 // action="/profile"
                 // method="post"
@@ -73,7 +73,7 @@ function App() {
                   class="btn btn-default"
                 />
               </form>
-            </Route>
+            </Route> */}
             <Route path="/login">
               <Header></Header>
               <LoginContent setToken={setToken} />
@@ -115,7 +115,7 @@ function App() {
               </Route>
 
               <Route path="/">
-                <Header></Header>
+                {/* <img src="http://localhost:3002/uploads/qrcodelink-1635080644721-418296245.jpg"></img> */}
                 <HomeContent setToken={setToken} />
               </Route>
             </Switch>
