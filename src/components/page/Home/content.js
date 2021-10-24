@@ -14,6 +14,29 @@ function HomeContent(props) {
   let history = useHistory();
   const [token, setToken] = useRecoilState(tokenState);
   console.log('hometoken =', token);
+
+  const showOpenShopOrOwnShop =
+    (token.Role === 'Customer' && (
+      <div
+        className={homestyle.divider}
+        onClick={() => {
+          history.push('/ShopRegister');
+        }}
+      >
+        <h1>เปิดร้าน</h1>
+      </div>
+    )) ||
+    // if Role ShopOwner
+    (token.Role === 'ShopOwner' && (
+      <div
+        className={homestyle.divider}
+        onClick={() => {
+          history.push('/ShopRegister');
+        }}
+      >
+        <h1>ดูร้าน</h1>
+      </div>
+    ));
   return (
     <Productdetaillayout>
       <SearchBar></SearchBar>
@@ -26,16 +49,7 @@ function HomeContent(props) {
         )}
         {/* END Name User */}
         {/* Customer */}
-        {token.Role === 'Customer' && (
-          <div
-            className={homestyle.divider}
-            onClick={() => {
-              history.push('/ShopRegister');
-            }}
-          >
-            <h1>เปิดร้าน</h1>
-          </div>
-        )}
+        {showOpenShopOrOwnShop}
         {/* END Customer */}
         <div className={homestyle.divider}>
           <h1>รายการสินค้า</h1>

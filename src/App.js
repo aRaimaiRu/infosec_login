@@ -56,52 +56,31 @@ function App() {
   // };
   return (
     <>
-      {token.firstName === undefined && (
-        <Router>
-          <Switch>
-            {/* <Route path="*">
-              <form
-                // action="/profile"
-                // method="post"
-                // enctype="multipart/form-data"
-                onSubmit={handleSubmit(onsubmit)}
-              >
-                <input type="file" name="avatar" {...register('avatar')} />
-                <input
-                  type="submit"
-                  value="Get me the stats!"
-                  class="btn btn-default"
-                />
-              </form>
-            </Route> */}
-            <Route path="/login">
-              <Header></Header>
-              <LoginContent setToken={setToken} />
-            </Route>
-            <Route path="/register">
-              <Header></Header>
-              <RegisterContent setToken={setToken} />
-            </Route>
-            <Route path="/forgotpassword">
-              <ForgotPassword></ForgotPassword>
-            </Route>
-            <Route path="/repassword">
-              <Repassword></Repassword>
-            </Route>
-            <Route path="/">
-              <Header></Header>
-              <HomeContent setToken={setToken} />
-            </Route>
-            <Route path="*" component={E401} status={401} />
-          </Switch>
-          <Footer></Footer>
-        </Router>
-      )}
-      {/* if have token show below*/}
-      {token.firstName !== undefined && (
-        <div>
-          <Router>
-            <Switch>
+      <Router>
+        <Switch>
+          {token.firstName === undefined && (
+            <>
+              <Route path="/login">
+                <Header></Header>
+                <LoginContent setToken={setToken} />
+              </Route>
+              <Route path="/register">
+                <Header></Header>
+                <RegisterContent setToken={setToken} />
+              </Route>
+              <Route path="/forgotpassword">
+                <ForgotPassword></ForgotPassword>
+              </Route>
+              <Route path="/repassword">
+                <Repassword></Repassword>
+              </Route>
+              <Route path="/">
+                <HomeContent setToken={setToken} />
+              </Route>
+            </>
+          )}
+          {token.firstName !== undefined && (
+            <>
               <Route path="/ShopRegister">
                 <ShopRegister />
               </Route>
@@ -113,15 +92,15 @@ function App() {
                   <ManageRole></ManageRole>
                 </CustomerOwn>
               </Route>
-
               <Route path="/">
-                {/* <img src="http://localhost:3002/uploads/qrcodelink-1635080644721-418296245.jpg"></img> */}
                 <HomeContent setToken={setToken} />
               </Route>
-            </Switch>
-          </Router>
-        </div>
-      )}
+            </>
+          )}
+
+          <Route path="*" component={E401} status={401} />
+        </Switch>
+      </Router>
     </>
   );
 }
