@@ -13,6 +13,7 @@ import { callrefreshToken } from './utils/userAPI';
 import ForgotPassword from './components/page/repassword/forget';
 import Repassword from './components/page/repassword/repassword';
 import HomeContent from './components/page/Home/content';
+import ProductDetails from './components/page/ProductDetails/ProductDetails';
 import { Controller, useForm } from 'react-hook-form';
 import {
   BrowserRouter as Router,
@@ -58,6 +59,9 @@ function App() {
     <>
       <Router>
         <Switch>
+          <Route path="/product/:id">
+            <ProductDetails setToken={setToken} />
+          </Route>
           {token.firstName === undefined && (
             <>
               <Route path="/login">

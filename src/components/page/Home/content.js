@@ -40,11 +40,11 @@ function HomeContent(props) {
 
   const showProduct = [
     {
-      url: '/Product/1',
+      url: '/product/1',
       img: '/images/SneakerRed.jpg',
     },
     {
-      url: '/Product/2',
+      url: '/product/2',
       img: '/images/SneakerRed.jpg',
     },
   ];
