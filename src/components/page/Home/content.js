@@ -37,6 +37,17 @@ function HomeContent(props) {
         <h1>ดูร้าน</h1>
       </div>
     ));
+
+  const showProduct = [
+    {
+      url: '/Product/1',
+      img: '/images/SneakerRed.jpg',
+    },
+    {
+      url: '/Product/2',
+      img: '/images/SneakerRed.jpg',
+    },
+  ];
   return (
     <Productdetaillayout>
       <SearchBar></SearchBar>
@@ -80,14 +91,11 @@ function HomeContent(props) {
       <EmblaCarousel slides={slides}></EmblaCarousel>
       <h1>รายการสินค้า</h1>
       <div className={searchstyle.searchresultcontainer}>
-        <img
-          src="/images/SneakerRed.jpg"
-          className={searchstyle.imageresult}
-        ></img>
-        <img
-          src="/images/SneakerRed.jpg"
-          className={searchstyle.imageresult}
-        ></img>
+        {showProduct.map((obj) => (
+          <Link to={obj.url}>
+            <img src={obj.img} className={searchstyle.imageresult} />
+          </Link>
+        ))}
       </div>
     </Productdetaillayout>
   );
