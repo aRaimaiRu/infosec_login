@@ -33,21 +33,21 @@ function App() {
   //   console.log('auto call refresh Token', token);
   //   setInterval(callrefreshToken(token, setToken), 1000 * 60 * 50);
   // }
-  setToken({
-    id: 7,
-    firstName: 'abc',
-    lastName: 'def',
-    username: 'first18011@gmail.com',
-    address: null,
-    tel: null,
-    isVerify: true,
-    createdAt: '2021-09-18T14:24:06.000Z',
-    updatedAt: '2021-10-24T13:48:46.000Z',
-    RoleId: 2,
-    Role: 'ShopOwner',
-    token:
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiZmlyc3ROYW1lIjoiYWJjIiwibGFzdE5hbWUiOiJkZWYiLCJ1c2VybmFtZSI6ImZpcnN0MTgwMTFAZ21haWwuY29tIiwiYWRkcmVzcyI6bnVsbCwidGVsIjpudWxsLCJpc1ZlcmlmeSI6dHJ1ZSwiY3JlYXRlZEF0IjoiMjAyMS0wOS0xOFQxNDoyNDowNi4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMS0xMC0yNFQxMzo0ODo0Ni4wMDBaIiwiUm9sZUlkIjoyLCJSb2xlIjoiU2hvcE93bmVyIiwiaWF0IjoxNjM1MTQ5NTk1LCJleHAiOjE2MzUxNTAxOTV9.XktjFkWv40joa7qGdP5eKaPqggmZfn6Hzu3j5EVD3oU',
-  });
+  // setToken({
+  //   id: 7,
+  //   firstName: 'abc',
+  //   lastName: 'def',
+  //   username: 'first18011@gmail.com',
+  //   address: null,
+  //   tel: null,
+  //   isVerify: true,
+  //   createdAt: '2021-09-18T14:24:06.000Z',
+  //   updatedAt: '2021-10-24T13:48:46.000Z',
+  //   RoleId: 2,
+  //   Role: 'ShopOwner',
+  //   token:
+  //     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiZmlyc3ROYW1lIjoiYWJjIiwibGFzdE5hbWUiOiJkZWYiLCJ1c2VybmFtZSI6ImZpcnN0MTgwMTFAZ21haWwuY29tIiwiYWRkcmVzcyI6bnVsbCwidGVsIjpudWxsLCJpc1ZlcmlmeSI6dHJ1ZSwiY3JlYXRlZEF0IjoiMjAyMS0wOS0xOFQxNDoyNDowNi4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMS0xMC0yNFQxMzo0ODo0Ni4wMDBaIiwiUm9sZUlkIjoyLCJSb2xlIjoiU2hvcE93bmVyIiwiaWF0IjoxNjM1MTQ5NTk1LCJleHAiOjE2MzUxNTAxOTV9.XktjFkWv40joa7qGdP5eKaPqggmZfn6Hzu3j5EVD3oU',
+  // });
   // useEffect(async () => {
   //   callrefreshToken(setToken);
   // }, []);
@@ -100,17 +100,6 @@ function App() {
           )}
           {token.firstName !== undefined && (
             <>
-              <Route path="/ShopRegister">
-                <ShopRegister />
-              </Route>
-              <Route path="/shop/:shopid">
-                <OwnShop></OwnShop>
-              </Route>
-              <Route path="/admin/RolePermission">
-                <CustomerOwn>
-                  <ManageRole></ManageRole>
-                </CustomerOwn>
-              </Route>
               <Route path="/">
                 <HomeContent setToken={setToken} />
               </Route>
