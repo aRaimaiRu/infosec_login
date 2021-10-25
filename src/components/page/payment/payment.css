@@ -1,10 +1,9 @@
 .payment {
 }
-.payment .img-product {
-  height: 250px;
-  width: 250px;
+.payment .img-payment {
+  height: 300px;
+  width: 300px;
   object-fit: cover;
-  border-radius: 30%;
 }
 
 .payment .button-custom {
@@ -38,4 +37,31 @@ hr {
 .ascend {
   color: #ff7b7b;
   font-weight: bold;
+}
+
+.kbank {
+  background-color: green;
+  width: 100%;
+  height: 40px;
+  color: white;
+  font-family: "Kanit", sans-serif;
+  margin-top: 5px;
+}
+
+.scb {
+  background-color: indigo;
+  width: 100%;
+  height: 40px;
+  color: white;
+  font-family: "Kanit", sans-serif;
+  margin-top: 5px;
+}
+
+.bbl {
+  background-color: blue;
+  width: 100%;
+  height: 40px;
+  color: white;
+  font-family: "Kanit", sans-serif;
+  margin-top: 5px;
 }
