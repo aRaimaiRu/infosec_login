@@ -16,6 +16,7 @@ import Repassword from "./components/page/repassword/repassword";
 import HomeContent from "./components/page/Home/content";
 import ProductDetails from "./components/page/ProductDetails/ProductDetails";
 import OrderContent from "./components/page/order";
+import OrderWarrantContent from "./components/page/orderwarrant";
 import { Controller, useForm } from "react-hook-form";
 import {
   BrowserRouter as Router,
@@ -79,18 +80,24 @@ function App() {
           <Route path="/product/:id">
             <ProductDetails setToken={setToken} />
           </Route>
+
+          <Route path="/profile">
+            <Header></Header>
+            <ProfileContent />
+          </Route>
+
+          <Route path="/order">
+            <Header></Header>
+            <OrderContent />
+          </Route>
+
+          <Route path="/orderwarrant">
+            <Header></Header>
+            <OrderWarrantContent />
+          </Route>
+
           {token.firstName === undefined && (
             <>
-              <Route path="/profile">
-                <Header></Header>
-                <ProfileContent />
-              </Route>
-
-              <Route path="/order">
-                <Header></Header>
-                <OrderContent />
-              </Route>
-
               <Route path="/login">
                 <Header></Header>
                 <LoginContent setToken={setToken} />
