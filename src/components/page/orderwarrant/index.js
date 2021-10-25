@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Layout from "../../layout";
-import "./orderwarrant .css";
+import "./orderwarrant.css";
 const orderData = {
   size: 42,
   type: "แบบสวม",
@@ -39,22 +39,19 @@ const OrderWarrant = (props) => {
         <hr />
         <div className="row pt-3">
           <div className="col">
-            <h4 className="ascend">ที่อยู่สำหรับจัดส่ง</h4>
+            <h4 className="ascend">เงื่อนไขในการรับประกันสินค้า</h4>
             <h4>
-              {profileData.name} {profileData.tel}
+              A long time ago, a group of special girls known as ‘mahou shoujos’
+              saved the world after a fierce battle where blood and tears were
+              shed and prayers were made. It was an overly common battle tale.
+              However, no one thanked or praised them for their victory. In
+              fact, no one even knew them at all. Even so, the future of
+              humanity was protected and it came to a happy end.
             </h4>
-            <h4>{profileData.address}</h4>
           </div>
         </div>
         <hr />
-        <div className="row pt-3">
-          <div className="col">
-            <h4 className="ascend">รายละเอียดคำสั่งซื้อ</h4>
-            <h4>รวมการสั่งซื้อ: xxxx บาท</h4>
-            <h4>ค่าส่ง: xxxx บาท</h4>
-            <h4>ยอดเงินที่กำหนด: xxxx บาท</h4>
-          </div>
-        </div>
+
         <div className="row ">
           <div className="col pt-30">
             <div className="d-flex justify-content-around ">
