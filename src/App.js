@@ -18,6 +18,7 @@ import ProductDetails from "./components/page/ProductDetails/ProductDetails";
 import OrderContent from "./components/page/order";
 import OrderWarrantContent from "./components/page/orderwarrant";
 import PaymentContent from "./components/page/payment";
+import AddProductContent from "./components/page/addproduct";
 import { Controller, useForm } from "react-hook-form";
 import {
   BrowserRouter as Router,
@@ -102,6 +103,15 @@ function App() {
             <PaymentContent />
           </Route>
 
+          <Route path="/payment">
+            <Header></Header>
+            <PaymentContent />
+          </Route>
+
+          <Route path="/addproduct">
+            <Header></Header>
+            <AddProductContent />
+          </Route>
           {token.firstName === undefined && (
             <>
               <Route path="/login">
