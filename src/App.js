@@ -15,6 +15,7 @@ import ForgotPassword from "./components/page/repassword/forget";
 import Repassword from "./components/page/repassword/repassword";
 import HomeContent from "./components/page/Home/content";
 import ProductDetails from "./components/page/ProductDetails/ProductDetails";
+import OrderContent from "./components/page/order";
 import { Controller, useForm } from "react-hook-form";
 import {
   BrowserRouter as Router,
@@ -84,6 +85,12 @@ function App() {
                 <Header></Header>
                 <ProfileContent />
               </Route>
+
+              <Route path="/order">
+                <Header></Header>
+                <OrderContent />
+              </Route>
+
               <Route path="/login">
                 <Header></Header>
                 <LoginContent setToken={setToken} />

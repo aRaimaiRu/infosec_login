@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Layout from "../../productdetaillayout";
+import Layout from "../../layout";
 import "./profile.css";
 
 const profileData = {
