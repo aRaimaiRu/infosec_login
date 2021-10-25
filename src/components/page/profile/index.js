@@ -24,8 +24,10 @@ const Profile = (props) => {
               height={300}
               className="center-cropped"
             />
+            <button class="btn-img">Take</button>
           </div>
         </div>
+        <div className="row"></div>
       </div>
     </Layout>
   );
