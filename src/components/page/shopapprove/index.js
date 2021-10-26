@@ -63,8 +63,8 @@ const ShopApprove = (props) => {
         <div className="row ">
           <div className="col-12">
             <div className="d-flex justify-content-around">
-              <button className="btn btn-danger button-custom">
-                <h4>ยกเลิก</h4>
+              <button className="btn btn pri-color button-custom">
+                <h4>Dashboard</h4>
               </button>
             </div>
           </div>
