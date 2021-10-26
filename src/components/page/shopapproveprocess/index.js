@@ -49,22 +49,15 @@ const ShopApproveProcess = (props) => {
           </div>
         </div>
         <hr />
-        <div className="row">
-          <div className="col-6 text-center">
-            <i class="fa fa-thumbs-up like"></i>
-            <h4>15</h4>
-          </div>
 
-          <div className="col-6 text-center">
-            <i class="fa fa-thumbs-down dislike"></i>
-            <h4>3</h4>
-          </div>
-        </div>
         <div className="row ">
-          <div className="col-12">
-            <div className="d-flex justify-content-around">
+          <div className="col pt-30">
+            <div className="d-flex justify-content-around ">
               <button className="btn btn-danger button-custom">
-                <h4>DashBoard</h4>
+                <h4>ไม่ผ่าน</h4>
+              </button>
+              <button className="btn btn-success button-custom">
+                <h4>ผ่าน</h4>
               </button>
             </div>
           </div>
