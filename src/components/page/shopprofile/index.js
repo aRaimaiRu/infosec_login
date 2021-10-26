@@ -2,18 +2,21 @@ import React, { useState } from "react";
 import Layout from "../../layout";
 import "./shopprofile.css";
 
-const profileData = {
+const shopProfile = {
   name: "ยินดี จ่ายเงิน",
   address: "อะไรก็ไม่รู้ สมมุติว่ายาวมาก ยาวมากกกกกกกกก 112112112",
-  tel: "0123456789",
+  brand: "uniko",
+  size: 42,
+  type: "??",
+  from: "somewhere",
 };
 const ShopProfile = (props) => {
   return (
     <Layout>
-      <div style={{ width: "100%" }} className="profile p-3">
+      <div style={{ width: "100%" }} className="shopprofile p-3">
         <div className="row">
           <div className="col-sm-4">
-            <h3>โปรไฟล์</h3>
+            <h3>โปรไฟล์ร้านค้า</h3>
           </div>
           <div className="col-sm-4"></div>
           <div className="col-sm-4 text-right">
@@ -35,30 +38,36 @@ const ShopProfile = (props) => {
         </div>
         <div className="row">
           <div className="col">
-            <h3>รายละเอียดโปรไฟล์</h3>
+            <h3>รายละเอียดร้านค้า</h3>
             <hr />
-            <h4>ชื่อผู้ใช้ : {profileData.name}</h4>
-            <h4>ที่อยู่ : {profileData.address}</h4>
-            <h4>เบอร์โทร : {profileData.tel}</h4>
+            <h4>ชื่อผู้ใช้ : {shopProfile.name}</h4>
+            <h4>ที่อยู่ร้าน : {shopProfile.address}</h4>
+            <h4>รองเท้ายี่ห้อ : {shopProfile.brand}</h4>
+            <h4>Size : {shopProfile.size}</h4>
+            <h4>ประเภท : {shopProfile.type}</h4>
+            <h4>ส่งจาก : {shopProfile.from}</h4>
           </div>
         </div>
+        <hr />
         <div className="row">
-          <div className="col-12">
-            <h3>สินค้าที่ดูล่าสุด</h3>
+          <div className="col-6 text-center">
+            <i class="fa fa-thumbs-up like"></i>
+            <h4>15</h4>
           </div>
-        </div>
-        <div className="row">
-          <img
-            src="/images/image_test.jpg"
-            className="img-product m-1"
-            alt="product"
-          />
 
-          <img
-            src="/images/image_test.jpg"
-            className="img-product m-1"
-            alt="product"
-          />
+          <div className="col-6 text-center">
+            <i class="fa fa-thumbs-down dislike"></i>
+            <h4>3</h4>
+          </div>
+        </div>
+        <div className="row ">
+          <div className="col-12">
+            <div className="d-flex justify-content-around">
+              <button className="btn btn-danger button-custom">
+                <h4>ยกเลิก</h4>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </Layout>
