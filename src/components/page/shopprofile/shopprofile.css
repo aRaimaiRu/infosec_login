@@ -28,8 +28,14 @@
   color: #ff7b7b;
 }
 
-.profile h4 {
+.shopapprove h4 {
   font-family: "Kanit", sans-serif;
+}
+
+.shopapprove h1 {
+  font-weight: bold;
+  font-family: "Kanit", sans-serif;
+  color: #ff7b7b;
 }
 
 hr {
