@@ -61,7 +61,6 @@ const Profile = (props) => {
           />
         </div>
       </div>
-      <Footer />
     </Layout>
   );
 };

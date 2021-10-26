@@ -1,9 +1,18 @@
 .footer {
   position: fixed;
-  height: 100px;
+  height: 72px;
   bottom: 0px;
   width: 50%;
-  min-width: 350px;
+  min-width: 348px;
   background-color: #ff7b7b;
   color: white;
+}
+.footer .btn-custom {
+  background-color: green;
+  border-radius: 30px;
+  width: 200px;
+  color: white;
+  font-family: "Kanit", sans-serif;
+  height: 50px;
+  font-size: 20px;
 }
