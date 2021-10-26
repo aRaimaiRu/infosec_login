@@ -21,6 +21,7 @@ import PaymentContent from "./components/page/payment";
 import AddProductContent from "./components/page/addproduct";
 import ShopProfileContent from "./components/page/shopprofile";
 import ShopApproveContent from "./components/page/shopapprove";
+import ShopApproveProcessContent from "./components/page/shopapproveprocess";
 import { Controller, useForm } from "react-hook-form";
 import {
   BrowserRouter as Router,
@@ -123,6 +124,11 @@ function App() {
           <Route path="/shopapprove">
             <Header></Header>
             <ShopApproveContent />
+          </Route>
+
+          <Route path="/shopapproveprocess">
+            <Header></Header>
+            <ShopApproveProcessContent />
           </Route>
           {token.firstName === undefined && (
             <>
