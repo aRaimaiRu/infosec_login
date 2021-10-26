@@ -12,11 +12,11 @@ const Profile = (props) => {
     <Layout>
       <div style={{ width: "100%" }} className="profile p-3">
         <div className="row">
-          <div className="col-sm-4">
+          <div className="col-4">
             <h3>โปรไฟล์</h3>
           </div>
-          <div className="col-sm-4"></div>
-          <div className="col-sm-4 text-right">
+          <div className="col-4"></div>
+          <div className="col-4 text-right">
             <h3>ย้อนกลับ</h3>
           </div>
         </div>

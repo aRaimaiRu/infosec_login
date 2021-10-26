@@ -2,6 +2,8 @@
   position: fixed;
   height: 100px;
   bottom: 0px;
-  width: 100%;
-  background-color: indigo;
+  width: 50%;
+  min-width: 350px;
+  background-color: #ff7b7b;
+  color: white;
 }
