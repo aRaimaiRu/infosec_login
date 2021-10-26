@@ -64,7 +64,7 @@ const ShopProfile = (props) => {
           <div className="col-12">
             <div className="d-flex justify-content-around">
               <button className="btn btn-danger button-custom">
-                <h4>ยกเลิก</h4>
+                <h4>DashBoard</h4>
               </button>
             </div>
           </div>
