@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Layout from "../../layout";
 import "./profile.css";
-
+import Footer from "../../Footer";
 const profileData = {
   name: "ยินดี จ่ายเงิน",
   address: "อะไรก็ไม่รู้ สมมุติว่ายาวมาก ยาวมากกกกกกกกก 112112112",
@@ -61,6 +61,7 @@ const Profile = (props) => {
           />
         </div>
       </div>
+      <Footer />
     </Layout>
   );
 };
