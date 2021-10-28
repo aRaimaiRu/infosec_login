@@ -1,19 +1,29 @@
-import React, { useState } from "react";
-import Layout from "../../layout";
-import "./shopprofile.css";
+import React, { useState } from 'react';
+import Layout from '../../layout';
+import FileUploader from '../../FileUploadBtn';
+import './shopprofile.css';
 
-const shopProfile = {
-  name: "ยินดี จ่ายเงิน",
-  address: "อะไรก็ไม่รู้ สมมุติว่ายาวมาก ยาวมากกกกกกกกก 112112112",
-  brand: "uniko",
-  size: 42,
-  type: "??",
-  from: "somewhere",
-};
 const ShopProfile = (props) => {
+  const [shopProfile, setshopProfile] = useState({
+    name: 'ยินดี จ่ายเงิน',
+    address: 'อะไรก็ไม่รู้ สมมุติว่ายาวมาก ยาวมากกกกกกกกก 112112112',
+    brand: 'uniko',
+    size: 42,
+    type: '??',
+    from: 'somewhere',
+    imageurl: '/images/image_test.jpg',
+  });
+  const handleFile = (file) => {
+    setshopProfile((prev) => ({
+      ...prev,
+      imageurl: URL.createObjectURL(file),
+    }));
+
+    // shopProfile.imageurl = URL.createObjectURL(file);
+  };
   return (
     <Layout>
-      <div style={{ width: "100%" }} className="shopprofile p-3">
+      <div style={{ width: '100%' }} className="shopprofile p-3">
         <div className="row">
           <div className="col-4">
             <h3>โปรไฟล์ร้านค้า</h3>
@@ -27,13 +37,13 @@ const ShopProfile = (props) => {
         <div className="row">
           <div className="col text-center">
             <img
-              src="/images/image_test.jpg"
+              src={shopProfile.imageurl}
               alt="kuro"
               width={300}
               height={300}
               className="center-cropped"
             />
-            <button class="btn-img">Take</button>
+            <FileUploader handleFile={handleFile}></FileUploader>
           </div>
         </div>
         <div className="row">
