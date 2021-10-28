@@ -275,6 +275,32 @@ async function getOwnShop(token) {
     .catch((e) => alert(e));
 }
 
+async function addProduct(token, data) {
+  console.log('TEST api add product data =', data);
+  let myformdata = new FormData();
+  for (let key in data) {
+    myformdata.append(key, data[key]);
+  }
+  myformdata.set('allsize', JSON.stringify(data.allsize));
+  myformdata.set('previewurl', data.previewurl);
+
+  return fetch(`http://${HOSTAPI || 'localhost:3002'}/api/product/add`, {
+    method: 'POST',
+    headers: {
+      Authorization: 'Bearer ' + token.replace(/"/g, ''),
+    },
+    body: myformdata,
+  })
+    .then((data) => data.json())
+    .then((data) => {
+      if (data.message) {
+        alert(data.message);
+      } else {
+        return data;
+      }
+    })
+    .catch((e) => alert(e));
+}
 export {
   login,
   registerapi,
@@ -293,4 +319,5 @@ export {
   resetpassword,
   realRegisterShop,
   getOwnShop,
+  addProduct,
 };

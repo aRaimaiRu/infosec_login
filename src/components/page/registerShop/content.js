@@ -8,6 +8,7 @@ import Layout from '../../productdetaillayout';
 import { Controller, useForm } from 'react-hook-form';
 import loginstyle from '../../../styles/loginpage.module.css';
 import PageDetails from '../../../styles/PageDetails.module.css';
+import FileUploader from '../../FileUploadBtn';
 // Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
 
 function Content() {
