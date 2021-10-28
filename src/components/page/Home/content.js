@@ -31,7 +31,7 @@ function HomeContent(props) {
       <div
         className={homestyle.divider}
         onClick={() => {
-          history.push('/ShopRegister');
+          history.push('/OwnShop');
         }}
       >
         <h1>ดูร้าน</h1>

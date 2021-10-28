@@ -9,6 +9,7 @@ import Home from './components/page/Home/content';
 import E401 from './components/page/Error/content';
 import CustomerOwn from './components/page/customerOwn/content';
 import OwnShop from './components/page/OwnShop/content';
+import OwnShopV2 from './components/page/OwnShopV2/';
 import { callrefreshToken } from './utils/userAPI';
 import ProfileContent from './components/page/profile';
 import ForgotPassword from './components/page/repassword/forget';
@@ -150,6 +151,10 @@ function App() {
             <Switch>
               <Route path="/ShopRegister">
                 <ShopRegister setToken={setToken} />
+              </Route>
+              <Route path="/OwnShop">
+                <Header></Header>
+                <OwnShopV2 />
               </Route>
 
               <Route path="/">

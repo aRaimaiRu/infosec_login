@@ -230,14 +230,15 @@ async function resetpassword(token, data) {
     .catch((e) => alert(e));
 }
 
-// http://localhost:3002:3002/api/user/repassword
+// http://localhost:3002:3002/api/shop/register
 async function realRegisterShop(token, data) {
   let myformdata = new FormData();
   for (let key in data) {
     myformdata.append(key, data[key]);
   }
   myformdata.set('logo', data.logo[0]);
-  myformdata.set('qrcodelink', data.qrcodelink[0]);
+  myformdata.set('promptPayImg', data.promptPayImg[0]);
+  myformdata.set('IDcardImage', data.IDcardImage[0]);
 
   return fetch(`http://${HOSTAPI || 'localhost:3002'}/api/shop/register`, {
     method: 'POST',
@@ -256,6 +257,24 @@ async function realRegisterShop(token, data) {
     })
     .catch((e) => alert(e));
 }
+async function getOwnShop(token) {
+  return fetch(`http://${HOSTAPI || 'localhost:3002'}/api/shop/OwnShop`, {
+    method: 'GET',
+    headers: {
+      Authorization: 'Bearer ' + token.replace(/"/g, ''),
+    },
+  })
+    .then((data) => data.json())
+    .then((data) => {
+      if (data.message) {
+        alert(data.message);
+      } else {
+        return data;
+      }
+    })
+    .catch((e) => alert(e));
+}
+
 export {
   login,
   registerapi,
@@ -273,4 +292,5 @@ export {
   forgotpassword,
   resetpassword,
   realRegisterShop,
+  getOwnShop,
 };

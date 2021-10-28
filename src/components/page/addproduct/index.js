@@ -1,11 +1,12 @@
-import React, { useState } from "react";
-import Layout from "../../layout";
-import "./addproduct.css";
+import React, { useState } from 'react';
+import Layout from '../../layout';
+import './addproduct.css';
 
 const addproduct = (props) => {
+  const data = [{}];
   return (
     <Layout>
-      <div style={{ width: "100%" }} className="addproduct p-3 mt-5">
+      <div style={{ width: '100%' }} className="addproduct p-3 mt-5">
         <div className="row">
           <div className="col text-center">
             <img

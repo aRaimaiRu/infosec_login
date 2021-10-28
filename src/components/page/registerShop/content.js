@@ -31,36 +31,95 @@ function Content() {
         onSubmit={handleSubmit(submit)}
         style={{ color: 'black' }}
       >
-        <label>Shop name</label>
+        {/* Name Lastname */}
+        <div className={loginstyle.loginwithcontainer}>
+          <div
+            className={loginstyle.inputcontainer}
+            style={{ marginRight: '10px', color: 'black' }}
+          >
+            <label>ชื่อ</label>
+            <input
+              type="text"
+              className={loginstyle.inputwidth100}
+              {...register('name')}
+              required
+            />
+          </div>
+          <div
+            className={loginstyle.inputcontainer}
+            style={{ marginLeft: '10px', color: 'black' }}
+          >
+            <label>นามสกุล</label>
+            <input
+              type="text"
+              className={loginstyle.inputwidth100}
+              {...register('lastname')}
+              required
+            />
+          </div>
+        </div>
+        {/* END Name Lastname */}
+        <label>ที่อยู่</label>
         <input
           type="text"
           className={loginstyle.inputwidth100}
-          {...register('name')}
+          {...register('shopAddress')}
+          required
         />
-        <label>Shop description</label>
+        <label>ชื่อร้าน</label>
+        <input
+          type="text"
+          className={loginstyle.inputwidth100}
+          {...register('shopName')}
+          required
+        />
+        {/* <label>Shop description</label>
         <textarea
           className={loginstyle.inputwidth100}
           {...register('description')}
           style={{ height: '120px' }}
-        />
-        <label>Shop address</label>
+        /> */}
+        <label>เลขบัตรประชาชน</label>
         <input
           type="text"
           className={loginstyle.inputwidth100}
-          {...register('address')}
+          {...register('IDcard')}
+          required
         />
-        <label>Shop tel</label>
-        <input
-          type="text"
-          className={loginstyle.inputwidth100}
-          {...register('shoptel')}
-        />
-        {/* name lastname */}
-
-        <label>Prompt Pay QRCode</label>
-        <input type="file" {...register('qrcodelink')} required />
+        {/* Link ID Line  Tel */}
+        <div className={loginstyle.loginwithcontainer}>
+          <div
+            className={loginstyle.inputcontainer}
+            style={{ marginRight: '10px', color: 'black' }}
+          >
+            <label>Link ID Line</label>
+            <input
+              type="text"
+              className={loginstyle.inputwidth100}
+              {...register('LinkIDLine')}
+              required
+            />
+          </div>
+          <div
+            className={loginstyle.inputcontainer}
+            style={{ marginLeft: '10px', color: 'black' }}
+          >
+            <label>เบอร์โทร</label>
+            <input
+              type="text"
+              className={loginstyle.inputwidth100}
+              {...register('shopTel')}
+              required
+            />
+          </div>
+        </div>
+        {/* END */}
+        <label>แนบ QR CODE(Promp pay)</label>
+        <input type="file" {...register('promptPayImg')} required />
         <label>Logo</label>
         <input type="file" {...register('logo')} required />
+        <label>แนบรูปบัตรประชาชน</label>
+        <input type="file" {...register('IDcardImage')} required />
         <div
           className={loginstyle.loginwithcontainer}
           style={{ margin: '10px 0' }}
@@ -72,7 +131,7 @@ function Content() {
           {/* <Link href="/register"> */}
           <button
             className={loginstyle.roundbutton}
-            style={{ margin: '5px 0' }}
+            style={{ margin: '5px 0', backgroundColor: 'var(--pink)' }}
             type="submit"
             value="submit"
           >
