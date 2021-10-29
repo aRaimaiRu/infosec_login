@@ -301,6 +301,23 @@ async function addProduct(token, data) {
     })
     .catch((e) => alert(e));
 }
+
+// http://localhost:3002/api/product/4
+async function getAShop(id) {
+  return fetch(`http://${HOSTAPI || 'localhost:3002'}/api/product/${id}`, {
+    method: 'GET',
+    headers: {},
+  })
+    .then((data) => data.json())
+    .then((data) => {
+      if (data.message) {
+        alert(data.message);
+      } else {
+        return data;
+      }
+    })
+    .catch((e) => alert(e));
+}
 export {
   login,
   registerapi,
@@ -320,4 +337,5 @@ export {
   realRegisterShop,
   getOwnShop,
   addProduct,
+  getAShop,
 };

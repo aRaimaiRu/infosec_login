@@ -1,16 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  useParams,
+} from 'react-router-dom';
 import Layout from '../../productdetaillayout';
 import productstyle from '../../../styles/Product.module.css';
 import loginstyle from '../../../styles/loginpage.module.css';
+import { getAShop } from '../../../utils/userAPI';
 export default function ProductDetails() {
-  const product = {
-    shopname: 'ร้าน LEGO การรองเท้า',
-    shopurl: 'http://localhost:3002/uploads/A.jpg',
+  let { id } = useParams();
+  useEffect(async () => {
+    const data = await getAShop(id);
+    if (data) {
+      setProduct(data);
+    }
+  }, []);
+  const [product, setProduct] = useState({
+    shopName: 'ร้าน LEGO การรองเท้า',
+    logo: 'http://localhost:3002/uploads/A.jpg',
     shopId: 2,
     shopdescription: 'ร้านรองเท้าสำหรับทุกเพศทุกวัยจ้า',
     previewurl: 'http://localhost:3002/uploads/A.jpg',
     productname: 'รองเท้ายี่ห้อ XYZ',
     tag: 'แบบสวม',
+    productfrom: 'ที่ไหนสักแห่ง',
     description: 'discription',
     price: 1000,
     releasedate: Date.now(),
@@ -31,8 +46,7 @@ export default function ProductDetails() {
         stock: 1,
       },
     ],
-  };
-  console.log(product.releasedate);
+  });
   const footer = (
     <footer className={productstyle.buyproductfooter}>
       <p>ราคา: {product.price}</p>
@@ -73,7 +87,7 @@ export default function ProductDetails() {
             </tr>
             <tr>
               <td>ส่งจาก:</td>
-              <td>ที่ไหนสักแห่ง</td>
+              <td>{product.productfrom}</td>
             </tr>
           </table>
         </div>
@@ -88,7 +102,7 @@ export default function ProductDetails() {
               height: '60px',
               fontSize: '20px',
               padding: '15px',
-              backgroundImage: `url(${product.shopurl})`,
+              backgroundImage: `url(${product.logo})`,
               backgroundSize: 'cover',
             }}
           ></div>
@@ -97,7 +111,7 @@ export default function ProductDetails() {
               className={productstyle.colorpink}
               style={{ padding: 0, margin: 0 }}
             >
-              {product.shopname}
+              {product.shopName}
             </h3>
             <p>{product.shopdescription}</p>
             <button
