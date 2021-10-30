@@ -1,19 +1,29 @@
-import React, { useState } from "react";
-import Layout from "../../layout";
-import "./shopapprove.css";
+import React, { useState } from 'react';
+import Layout from '../../layout';
+import './shopapprove.css';
 
 const shopProfile = {
-  name: "ยินดี จ่ายเงิน",
-  address: "อะไรก็ไม่รู้ สมมุติว่ายาวมาก ยาวมากกกกกกกกก 112112112",
-  brand: "uniko",
+  name: 'ยินดี จ่ายเงิน',
+  address: 'อะไรก็ไม่รู้ สมมุติว่ายาวมาก ยาวมากกกกกกกกก 112112112',
+  brand: 'uniko',
   size: 42,
-  type: "??",
-  from: "somewhere",
+  type: '??',
+  from: 'somewhere',
 };
 const ShopApprove = (props) => {
+  const shoplist = [
+    {
+      logo: '/images/image_test.jpg',
+      shopName: 'ร้านชื่ออะไรซักอย่าง',
+    },
+    {
+      logo: '/images/image_test.jpg',
+      shopName: 'ร้านชื่ออะไรซักอย่าง',
+    },
+  ];
   return (
     <Layout>
-      <div style={{ width: "100%" }} className="shopapprove p-3">
+      <div style={{ width: '100%' }} className="shopapprove p-3">
         <div className="row">
           <div className="col-sm-12 text-center">
             <h1>อนุมัติร้าน</h1>

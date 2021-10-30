@@ -4,6 +4,7 @@ import {
   Switch,
   Route,
   useParams,
+  Link,
 } from 'react-router-dom';
 import Layout from '../../productdetaillayout';
 import productstyle from '../../../styles/Product.module.css';
@@ -55,12 +56,14 @@ export default function ProductDetails() {
         <button className={productstyle.roundbutton}>ยกเลิก</button>
       </p>
       <p className={productstyle.buyfooterbtn}>
-        <button
-          className={productstyle.roundbutton}
-          style={{ backgroundColor: 'green' }}
-        >
-          สั่งซื้อ
-        </button>
+        <Link to={`/order/${id}`}>
+          <button
+            className={productstyle.roundbutton}
+            style={{ backgroundColor: 'green' }}
+          >
+            สั่งซื้อ
+          </button>
+        </Link>
       </p>
       <p>ค่าส่ง: XXXX</p>
       <p>บาท</p>

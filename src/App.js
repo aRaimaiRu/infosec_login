@@ -92,24 +92,9 @@ function App() {
             <ProfileContent />
           </Route>
 
-          <Route path="/order">
-            <Header></Header>
-            <OrderContent />
-          </Route>
-
           <Route path="/orderwarrant">
             <Header></Header>
             <OrderWarrantContent />
-          </Route>
-
-          <Route path="/payment">
-            <Header></Header>
-            <PaymentContent />
-          </Route>
-
-          <Route path="/addproduct">
-            <Header></Header>
-            <AddProductContent />
           </Route>
 
           <Route path="/shopprofile">
@@ -149,6 +134,18 @@ function App() {
           )}
           {token.firstName !== undefined && (
             <Switch>
+              <Route path="/addproduct">
+                <Header></Header>
+                <AddProductContent />
+              </Route>
+              <Route path="/payment/:id">
+                <Header></Header>
+                <PaymentContent />
+              </Route>
+              <Route path="/order/:id">
+                <Header></Header>
+                <OrderContent />
+              </Route>
               <Route path="/ShopRegister">
                 <ShopRegister setToken={setToken} />
               </Route>
