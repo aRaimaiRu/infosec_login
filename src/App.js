@@ -102,15 +102,6 @@ function App() {
             <ShopProfileContent />
           </Route>
 
-          <Route path="/shopapprove">
-            <Header></Header>
-            <ShopApproveContent />
-          </Route>
-
-          <Route path="/shopapproveprocess">
-            <Header></Header>
-            <ShopApproveProcessContent />
-          </Route>
           {token.firstName === undefined && (
             <Switch>
               <Route path="/login">
@@ -134,6 +125,18 @@ function App() {
           )}
           {token.firstName !== undefined && (
             <Switch>
+              {token.RoleId === 3 && (
+                <Route exact path="/shopapprove">
+                  <Header></Header>
+                  <ShopApproveContent />
+                </Route>
+              )}
+              {token.RoleId === 3 && (
+                <Route path="/shopapproveprocess/:id">
+                  <Header></Header>
+                  <ShopApproveProcessContent />
+                </Route>
+              )}
               <Route path="/addproduct">
                 <Header></Header>
                 <AddProductContent />

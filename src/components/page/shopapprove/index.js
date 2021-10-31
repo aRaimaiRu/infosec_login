@@ -1,26 +1,48 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { DefaultValue, useRecoilState } from 'recoil';
+import { getShopStatus } from '../../../utils/userAPI';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  useParams,
+  Link,
+  useHistory,
+} from 'react-router-dom';
+import { tokenState } from '../../../store';
 import Layout from '../../layout';
 import './shopapprove.css';
 
-const shopProfile = {
-  name: 'ยินดี จ่ายเงิน',
-  address: 'อะไรก็ไม่รู้ สมมุติว่ายาวมาก ยาวมากกกกกกกกก 112112112',
-  brand: 'uniko',
-  size: 42,
-  type: '??',
-  from: 'somewhere',
-};
+// const shopProfile = {
+//   name: 'ยินดี จ่ายเงิน',
+//   address: 'อะไรก็ไม่รู้ สมมุติว่ายาวมาก ยาวมากกกกกกกกก 112112112',
+//   brand: 'uniko',
+//   size: 42,
+//   type: '??',
+//   from: 'somewhere',
+// };
 const ShopApprove = (props) => {
-  const shoplist = [
+  let history = useHistory();
+  const [token, setToken] = useRecoilState(tokenState);
+  const [shoplist, setShoplist] = useState([
     {
+      id: 1,
       logo: '/images/image_test.jpg',
       shopName: 'ร้านชื่ออะไรซักอย่าง',
     },
     {
+      id: 2,
       logo: '/images/image_test.jpg',
       shopName: 'ร้านชื่ออะไรซักอย่าง',
     },
-  ];
+  ]);
+  // fetch pending shop
+  useEffect(async () => {
+    console.log('shopapprove token =', token);
+    let shoplistdata = await getShopStatus(token.token, 'pending');
+    setShoplist(shoplistdata);
+  }, []);
+
   return (
     <Layout>
       <div style={{ width: '100%' }} className="shopapprove p-3">
@@ -33,34 +55,30 @@ const ShopApprove = (props) => {
           </div>
         </div>
         <div className="row">
-          <div className="col-md-12 text-center p-2">
-            <button className="btn button-custom pri-color">
-              <span>
-                <img
-                  src="/images/image_test.jpg"
-                  alt="kuro"
-                  width={50}
-                  height={50}
-                  className="center-cropped img-logo"
-                />
-                <h4>ร้านชื่ออะไรซักอย่าง</h4>
-              </span>
-            </button>
-          </div>
-          <div className="col-md-12 text-center p-2">
-            <button className="btn button-custom pri-color">
-              <span>
-                <img
-                  src="/images/image_test.jpg"
-                  alt="kuro"
-                  width={50}
-                  height={50}
-                  className="center-cropped img-logo"
-                />
-                <h4>ร้านชื่ออะไรซักอย่าง</h4>
-              </span>
-            </button>
-          </div>
+          {shoplist.map((l, ind) => (
+            <div className="col-md-12 text-center p-2" key={ind}>
+              <button
+                className="btn button-custom pri-color"
+                onClick={() => {
+                  history.push(`/shopapproveprocess/${l.id}`);
+                }}
+              >
+                <span>
+                  <img
+                    src={l.logo}
+                    alt="kuro"
+                    width={50}
+                    height={50}
+                    className="center-cropped img-logo"
+                  />
+                  <h4>
+                    {l.shopName}
+                    {ind}
+                  </h4>
+                </span>
+              </button>
+            </div>
+          ))}
         </div>
       </div>
     </Layout>

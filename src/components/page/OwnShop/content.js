@@ -24,7 +24,7 @@ function Content(props) {
   const [isAlreadyContact, setIsAlreadyContact] = useState(false);
 
   const [data, setData] = useState({
-    name: '',
+    shopName: '',
     surname: '',
     address: '',
     status: '',

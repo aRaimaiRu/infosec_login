@@ -9,7 +9,7 @@ import './shopprofile.css';
 const ShopProfile = (props) => {
   const [token, setToken] = useRecoilState(tokenState);
   const [shopProfile, setshopProfile] = useState({
-    name: 'ยินดี จ่ายเงิน',
+    shopName: 'ยินดี จ่ายเงิน',
     shopAddress: 'อะไรก็ไม่รู้ สมมุติว่ายาวมาก ยาวมากกกกกกกกก 112112112',
     shopTel: 'uniko',
     logo: '/images/image_test.jpg',

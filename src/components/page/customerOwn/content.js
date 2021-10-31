@@ -10,7 +10,7 @@ function Content(props) {
   const [token, setToken] = useRecoilState(tokenState);
   const [toggle, setToggle] = useState(true);
   const [data, setData] = useState({
-    name: '',
+    shopName: '',
     surname: '',
     address: '',
   });
@@ -19,7 +19,7 @@ function Content(props) {
     getOwnData(token)
       .then((res) => res.json())
       .then((res) => {
-        setData({ name: res.firstName, surname: res.lastName });
+        setData({ shopName: res.firstName, surname: res.lastName });
       });
   }, []);
   const redirectToCreateShop = () => {

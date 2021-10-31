@@ -5,7 +5,7 @@ import './shopprofile.css';
 
 const ShopProfile = (props) => {
   const [shopProfile, setshopProfile] = useState({
-    name: 'ยินดี จ่ายเงิน',
+    shopName: 'ยินดี จ่ายเงิน',
     address: 'อะไรก็ไม่รู้ สมมุติว่ายาวมาก ยาวมากกกกกกกกก 112112112',
     brand: 'uniko',
     size: 42,

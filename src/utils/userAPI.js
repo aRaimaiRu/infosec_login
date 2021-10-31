@@ -83,7 +83,16 @@ async function changeShopStatus(shopid, status, token) {
       shopId: shopid,
       status,
     }),
-  });
+  })
+    .then((data) => data.json())
+    .then((data) => {
+      if (data.message) {
+        alert(data.message);
+      } else {
+        return data;
+      }
+    })
+    .catch((e) => alert(e));
 }
 // http://localhost:3002:3002/api/user/register/shop
 async function registerShop({ name, address }, token) {
@@ -304,7 +313,7 @@ async function addProduct(token, data) {
 
 // http://localhost:3002/api/product/4
 async function getAShop(id) {
-  return fetch(`http://${HOSTAPI || 'localhost:3002'}/api/product/${id}`, {
+  return fetch(`http://${HOSTAPI || 'localhost:3002'}/api/shop/${id}`, {
     method: 'GET',
     headers: {},
   })
@@ -323,6 +332,30 @@ async function getAShop(id) {
 async function getOrderProduct(token, id) {
   return fetch(
     `http://${HOSTAPI || 'localhost:3002'}/api/product/order/${id}`,
+    {
+      method: 'GET',
+      headers: {
+        Authorization: 'Bearer ' + token.replace(/"/g, ''),
+      },
+    }
+  )
+    .then((data) => data.json())
+    .then((data) => {
+      if (data.message) {
+        alert(data.message);
+      } else {
+        return data;
+      }
+    })
+    .catch((e) => alert(e));
+}
+
+// http://localhost:3002/api/shop/getShopStatus/:shopstatus
+async function getShopStatus(token, shopstatus) {
+  return fetch(
+    `http://${
+      HOSTAPI || 'localhost:3002'
+    }/api/shop/getShopStatus/${shopstatus}`,
     {
       method: 'GET',
       headers: {
@@ -361,4 +394,5 @@ export {
   addProduct,
   getAShop,
   getOrderProduct,
+  getShopStatus,
 };
