@@ -35,14 +35,22 @@ async function getOwnData(token) {
 }
 
 // http://localhost:3002:3002/api/shop/2
-async function getShop(shopid, token) {
+async function getShop(shopid) {
   return fetch(`http://${HOSTAPI || 'localhost:3002'}/api/shop/${shopid}`, {
     method: 'GET',
     headers: {
-      Authorization: 'Bearer ' + token.replace(/"/g, ''),
       'Content-Type': 'application/json',
     },
-  });
+  })
+    .then((data) => data.json())
+    .then((data) => {
+      if (data.message) {
+        alert(data.message);
+      } else {
+        return data;
+      }
+    })
+    .catch((e) => alert(e));
 }
 
 // http://localhost:3002:3002/api/shop/contact/1
@@ -373,6 +381,31 @@ async function getShopStatus(token, shopstatus) {
     })
     .catch((e) => alert(e));
 }
+
+// http://localhost:3002/api/shop/updateShop
+async function changeOwnShopLogo(token, data) {
+  let myformdata = new FormData();
+  for (let key in data) {
+    myformdata.append(key, data[key]);
+  }
+  myformdata.set('logo', data.logo);
+  return fetch(`http://${HOSTAPI || 'localhost:3002'}/api/shop/updateShop`, {
+    method: 'PUT',
+    headers: {
+      Authorization: 'Bearer ' + token.replace(/"/g, ''),
+    },
+    body: myformdata,
+  })
+    .then((data) => data.json())
+    .then((data) => {
+      if (data.message) {
+        alert(data.message);
+      } else {
+        return data;
+      }
+    })
+    .catch((e) => alert(e));
+}
 export {
   login,
   registerapi,
@@ -395,4 +428,5 @@ export {
   getAShop,
   getOrderProduct,
   getShopStatus,
+  changeOwnShopLogo,
 };

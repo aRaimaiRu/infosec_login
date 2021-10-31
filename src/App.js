@@ -87,7 +87,7 @@ function App() {
             <ProductDetails setToken={setToken} />
           </Route>
 
-          <Route path="/profile">
+          <Route path="/profile/:id">
             <Header></Header>
             <ProfileContent />
           </Route>
@@ -97,7 +97,7 @@ function App() {
             <OrderWarrantContent />
           </Route>
 
-          <Route path="/shopprofile">
+          <Route path="/shopprofile/:id">
             <Header></Header>
             <ShopProfileContent />
           </Route>

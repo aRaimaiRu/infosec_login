@@ -3,18 +3,21 @@ import { useRecoilState } from 'recoil';
 import { tokenState } from '../../../store';
 import Layout from '../../layout';
 import FileUploader from '../../FileUploadBtn';
-import { getOwnShop } from '../../../utils/userAPI';
+import { getOwnShop, changeOwnShopLogo } from '../../../utils/userAPI';
 import './shopprofile.css';
 
 const ShopProfile = (props) => {
   const [token, setToken] = useRecoilState(tokenState);
+  // const [logofile, setLogoFile] = useState('');
   const [shopProfile, setshopProfile] = useState({
     shopName: 'ยินดี จ่ายเงิน',
     shopAddress: 'อะไรก็ไม่รู้ สมมุติว่ายาวมาก ยาวมากกกกกกกกก 112112112',
     shopTel: 'uniko',
     logo: '/images/image_test.jpg',
   });
-  const handleFile = (file) => {
+  const handleFile = async (file) => {
+    // setLogoFile(file);
+    await changeOwnShopLogo(token.token, { logo: file });
     setshopProfile((prev) => ({
       ...prev,
       logo: URL.createObjectURL(file),

@@ -1,9 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Layout from '../../layout';
 import FileUploader from '../../FileUploadBtn';
 import './shopprofile.css';
-
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  useParams,
+  Link,
+  useHistory,
+} from 'react-router-dom';
+import { getAShop } from '../../../utils/userAPI';
 const ShopProfile = (props) => {
+  let history = useHistory();
+  let { id } = useParams();
   const [shopProfile, setshopProfile] = useState({
     shopName: 'ยินดี จ่ายเงิน',
     address: 'อะไรก็ไม่รู้ สมมุติว่ายาวมาก ยาวมากกกกกกกกก 112112112',
@@ -11,12 +21,17 @@ const ShopProfile = (props) => {
     size: 42,
     type: '??',
     from: 'somewhere',
-    imageurl: '/images/image_test.jpg',
+    logo: '/images/image_test.jpg',
   });
-  const handleFile = (file) => {
+  useEffect(async () => {
+    let shop = await getAShop(id);
+    console.log(shop);
+    setshopProfile(shop);
+  }, []);
+  const handleFile = async (file) => {
     setshopProfile((prev) => ({
       ...prev,
-      imageurl: URL.createObjectURL(file),
+      logo: URL.createObjectURL(file),
     }));
 
     // shopProfile.imageurl = URL.createObjectURL(file);
@@ -37,13 +52,13 @@ const ShopProfile = (props) => {
         <div className="row">
           <div className="col text-center">
             <img
-              src={shopProfile.imageurl}
+              src={shopProfile.logo}
               alt="kuro"
               width={300}
               height={300}
               className="center-cropped"
             />
-            <FileUploader handleFile={handleFile}></FileUploader>
+            {/* <FileUploader handleFile={handleFile}></FileUploader> */}
           </div>
         </div>
         <div className="row">

@@ -27,7 +27,7 @@ const ShopApproveProcess = (props) => {
     // from: 'somewhere',
   });
   useEffect(async () => {
-    let shopdata = await getAShop(id, token.token);
+    let shopdata = await getAShop(id);
     setShopApproveProcessData(shopdata);
   }, []);
   return (

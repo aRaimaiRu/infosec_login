@@ -22,7 +22,6 @@ function Content(props) {
   console.log('shop Token =', token);
   const [toggle, setToggle] = useState(true);
   const [isAlreadyContact, setIsAlreadyContact] = useState(false);
-
   const [data, setData] = useState({
     shopName: '',
     surname: '',
