@@ -9,11 +9,11 @@ import {
 import Layout from '../../productdetaillayout';
 import productstyle from '../../../styles/Product.module.css';
 import loginstyle from '../../../styles/loginpage.module.css';
-import { getAShop } from '../../../utils/userAPI';
+import { getAShop as getAProduct } from '../../../utils/userAPI';
 export default function ProductDetails() {
   let { id } = useParams();
   useEffect(async () => {
-    const data = await getAShop(id);
+    const data = await getAProduct(id);
     if (data) {
       setProduct(data);
     }
