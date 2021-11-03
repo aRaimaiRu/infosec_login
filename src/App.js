@@ -137,6 +137,11 @@ function App() {
                   <ShopApproveProcessContent />
                 </Route>
               )}
+              <Route path="/admin/RolePermission">
+                {/* <CustomerOwn> */}
+                <ManageRole></ManageRole>
+                {/* </CustomerOwn> */}
+              </Route>
               <Route path="/addproduct">
                 <Header></Header>
                 <AddProductContent />
