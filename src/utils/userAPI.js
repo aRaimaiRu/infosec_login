@@ -422,6 +422,22 @@ async function getAProduct(id) {
     })
     .catch((e) => alert(e));
 }
+// http://localhost:3002/api/user/4
+async function getUser(id) {
+  return fetch(`http://${HOSTAPI || 'localhost:3002'}/api/user/${id}`, {
+    method: 'GET',
+    headers: {},
+  })
+    .then((data) => data.json())
+    .then((data) => {
+      if (data.message) {
+        alert(data.message);
+      } else {
+        return data;
+      }
+    })
+    .catch((e) => alert(e));
+}
 export {
   login,
   registerapi,
@@ -446,4 +462,5 @@ export {
   getShopStatus,
   changeOwnShopLogo,
   getAProduct,
+  getUser,
 };
