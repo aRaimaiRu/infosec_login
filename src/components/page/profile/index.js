@@ -11,7 +11,7 @@ import {
   useHistory,
 } from 'react-router-dom';
 import { getUser } from '../../../utils/userAPI';
-
+import FileUploader from '../../FileUploadBtn';
 const Profile = (props) => {
   let history = useHistory();
   let { id } = useParams();
@@ -51,13 +51,17 @@ const Profile = (props) => {
         <div className="row">
           <div className="col text-center">
             <img
-              src="/images/image_test.jpg"
+              src={
+                userProfile.logo == null
+                  ? '/images/image_test.jpg'
+                  : userProfile.logo
+              }
               alt="kuro"
               width={300}
               height={300}
               className="center-cropped"
             />
-            <button class="btn-img">Take</button>
+            <FileUploader handleFile={handleFile}></FileUploader>
           </div>
         </div>
         <div className="row">
