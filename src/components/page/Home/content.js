@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Productdetaillayout from "../../productdetaillayout";
 import homestyle from "../../../styles/HomePage.module.css";
-import searchstyle from "../../../styles/search.module.css";
+import "./home.css";
 import EmblaCarousel from "../../EmblaCarousel";
 import { getOwnData, refreshToken, logout } from "../../../utils/userAPI";
 import { useHistory, Link } from "react-router-dom";
@@ -91,15 +91,20 @@ function HomeContent(props) {
         )}
         {/* END  */}
       </div>
-      <h1 style={{ alignSelf: "start" }}>ข่าวสาร</h1>
-      <EmblaCarousel slides={slides}></EmblaCarousel>
-      <h1>รายการสินค้า</h1>
-      <div className={searchstyle.searchresultcontainer}>
-        {showProduct.map((obj) => (
-          <Link to={obj.url}>
-            <img src={obj.img} className={searchstyle.imageresult} />
-          </Link>
-        ))}
+      <div style={{ width: "100%" }}>
+        <h1 style={{ alignSelf: "start" }}>ข่าวสาร</h1>
+        <EmblaCarousel slides={slides}></EmblaCarousel>
+        <h1>รายการสินค้า</h1>
+        <div
+          // className={searchstyle.searchresultcontainer}
+          className="p-1"
+        >
+          {showProduct.map((obj) => (
+            <Link to={obj.url}>
+              <img src={obj.img} className="imageresult" alt="img" />
+            </Link>
+          ))}
+        </div>
       </div>
     </Productdetaillayout>
   );
