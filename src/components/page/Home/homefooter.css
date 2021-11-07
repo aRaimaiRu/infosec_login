@@ -16,3 +16,12 @@
   height: 50px;
   font-size: 20px;
 }
+
+.homefooter .btn-custom-2 {
+  border-radius: 30px;
+  width: 200px;
+  color: white;
+  font-family: "Kanit", sans-serif;
+  height: 50px;
+  font-size: 20px;
+}
