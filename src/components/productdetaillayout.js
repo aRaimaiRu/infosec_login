@@ -12,7 +12,12 @@ export default function Productdetaillayout({ children, footer }) {
         <div className={style.container}>
           <div
             className={style.container}
-            style={{ width: "80%", height: "100%", position: "relative" }}
+            style={{
+              width: "80%",
+              height: "100%",
+              position: "relative",
+              padding: 1,
+            }}
           >
             {children}
           </div>

@@ -54,56 +54,58 @@ function HomeContent(props) {
   ];
   return (
     <Productdetaillayout>
-      <SearchBar></SearchBar>
-      <div className={homestyle.homenavbar}>
-        {/* Name User */}
-        {token.firstName !== undefined && (
+      <div className="p-2">
+        <SearchBar></SearchBar>
+        <div className={homestyle.homenavbar}>
+          {/* Name User */}
+          {token.firstName !== undefined && (
+            <div className={homestyle.divider}>
+              <h1>{token.firstName}</h1>
+            </div>
+          )}
+          {/* END Name User */}
+          {/* Customer */}
+          {showOpenShopOrOwnShop}
+          {/* END Customer */}
           <div className={homestyle.divider}>
-            <h1>{token.firstName}</h1>
+            <h1>รายการสินค้า</h1>
           </div>
-        )}
-        {/* END Name User */}
-        {/* Customer */}
-        {showOpenShopOrOwnShop}
-        {/* END Customer */}
-        <div className={homestyle.divider}>
-          <h1>รายการสินค้า</h1>
+          {/* login   /   logout */}
+          {token.firstName === undefined ? (
+            <div
+              className={homestyle.divider}
+              style={{ border: "none" }}
+              onClick={() => {
+                history.push("/login");
+              }}
+            >
+              <h1>login</h1>
+            </div>
+          ) : (
+            <div
+              className={homestyle.divider}
+              style={{ border: "none" }}
+              onClick={() => logout(setToken)}
+            >
+              <h1>logout</h1>
+            </div>
+          )}
+          {/* END  */}
         </div>
-        {/* login   /   logout */}
-        {token.firstName === undefined ? (
+        <div style={{ width: "100%" }}>
+          <h1 style={{ alignSelf: "start" }}>ข่าวสาร</h1>
+          <EmblaCarousel slides={slides}></EmblaCarousel>
+          <h1>รายการสินค้า</h1>
           <div
-            className={homestyle.divider}
-            style={{ border: "none" }}
-            onClick={() => {
-              history.push("/login");
-            }}
+            // className={searchstyle.searchresultcontainer}
+            className=""
           >
-            <h1>login</h1>
+            {showProduct.map((obj) => (
+              <Link to={obj.url}>
+                <img src={obj.img} className="imageresult m-2" alt="img" />
+              </Link>
+            ))}
           </div>
-        ) : (
-          <div
-            className={homestyle.divider}
-            style={{ border: "none" }}
-            onClick={() => logout(setToken)}
-          >
-            <h1>logout</h1>
-          </div>
-        )}
-        {/* END  */}
-      </div>
-      <div style={{ width: "100%" }}>
-        <h1 style={{ alignSelf: "start" }}>ข่าวสาร</h1>
-        <EmblaCarousel slides={slides}></EmblaCarousel>
-        <h1>รายการสินค้า</h1>
-        <div
-          // className={searchstyle.searchresultcontainer}
-          className="p-1"
-        >
-          {showProduct.map((obj) => (
-            <Link to={obj.url}>
-              <img src={obj.img} className="imageresult" alt="img" />
-            </Link>
-          ))}
         </div>
       </div>
     </Productdetaillayout>
