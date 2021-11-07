@@ -33,6 +33,7 @@ export default function SearchBar({ children }) {
           width={50}
           height={50}
           color="red"
+          alt="img"
         ></img>
       </button>
     </form>
