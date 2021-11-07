@@ -76,7 +76,7 @@ const ShopProfile = (props) => {
           </div>
         </div>
         <hr />
-        <div className="row">
+        <div className="row mb-2">
           <div className="col-6 text-center">
             <i class="fa fa-thumbs-up like"></i>
             <h4>15</h4>
