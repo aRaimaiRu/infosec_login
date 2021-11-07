@@ -1,6 +1,6 @@
 .center-cropped {
   object-fit: cover;
-  border-radius: 50%;
+  border-radius: 30px;
 }
 
 .btn-img {
@@ -28,11 +28,11 @@
   color: #ff7b7b;
 }
 
-.shopapprove h4 {
+.shopdashboard h4 {
   font-family: "Kanit", sans-serif;
 }
 
-.shopapprove h1 {
+.shopdashboard h1 {
   font-weight: bold;
   font-family: "Kanit", sans-serif;
   color: #ff7b7b;
@@ -49,7 +49,7 @@ hr {
   border-radius: 30%;
 }
 
-.shopprofile .button-custom {
+.shopdashboard .button-custom {
   border-radius: 30px;
   width: 250px;
 }
@@ -93,5 +93,18 @@ hr {
 
 .btn-sm {
   height: 30px;
-  border-radius: 15px;
+  border-radius: 20px;
+}
+
+.banner {
+  background-color: #ff7b7b;
+  height: 80px;
+  border-radius: 30px;
+  padding-top: 10px;
+}
+
+.banner h4 {
+  color: white;
+
+  font-family: "Kanit", sans-serif;
 }

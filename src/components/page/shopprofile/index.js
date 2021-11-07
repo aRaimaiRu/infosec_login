@@ -10,8 +10,10 @@ import {
   Link,
   useHistory,
 } from 'react-router-dom';
+
 import { getAShop } from '../../../utils/userAPI';
 const ShopProfile = (props) => {
+  const admin = true;
   let history = useHistory();
   let { id } = useParams();
   const [shopProfile, setshopProfile] = useState({
@@ -22,19 +24,19 @@ const ShopProfile = (props) => {
     like: 0,
     dislike: 0,
   });
-  useEffect(async () => {
-    let shop = await getAShop(id);
-    console.log(shop);
-    setshopProfile(shop);
-  }, []);
-  const handleFile = async (file) => {
-    setshopProfile((prev) => ({
-      ...prev,
-      logo: URL.createObjectURL(file),
-    }));
+  // useEffect(async () => {
+  //   let shop = await getAShop(id);
+  //   console.log(shop);
+  //   setshopProfile(shop);
+  // }, []);
+  // const handleFile = async (file) => {
+  //   setshopProfile((prev) => ({
+  //     ...prev,
+  //     logo: URL.createObjectURL(file),
+  //   }));
 
-    // shopProfile.imageurl = URL.createObjectURL(file);
-  };
+  //   // shopProfile.imageurl = URL.createObjectURL(file);
+  // };
   return (
     <Layout>
       <div style={{ width: '100%' }} className="shopprofile p-3">
@@ -60,9 +62,16 @@ const ShopProfile = (props) => {
             {/* <FileUploader handleFile={handleFile}></FileUploader> */}
           </div>
         </div>
-        <div className="row">
-          <div className="col">
-            <h3>รายละเอียดร้านค้า</h3>
+        <div className="row mb-0">
+          <div className="col mb-0">
+            <div className="d-flex">
+              <h3 className="mr-auto">รายละเอียดร้านค้า</h3>
+
+              <h4 className="">ADD LINE :</h4>
+              <button className="btn btn-sm bg-success btn-sm mt-2 mx-2 text-white">
+                Click
+              </button>
+            </div>
             <hr />
             <h4>ชื่อผู้ใช้ : {shopProfile.name}</h4>
             <h4>ที่อยู่ร้าน : {shopProfile.shopAddress}</h4>
@@ -70,15 +79,25 @@ const ShopProfile = (props) => {
           </div>
         </div>
         <hr />
-        <div className="row">
+        <div className="row mb-2">
           <div className="col-6 text-center">
             <i class="fa fa-thumbs-up like"></i>
-            <h4>{shopProfile.like}</h4>
+            <h4>15</h4>
+            {admin && (
+              <button className="btn btn-check">
+                <i className="bi bi-check"></i>
+              </button>
+            )}
           </div>
 
           <div className="col-6 text-center">
             <i class="fa fa-thumbs-down dislike"></i>
-            <h4>{shopProfile.dislike}</h4>
+            <h4>3</h4>
+            {admin && (
+              <button className="btn btn-x">
+                <i className="bi bi-x"></i>
+              </button>
+            )}
           </div>
         </div>
         <div className="row ">

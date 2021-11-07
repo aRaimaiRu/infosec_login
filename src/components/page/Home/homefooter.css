@@ -1,0 +1,27 @@
+.homefooter {
+  position: fixed;
+  height: 72px;
+  bottom: 0px;
+  width: 50%;
+  min-width: 348px;
+  background-color: #ff7b7b;
+  color: white;
+}
+.homefooter .btn-custom {
+  background-color: green;
+  border-radius: 30px;
+  width: 150px;
+  color: white;
+  font-family: "Kanit", sans-serif;
+  height: 50px;
+  font-size: 20px;
+}
+
+.homefooter .btn-custom-2 {
+  border-radius: 30px;
+  width: 150px;
+  color: white;
+  font-family: "Kanit", sans-serif;
+  height: 50px;
+  font-size: 20px;
+}

@@ -1,4 +1,4 @@
-.searchresultcontainer {
+/* .searchresultcontainer {
   display: grid;
   align-self: start;
   width: 100%;
@@ -8,11 +8,22 @@
   align-items: center;
   row-gap: 50px;
   column-gap: 50px;
-}
+} */
 
 .imageresult {
-  width: 100%;
-  height: 100%;
+  height: 150px;
+  width: 150px;
   border-radius: 30px;
   object-fit: cover;
+}
+h4 {
+  font-family: "Kanit", sans-serif;
+}
+
+h1 {
+  font-family: "Kanit", sans-serif;
+}
+
+hr {
+  border-top: 1px solid #aaaaaa;
 }

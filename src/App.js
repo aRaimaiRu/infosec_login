@@ -23,6 +23,7 @@ import AddProductContent from './components/page/addproduct';
 import ShopProfileContent from './components/page/shopprofile';
 import ShopApproveContent from './components/page/shopapprove';
 import ShopApproveProcessContent from './components/page/shopapproveprocess';
+import ShopDashboard from './components/page/ShopDashboard';
 import { Controller, useForm } from 'react-hook-form';
 import {
   BrowserRouter as Router,
@@ -36,6 +37,8 @@ import './App.css';
 import ShopRegister from './components/page/registerShop/content';
 import ManageRole from './components/page/manageRolePermission/content';
 import ShopReportContent from './components/page/shopreport';
+import ManageRole from './components/page/manageRolePermission/content';
+
 function App() {
   const { register, handleSubmit } = useForm();
   const [token, setToken] = useRecoilState(tokenState);
@@ -103,6 +106,10 @@ function App() {
             <ShopProfileContent />
           </Route>
 
+          <Route path="/shopdashboard">
+            <Header></Header>
+            <ShopDashboard />
+          </Route>
           {token.firstName === undefined && (
             <Switch>
               <Route path="/login">
