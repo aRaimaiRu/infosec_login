@@ -438,6 +438,23 @@ async function getUser(id) {
     })
     .catch((e) => alert(e));
 }
+
+// http://localhost:3002/api/shop/getReportShop
+async function getReportShop(id) {
+  return fetch(`http://${HOSTAPI || 'localhost:3002'}/api/shop/getReportShop`, {
+    method: 'GET',
+    headers: {},
+  })
+    .then((data) => data.json())
+    .then((data) => {
+      if (data.message) {
+        alert(data.message);
+      } else {
+        return data;
+      }
+    })
+    .catch((e) => alert(e));
+}
 export {
   login,
   registerapi,
@@ -463,4 +480,5 @@ export {
   changeOwnShopLogo,
   getAProduct,
   getUser,
+  getReportShop,
 };

@@ -35,6 +35,7 @@ import {
 import './App.css';
 import ShopRegister from './components/page/registerShop/content';
 import ManageRole from './components/page/manageRolePermission/content';
+import ShopReportContent from './components/page/shopreport';
 function App() {
   const { register, handleSubmit } = useForm();
   const [token, setToken] = useRecoilState(tokenState);
@@ -129,6 +130,12 @@ function App() {
                 <Route exact path="/shopapprove">
                   <Header></Header>
                   <ShopApproveContent />
+                </Route>
+              )}
+              {token.RoleId === 3 && (
+                <Route exact path="/shopreport">
+                  <Header></Header>
+                  <ShopReportContent />
                 </Route>
               )}
               {token.RoleId === 3 && (
