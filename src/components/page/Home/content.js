@@ -8,6 +8,7 @@ import { useHistory, Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { tokenState } from "../../../store";
 import SearchBar from "../../searchbar";
+import HomeFooter from "./HomeFooter";
 function HomeContent(props) {
   const SLIDE_COUNT = 2;
   const slides = Array.from(Array(SLIDE_COUNT).keys());
@@ -108,6 +109,7 @@ function HomeContent(props) {
           </div>
         </div>
       </div>
+      <HomeFooter />
     </Productdetaillayout>
   );
 }
