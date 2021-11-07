@@ -90,3 +90,8 @@ hr {
 .dislike {
   color: darkred;
 }
+
+.btn-sm {
+  height: 30px;
+  border-radius: 15px;
+}

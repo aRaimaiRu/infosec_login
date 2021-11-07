@@ -63,9 +63,16 @@ const ShopProfile = (props) => {
             {/* <FileUploader handleFile={handleFile}></FileUploader> */}
           </div>
         </div>
-        <div className="row">
-          <div className="col">
-            <h3>รายละเอียดร้านค้า</h3>
+        <div className="row mb-0">
+          <div className="col mb-0">
+            <div className="d-flex">
+              <h3 className="mr-auto">รายละเอียดร้านค้า</h3>
+
+              <h4 className="">ADD LINE :</h4>
+              <button className="btn btn-sm bg-success btn-sm mt-2 mx-2 text-white">
+                Click
+              </button>
+            </div>
             <hr />
             <h4>ชื่อผู้ใช้ : {shopProfile.name}</h4>
             <h4>ที่อยู่ร้าน : {shopProfile.address}</h4>
