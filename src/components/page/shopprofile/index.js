@@ -22,6 +22,8 @@ const ShopProfile = (props) => {
     type: '??',
     from: 'somewhere',
     logo: '/images/image_test.jpg',
+    like: 0,
+    dislike: 0,
   });
   useEffect(async () => {
     let shop = await getAShop(id);
@@ -77,12 +79,12 @@ const ShopProfile = (props) => {
         <div className="row">
           <div className="col-6 text-center">
             <i class="fa fa-thumbs-up like"></i>
-            <h4>15</h4>
+            <h4>{shopProfile.like}</h4>
           </div>
 
           <div className="col-6 text-center">
             <i class="fa fa-thumbs-down dislike"></i>
-            <h4>3</h4>
+            <h4>{shopProfile.dislike}</h4>
           </div>
         </div>
         <div className="row ">

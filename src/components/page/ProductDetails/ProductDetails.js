@@ -9,7 +9,7 @@ import {
 import Layout from '../../productdetaillayout';
 import productstyle from '../../../styles/Product.module.css';
 import loginstyle from '../../../styles/loginpage.module.css';
-import { getAShop as getAProduct } from '../../../utils/userAPI';
+import { getAProduct } from '../../../utils/userAPI';
 export default function ProductDetails() {
   let { id } = useParams();
   useEffect(async () => {

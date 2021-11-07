@@ -321,7 +321,7 @@ async function addProduct(token, data) {
 
 // http://localhost:3002/api/product/4
 async function getAShop(id) {
-  return fetch(`http://${HOSTAPI || 'localhost:3002'}/api/product/${id}`, {
+  return fetch(`http://${HOSTAPI || 'localhost:3002'}/api/shop/${id}`, {
     method: 'GET',
     headers: {},
   })
