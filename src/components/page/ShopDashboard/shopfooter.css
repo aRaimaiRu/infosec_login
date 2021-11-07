@@ -8,12 +8,12 @@
   color: white;
 }
 .shopfooter .btn-custom {
-  background-color: green;
-  border-radius: 30px;
-  width: 150px;
-  color: white;
+  background-color: white;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  color: #ff7b7b;
   font-family: "Kanit", sans-serif;
-  height: 50px;
   font-size: 20px;
 }
 
