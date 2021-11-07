@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import Layout from '../../layout';
-import FileUploader from '../../FileUploadBtn';
-import './shopprofile.css';
+import React, { useEffect, useState } from "react";
+import Layout from "../../layout";
+import FileUploader from "../../FileUploadBtn";
+import "./shopprofile.css";
 import {
   BrowserRouter as Router,
   Switch,
@@ -9,36 +9,38 @@ import {
   useParams,
   Link,
   useHistory,
-} from 'react-router-dom';
-import { getAShop } from '../../../utils/userAPI';
+} from "react-router-dom";
+
+import { getAShop } from "../../../utils/userAPI";
 const ShopProfile = (props) => {
+  const admin = true;
   let history = useHistory();
   let { id } = useParams();
   const [shopProfile, setshopProfile] = useState({
-    shopName: 'ยินดี จ่ายเงิน',
-    address: 'อะไรก็ไม่รู้ สมมุติว่ายาวมาก ยาวมากกกกกกกกก 112112112',
-    brand: 'uniko',
+    shopName: "ยินดี จ่ายเงิน",
+    address: "อะไรก็ไม่รู้ สมมุติว่ายาวมาก ยาวมากกกกกกกกก 112112112",
+    brand: "uniko",
     size: 42,
-    type: '??',
-    from: 'somewhere',
-    logo: '/images/image_test.jpg',
+    type: "??",
+    from: "somewhere",
+    logo: "/images/image_test.jpg",
   });
-  useEffect(async () => {
-    let shop = await getAShop(id);
-    console.log(shop);
-    setshopProfile(shop);
-  }, []);
-  const handleFile = async (file) => {
-    setshopProfile((prev) => ({
-      ...prev,
-      logo: URL.createObjectURL(file),
-    }));
+  // useEffect(async () => {
+  //   let shop = await getAShop(id);
+  //   console.log(shop);
+  //   setshopProfile(shop);
+  // }, []);
+  // const handleFile = async (file) => {
+  //   setshopProfile((prev) => ({
+  //     ...prev,
+  //     logo: URL.createObjectURL(file),
+  //   }));
 
-    // shopProfile.imageurl = URL.createObjectURL(file);
-  };
+  //   // shopProfile.imageurl = URL.createObjectURL(file);
+  // };
   return (
     <Layout>
-      <div style={{ width: '100%' }} className="shopprofile p-3">
+      <div style={{ width: "100%" }} className="shopprofile p-3">
         <div className="row">
           <div className="col-4">
             <h3>โปรไฟล์ร้านค้า</h3>
@@ -78,11 +80,21 @@ const ShopProfile = (props) => {
           <div className="col-6 text-center">
             <i class="fa fa-thumbs-up like"></i>
             <h4>15</h4>
+            {admin && (
+              <button className="btn btn-check">
+                <i className="bi bi-check"></i>
+              </button>
+            )}
           </div>
 
           <div className="col-6 text-center">
             <i class="fa fa-thumbs-down dislike"></i>
             <h4>3</h4>
+            {admin && (
+              <button className="btn btn-x">
+                <i className="bi bi-x"></i>
+              </button>
+            )}
           </div>
         </div>
         <div className="row ">

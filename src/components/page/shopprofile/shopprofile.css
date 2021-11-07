@@ -60,6 +60,29 @@ hr {
   user-select: none;
 }
 
+.bi {
+  font-size: 20px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.bi-check {
+  color: white;
+}
+
+.btn-x {
+  background: darkred;
+  border-radius: 50%;
+}
+
+.btn-check {
+  border-radius: 50%;
+  background-color: darkgreen;
+}
+
+.bi-x {
+  color: white;
+}
 .like {
   color: darkgreen;
 }
