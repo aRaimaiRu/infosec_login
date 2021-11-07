@@ -1,6 +1,6 @@
 .center-cropped {
   object-fit: cover;
-  border-radius: 50%;
+  border-radius: 30px;
 }
 
 .btn-img {
@@ -93,5 +93,18 @@ hr {
 
 .btn-sm {
   height: 30px;
-  border-radius: 15px;
+  border-radius: 20px;
+}
+
+.banner {
+  background-color: #ff7b7b;
+  height: 80px;
+  border-radius: 30px;
+  padding-top: 10px;
+}
+
+.banner h4 {
+  color: white;
+
+  font-family: "Kanit", sans-serif;
 }

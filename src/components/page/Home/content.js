@@ -108,6 +108,9 @@ function HomeContent(props) {
             ))}
           </div>
         </div>
+        <div className="mt-20">
+          <hr />
+        </div>
       </div>
       <HomeFooter />
     </Productdetaillayout>

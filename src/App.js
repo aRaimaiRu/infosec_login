@@ -1,29 +1,30 @@
-import React, { useState, useEffect } from 'react';
-import { useRecoilState, RecoilRoot } from 'recoil';
-import { tokenState } from '../src/store';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import LoginContent from './components/page/Login/Content';
-import RegisterContent from './components/page/Register/content';
-import Home from './components/page/Home/content';
-import E401 from './components/page/Error/content';
-import CustomerOwn from './components/page/customerOwn/content';
-import OwnShop from './components/page/OwnShop/content';
-import OwnShopV2 from './components/page/OwnShopV2/';
-import { callrefreshToken } from './utils/userAPI';
-import ProfileContent from './components/page/profile';
-import ForgotPassword from './components/page/repassword/forget';
-import Repassword from './components/page/repassword/repassword';
-import HomeContent from './components/page/Home/content';
-import ProductDetails from './components/page/ProductDetails/ProductDetails';
-import OrderContent from './components/page/order';
-import OrderWarrantContent from './components/page/orderwarrant';
-import PaymentContent from './components/page/payment';
-import AddProductContent from './components/page/addproduct';
-import ShopProfileContent from './components/page/shopprofile';
-import ShopApproveContent from './components/page/shopapprove';
-import ShopApproveProcessContent from './components/page/shopapproveprocess';
-import { Controller, useForm } from 'react-hook-form';
+import React, { useState, useEffect } from "react";
+import { useRecoilState, RecoilRoot } from "recoil";
+import { tokenState } from "../src/store";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import LoginContent from "./components/page/Login/Content";
+import RegisterContent from "./components/page/Register/content";
+import Home from "./components/page/Home/content";
+import E401 from "./components/page/Error/content";
+import CustomerOwn from "./components/page/customerOwn/content";
+import OwnShop from "./components/page/OwnShop/content";
+import OwnShopV2 from "./components/page/OwnShopV2/";
+import { callrefreshToken } from "./utils/userAPI";
+import ProfileContent from "./components/page/profile";
+import ForgotPassword from "./components/page/repassword/forget";
+import Repassword from "./components/page/repassword/repassword";
+import HomeContent from "./components/page/Home/content";
+import ProductDetails from "./components/page/ProductDetails/ProductDetails";
+import OrderContent from "./components/page/order";
+import OrderWarrantContent from "./components/page/orderwarrant";
+import PaymentContent from "./components/page/payment";
+import AddProductContent from "./components/page/addproduct";
+import ShopProfileContent from "./components/page/shopprofile";
+import ShopApproveContent from "./components/page/shopapprove";
+import ShopApproveProcessContent from "./components/page/shopapproveprocess";
+import ShopDashboard from "./components/page/ShopDashboard";
+import { Controller, useForm } from "react-hook-form";
 import {
   BrowserRouter as Router,
   Switch,
@@ -31,10 +32,10 @@ import {
   Link,
   useRouteMatch,
   useParams,
-} from 'react-router-dom';
-import './App.css';
-import ShopRegister from './components/page/registerShop/content';
-import ManageRole from './components/page/manageRolePermission/content';
+} from "react-router-dom";
+import "./App.css";
+import ShopRegister from "./components/page/registerShop/content";
+import ManageRole from "./components/page/manageRolePermission/content";
 function App() {
   const { register, handleSubmit } = useForm();
   const [token, setToken] = useRecoilState(tokenState);
@@ -102,6 +103,10 @@ function App() {
             <ShopProfileContent />
           </Route>
 
+          <Route path="/shopdashboard">
+            <Header></Header>
+            <ShopDashboard />
+          </Route>
           {token.firstName === undefined && (
             <Switch>
               <Route path="/login">
