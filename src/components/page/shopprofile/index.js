@@ -16,11 +16,8 @@ const ShopProfile = (props) => {
   let { id } = useParams();
   const [shopProfile, setshopProfile] = useState({
     shopName: 'ยินดี จ่ายเงิน',
-    address: 'อะไรก็ไม่รู้ สมมุติว่ายาวมาก ยาวมากกกกกกกกก 112112112',
-    brand: 'uniko',
-    size: 42,
-    type: '??',
-    from: 'somewhere',
+    shopAddress: 'อะไรก็ไม่รู้ สมมุติว่ายาวมาก ยาวมากกกกกกกกก 112112112',
+    shopTel: '0888888888',
     logo: '/images/image_test.jpg',
     like: 0,
     dislike: 0,
@@ -68,11 +65,8 @@ const ShopProfile = (props) => {
             <h3>รายละเอียดร้านค้า</h3>
             <hr />
             <h4>ชื่อผู้ใช้ : {shopProfile.name}</h4>
-            <h4>ที่อยู่ร้าน : {shopProfile.address}</h4>
-            <h4>รองเท้ายี่ห้อ : {shopProfile.brand}</h4>
-            <h4>Size : {shopProfile.size}</h4>
-            <h4>ประเภท : {shopProfile.type}</h4>
-            <h4>ส่งจาก : {shopProfile.from}</h4>
+            <h4>ที่อยู่ร้าน : {shopProfile.shopAddress}</h4>
+            <h4>เบอร์โทร : {shopProfile.shopTel}</h4>
           </div>
         </div>
         <hr />
