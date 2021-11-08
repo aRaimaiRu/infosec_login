@@ -10,6 +10,7 @@ import Layout from '../../productdetaillayout';
 import productstyle from '../../../styles/Product.module.css';
 import loginstyle from '../../../styles/loginpage.module.css';
 import { getAProduct } from '../../../utils/userAPI';
+import SearchBar from '../../searchbar';
 export default function ProductDetails() {
   let { id } = useParams();
   useEffect(async () => {
@@ -71,6 +72,7 @@ export default function ProductDetails() {
   );
   return (
     <Layout footer={footer}>
+      <SearchBar></SearchBar>
       <img src={product.previewurl} className={productstyle.mainimage}></img>
       <div className={productstyle.productdetailcontainer}>
         <div>

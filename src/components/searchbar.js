@@ -1,6 +1,6 @@
-import loginpage from "../styles/loginpage.module.css";
-import { Controller, useForm } from "react-hook-form";
-import { useState } from "react";
+import loginpage from '../styles/loginpage.module.css';
+import { Controller, useForm } from 'react-hook-form';
+import { useState } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -8,24 +8,24 @@ import {
   useParams,
   Link,
   useHistory,
-} from "react-router-dom";
+} from 'react-router-dom';
 export default function SearchBar({ children }) {
   let history = useHistory();
   const { register, handleSubmit } = useForm();
   const submit = (data) => {
-    history.push("search?" + data.search);
+    history.push('/search?' + data.search);
   };
   return (
     <form
       className={loginpage.loginwithcontainer}
-      style={{ marginTop: "30px", width: "100%" }}
+      style={{ marginTop: '30px', width: '100%' }}
       onSubmit={handleSubmit(submit)}
     >
       <input
         type="text"
         className={loginpage.inputwidth100}
-        style={{ marginRight: "20px" }}
-        {...register("search")}
+        style={{ marginRight: '20px' }}
+        {...register('search')}
       />
       <button type="submit" value="submit" className="btn">
         <img

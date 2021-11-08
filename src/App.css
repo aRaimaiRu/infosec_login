@@ -1,0 +1,10 @@
+* {
+  font-family: 'roboto' !important;
+}
+.flexproductcontainer {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  justify-items: center;
+  row-gap: 10px;
+}

@@ -120,9 +120,11 @@ const ShopProfile = (props) => {
         <div className="row ">
           <div className="col-12">
             <div className="d-flex justify-content-around">
-              <button className="btn btn-danger button-custom">
-                <h4>DashBoard</h4>
-              </button>
+              <Link to={'/shopdashboard/' + id}>
+                <button className="btn btn-danger button-custom">
+                  <h4>DashBoard</h4>
+                </button>
+              </Link>
             </div>
           </div>
         </div>

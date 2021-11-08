@@ -37,7 +37,7 @@ import './App.css';
 import ShopRegister from './components/page/registerShop/content';
 import ManageRole from './components/page/manageRolePermission/content';
 import ShopReportContent from './components/page/shopreport';
-
+import SearchProduct from './components/page/searchproduct';
 function App() {
   const { register, handleSubmit } = useForm();
   const [token, setToken] = useRecoilState(tokenState);
@@ -105,9 +105,13 @@ function App() {
             <ShopProfileContent />
           </Route>
 
-          <Route path="/shopdashboard">
+          <Route path="/shopdashboard/:id">
             <Header></Header>
             <ShopDashboard />
+          </Route>
+          <Route path="/search">
+            <Header></Header>
+            <SearchProduct />
           </Route>
           {token.firstName === undefined && (
             <Switch>

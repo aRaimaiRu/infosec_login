@@ -3,7 +3,12 @@ import Productdetaillayout from '../../productdetaillayout';
 import homestyle from '../../../styles/HomePage.module.css';
 import './home.css';
 import EmblaCarousel from '../../EmblaCarousel';
-import { getOwnData, refreshToken, logout } from '../../../utils/userAPI';
+import {
+  getOwnData,
+  refreshToken,
+  logout,
+  getLastestProduct,
+} from '../../../utils/userAPI';
 import { useHistory, Link } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { tokenState } from '../../../store';
@@ -38,21 +43,25 @@ function HomeContent(props) {
         <h1>ดูร้าน</h1>
       </div>
     ));
+  const [showProduct, setShowProduct] = useState([
+    {
+      id: '1',
+      previewurl: '/images/SneakerRed.jpg',
+    },
+    {
+      id: '2',
+      previewurl: '/images/SneakerRed.jpg',
+    },
+    {
+      id: '3',
+      previewurl: '/images/SneakerRed.jpg',
+    },
+  ]);
 
-  const showProduct = [
-    {
-      url: '/product/1',
-      img: '/images/SneakerRed.jpg',
-    },
-    {
-      url: '/product/2',
-      img: '/images/SneakerRed.jpg',
-    },
-    {
-      url: '/product/2',
-      img: '/images/SneakerRed.jpg',
-    },
-  ];
+  useEffect(async () => {
+    let result = await getLastestProduct();
+    setShowProduct(result);
+  }, []);
   return (
     <Productdetaillayout>
       <div className="p-2">
@@ -99,11 +108,15 @@ function HomeContent(props) {
           <h1>รายการสินค้า</h1>
           <div
             // className={searchstyle.searchresultcontainer}
-            className=""
+            className="flexproductcontainer"
           >
             {showProduct.map((obj) => (
-              <Link to={obj.url}>
-                <img src={obj.img} className="imageresult m-2" alt="img" />
+              <Link to={`/product/${obj.id}`}>
+                <img
+                  src={obj.previewurl}
+                  className="imageresult m-2"
+                  alt="img"
+                />
               </Link>
             ))}
           </div>
