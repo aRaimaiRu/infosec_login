@@ -60,7 +60,7 @@ const ShopApprove = (props) => {
               <button
                 className="btn button-custom pri-color"
                 onClick={() => {
-                  history.push(`/ReportedShop/${l.id}`);
+                  history.push(`/shopprofile/${l.id}`);
                 }}
               >
                 <span>

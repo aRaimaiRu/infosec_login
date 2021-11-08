@@ -37,7 +37,6 @@ import './App.css';
 import ShopRegister from './components/page/registerShop/content';
 import ManageRole from './components/page/manageRolePermission/content';
 import ShopReportContent from './components/page/shopreport';
-import ManageRole from './components/page/manageRolePermission/content';
 
 function App() {
   const { register, handleSubmit } = useForm();

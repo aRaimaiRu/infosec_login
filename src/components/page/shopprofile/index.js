@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Layout from '../../layout';
+import { useRecoilState, RecoilRoot } from 'recoil';
+
 import FileUploader from '../../FileUploadBtn';
 import './shopprofile.css';
 import {
@@ -10,10 +12,13 @@ import {
   Link,
   useHistory,
 } from 'react-router-dom';
+import { tokenState } from '../../../store';
 
-import { getAShop } from '../../../utils/userAPI';
+import { getAShop, changeShopStatus } from '../../../utils/userAPI';
 const ShopProfile = (props) => {
   const admin = true;
+  const [token, setToken] = useRecoilState(tokenState);
+
   let history = useHistory();
   let { id } = useParams();
   const [shopProfile, setshopProfile] = useState({
@@ -21,22 +26,28 @@ const ShopProfile = (props) => {
     shopAddress: 'อะไรก็ไม่รู้ สมมุติว่ายาวมาก ยาวมากกกกกกกกก 112112112',
     shopTel: '0888888888',
     logo: '/images/image_test.jpg',
+    LinkIDLine: 'https://www.google.com/',
     like: 0,
     dislike: 0,
   });
-  // useEffect(async () => {
-  //   let shop = await getAShop(id);
-  //   console.log(shop);
-  //   setshopProfile(shop);
-  // }, []);
-  // const handleFile = async (file) => {
-  //   setshopProfile((prev) => ({
-  //     ...prev,
-  //     logo: URL.createObjectURL(file),
-  //   }));
+  useEffect(async () => {
+    let shop = await getAShop(id);
+    console.log(shop);
+    setshopProfile(shop);
+  }, []);
+  const handleFile = async (file) => {
+    setshopProfile((prev) => ({
+      ...prev,
+      logo: URL.createObjectURL(file),
+    }));
 
-  //   // shopProfile.imageurl = URL.createObjectURL(file);
-  // };
+    // shopProfile.imageurl = URL.createObjectURL(file);
+  };
+
+  const closeshop = async () => {
+    console.log('try to close shop');
+    let result = await changeShopStatus(id, 'closed', token.token);
+  };
   return (
     <Layout>
       <div style={{ width: '100%' }} className="shopprofile p-3">
@@ -68,9 +79,11 @@ const ShopProfile = (props) => {
               <h3 className="mr-auto">รายละเอียดร้านค้า</h3>
 
               <h4 className="">ADD LINE :</h4>
-              <button className="btn btn-sm bg-success btn-sm mt-2 mx-2 text-white">
-                Click
-              </button>
+              <a href={shopProfile.LinkIDLine}>
+                <button className="btn btn-sm bg-success btn-sm mt-2 mx-2 text-white">
+                  Click
+                </button>
+              </a>
             </div>
             <hr />
             <h4>ชื่อผู้ใช้ : {shopProfile.name}</h4>
@@ -82,22 +95,26 @@ const ShopProfile = (props) => {
         <div className="row mb-2">
           <div className="col-6 text-center">
             <i class="fa fa-thumbs-up like"></i>
-            <h4>15</h4>
-            {admin && (
-              <button className="btn btn-check">
-                <i className="bi bi-check"></i>
-              </button>
-            )}
+            <h4>{shopProfile.like}</h4>
+            {token
+              ? token.RoleId == 3 && (
+                  <button className="btn btn-check">
+                    <i className="bi bi-check"></i>
+                  </button>
+                )
+              : ''}
           </div>
 
           <div className="col-6 text-center">
             <i class="fa fa-thumbs-down dislike"></i>
-            <h4>3</h4>
-            {admin && (
-              <button className="btn btn-x">
-                <i className="bi bi-x"></i>
-              </button>
-            )}
+            <h4>{shopProfile.dislike}</h4>
+            {token
+              ? token.RoleId == 3 && (
+                  <button className="btn btn-x" onClick={() => closeshop()}>
+                    <i className="bi bi-x"></i>
+                  </button>
+                )
+              : ''}
           </div>
         </div>
         <div className="row ">
