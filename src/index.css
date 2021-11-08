@@ -146,3 +146,9 @@ form > label {
 .embla__button--next {
   right: 27px;
 }
+.colorpink {
+  color: var(--pink);
+}
+.pointer {
+  cursor: pointer;
+}

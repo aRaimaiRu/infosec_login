@@ -68,18 +68,23 @@ function HomeContent(props) {
         <SearchBar></SearchBar>
         <div className={homestyle.homenavbar}>
           {/* Name User */}
+
           {token.firstName !== undefined && (
-            <div className={homestyle.divider}>
-              <h1>{token.firstName}</h1>
-            </div>
+            <Link to={`/profile/${token.id}`}>
+              <div className={homestyle.divider} style={{ cursor: 'pointer' }}>
+                <h1>{token.firstName}</h1>
+              </div>
+            </Link>
           )}
           {/* END Name User */}
           {/* Customer */}
           {showOpenShopOrOwnShop}
           {/* END Customer */}
-          <div className={homestyle.divider}>
-            <h1>รายการสินค้า</h1>
-          </div>
+          <Link to="/search">
+            <div className={homestyle.divider}>
+              <h1>รายการสินค้า</h1>
+            </div>
+          </Link>
           {/* login   /   logout */}
           {token.firstName === undefined ? (
             <div
@@ -94,7 +99,7 @@ function HomeContent(props) {
           ) : (
             <div
               className={homestyle.divider}
-              style={{ border: 'none' }}
+              style={{ border: 'none', cursor: 'pointer' }}
               onClick={() => logout(setToken)}
             >
               <h1>logout</h1>

@@ -25,7 +25,7 @@ const Profile = (props) => {
   useEffect(async () => {
     let shop = await getUser(id);
     console.log(shop);
-    setuserProfile(shop);
+    if (shop) setuserProfile(shop);
   }, []);
   const handleFile = async (file) => {
     setuserProfile((prev) => ({

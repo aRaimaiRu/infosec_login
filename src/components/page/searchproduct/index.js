@@ -11,7 +11,7 @@ import {
 import Layout from '../../productdetaillayout';
 import productstyle from '../../../styles/Product.module.css';
 import loginstyle from '../../../styles/loginpage.module.css';
-import { getAProduct } from '../../../utils/userAPI';
+import { searchInAllProduct } from '../../../utils/userAPI';
 import SearchBar from '../../searchbar';
 
 function useQuery() {
@@ -48,11 +48,35 @@ export default function ProductDetails() {
       },
     },
   ]);
+  useEffect(async () => {
+    let myobj = {
+      brand: query.get('brand'),
+      tag: query.get('tag'),
+      productfrom: query.get('productfrom'),
+    };
+    if (!query.get('brand')) delete myobj['brand'];
+    if (!query.get('tag')) delete myobj['tag'];
+    if (!query.get('productfrom')) delete myobj['productfrom'];
+    console.log(myobj);
+    let result = await searchInAllProduct({ ...myobj });
+    setShowProduct(result);
+  }, [query]);
   return (
     <Layout>
       <SearchBar></SearchBar>
       <h1 style={{ alignSelf: 'start' }}>
-        คำที่ค้นหา : {query.get('brand') ? `brand=${query.get('brand')}` : ''}
+        คำที่ค้นหา :{' '}
+        <span className="colorpink">
+          {query.get('brand') ? `brand=${query.get('brand')}` : ''}
+        </span>
+        <span className="colorpink">
+          {query.get('tag') ? `tag=${query.get('tag')}` : ''}
+        </span>
+        <span className="colorpink">
+          {query.get('productfrom')
+            ? `productfrom=${query.get('productfrom')}`
+            : ''}
+        </span>
       </h1>
       <div className="flexproductcontainer">
         {showProduct.map((obj) => (

@@ -106,7 +106,7 @@ const ShopProfile = (props) => {
           </div>
 
           <div className="col-6 text-center">
-            <i class="fa fa-thumbs-down dislike"></i>
+            <i className="fa fa-thumbs-down dislike"></i>
             <h4>{shopProfile.dislike}</h4>
             {token
               ? token.RoleId == 3 && (

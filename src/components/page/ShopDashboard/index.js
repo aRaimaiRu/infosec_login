@@ -144,7 +144,9 @@ const ShopProfile = (props) => {
         <div className="shopfooter">
           <div className="row align-items-center h-100 ">
             <div className="col d-flex justify-content-around">
-              <button className="btn btn-custom text-center">+</button>
+              <Link to="/addproduct">
+                <button className="btn btn-custom text-center">+</button>
+              </Link>
             </div>
           </div>
         </div>

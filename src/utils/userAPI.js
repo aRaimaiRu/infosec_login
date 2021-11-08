@@ -499,6 +499,28 @@ async function getLastestProduct() {
     })
     .catch((e) => alert(e));
 }
+// http://localhost:3002/api/product/search/inallproduct
+async function searchInAllProduct(body) {
+  return fetch(
+    `http://${HOSTAPI || 'localhost:3002'}/api/product/search/inallproduct`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ ...body }),
+    }
+  )
+    .then((data) => data.json())
+    .then((data) => {
+      if (data.message) {
+        alert(data.message);
+      } else {
+        return data;
+      }
+    })
+    .catch((e) => alert(e));
+}
 export {
   login,
   registerapi,
@@ -527,4 +549,5 @@ export {
   getReportShop,
   searchproduct,
   getLastestProduct,
+  searchInAllProduct,
 };
