@@ -60,7 +60,7 @@ function HomeContent(props) {
 
   useEffect(async () => {
     let result = await getLastestProduct();
-    setShowProduct(result);
+    if (result) setShowProduct(result);
   }, []);
   return (
     <Productdetaillayout>
