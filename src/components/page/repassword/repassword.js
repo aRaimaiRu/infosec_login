@@ -46,12 +46,14 @@ function RegisterContent(props) {
           type="password"
           className={loginstyle.inputwidth100}
           {...register('password')}
+          placeholder="ตัวอักษร A-Z,a-z,0-9"
         />
         <label>ยืนยันรหัสผ่าน</label>
         <input
           type="password"
           className={loginstyle.inputwidth100}
           {...register('repassword')}
+          placeholder="ตัวอักษร A-Z,a-z,0-9"
         />
 
         <div className={loginstyle.flexcolumncenter}>
