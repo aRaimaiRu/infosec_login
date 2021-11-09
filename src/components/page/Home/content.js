@@ -64,27 +64,30 @@ function HomeContent(props) {
   }, []);
   return (
     <Productdetaillayout>
-      <div className="p-2">
+      <div className="p-2" style={{ width: '100%' }}>
         <SearchBar></SearchBar>
         <div className={homestyle.homenavbar}>
           {/* Name User */}
 
           {token.firstName !== undefined && (
-            <Link to={`/profile/${token.id}`}>
-              <div className={homestyle.divider} style={{ cursor: 'pointer' }}>
+            <div className={homestyle.divider} style={{ cursor: 'pointer' }}>
+              <Link to={`/profile/${token.id}`}>
                 <h1>{token.firstName}</h1>
-              </div>
-            </Link>
+              </Link>
+            </div>
           )}
           {/* END Name User */}
           {/* Customer */}
           {showOpenShopOrOwnShop}
           {/* END Customer */}
-          <Link to="/search">
-            <div className={homestyle.divider}>
+
+          <div className={homestyle.divider}>
+            {' '}
+            <Link to="/search">
               <h1>รายการสินค้า</h1>
-            </div>
-          </Link>
+            </Link>
+          </div>
+
           {/* login   /   logout */}
           {token.firstName === undefined ? (
             <div
