@@ -36,7 +36,7 @@ function RegisterContent(props) {
           {...register('email')}
         />
 
-        <div className={loginstyle.flexcolumncenter}>
+        <div className={loginstyle.flexcolumncenter} style={{ margin: '10px' }}>
           {/* <Link href="/register"> */}
           <button
             className={loginstyle.roundbutton}
