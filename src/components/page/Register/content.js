@@ -13,11 +13,11 @@ function RegisterContent(props) {
   const [errortxt, setErrortxt] = useState('');
 
   const submit = async (data) => {
-    console.log('submit data =', data);
-    if (!(valEmail(data.email) && valPassword(data.password))) {
-      setErrortxt('Invalid Email or Password!');
-      return;
-    }
+    // console.log('submit data =', data);
+    // if (!(valEmail(data.email) && valPassword(data.password))) {
+    //   setErrortxt('Invalid Email or Password!');
+    //   return;
+    // }
     if (
       !(valName(data.name) && valName(data.lastname) && valName(data.address))
     ) {
