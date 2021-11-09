@@ -53,8 +53,13 @@ const ShopProfile = (props) => {
     let result = await changeShopStatus(id, 'closed', token.token);
   };
   const likeshop = async (like) => {
-    let res = await UserContact(id, token.token, like);
-    alert(res);
+    if (token.token == undefined) {
+      alert('need to login');
+      return;
+    } else {
+      let res = await UserContact(id, token.token, like);
+      alert(res);
+    }
   };
 
   return (

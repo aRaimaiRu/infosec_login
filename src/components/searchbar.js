@@ -26,10 +26,11 @@ export default function SearchBar({ children }) {
         className={loginpage.inputwidth100}
         style={{ marginRight: '20px' }}
         {...register('search')}
+        placeholder={`brand=รองเท้ายี่ห้อ&tag=รองเท้าประเภท&productfrom=ผลิตจาก`}
       />
       <button type="submit" value="submit" className="btn">
         <img
-          src="/images/searchimg.png"
+          src="/images/searchimg2.png"
           width={50}
           height={50}
           color="red"
