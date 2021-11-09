@@ -13,17 +13,17 @@ function RegisterContent(props) {
   const [errortxt, setErrortxt] = useState('');
 
   const submit = async (data) => {
-    console.log('submit data =', data);
+    // console.log('submit data =', data);
     // if (!(valEmail(data.email) && valPassword(data.password))) {
     //   setErrortxt('Invalid Email or Password!');
     //   return;
     // }
-    // if (
-    //   !(valName(data.name) && valName(data.lastname) && valName(data.address))
-    // ) {
-    //   setErrortxt('Invalid name or address');
-    //   return;
-    // }
+    if (
+      !(valName(data.name) && valName(data.lastname) && valName(data.address))
+    ) {
+      setErrortxt('Invalid name or address');
+      return;
+    }
     alert('submit');
     setErrortxt('');
     registerapi({
