@@ -7,10 +7,10 @@ function HomeFooter(props) {
     <div className="homefooter ">
       <div className="row align-items-center h-100 ">
         <div className="col d-flex justify-content-around">
-          <Link to="shopapprove">
+          <Link to="/shopapprove">
             <button className="btn btn-custom">อนุมัติเปิดร้าน</button>
           </Link>
-          <Link to="shopreport">
+          <Link to="/shopreport">
             <button className="btn btn-custom-2 bg-primary">
               รายชื่อร้านค้า
             </button>

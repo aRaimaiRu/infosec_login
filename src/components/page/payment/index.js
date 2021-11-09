@@ -95,7 +95,12 @@ const Payment = (props) => {
         <div className="row ">
           <div className="col pt-30">
             <div className="d-flex justify-content-around ">
-              <button className="btn btn-danger button-custom">
+              <button
+                className="btn btn-danger button-custom"
+                onClick={() => {
+                  history.goBack();
+                }}
+              >
                 <h4>ยกเลิก</h4>
               </button>
               <a href={product.shop.LinkIDLine}>

@@ -14,7 +14,11 @@
   flex-grow: 1;
 }
 
-.divider > h1 {
+.divider h1 {
+  justify-self: center;
+  text-align: center;
+}
+.divider a > h1 {
   justify-self: center;
   text-align: center;
 }

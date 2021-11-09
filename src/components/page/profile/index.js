@@ -43,7 +43,12 @@ const Profile = (props) => {
             <h3>โปรไฟล์</h3>
           </div>
           <div className="col-4"></div>
-          <div className="col-4 text-right">
+          <div
+            className="col-4 text-right pointer"
+            onClick={() => {
+              history.goBack();
+            }}
+          >
             <h3>ย้อนกลับ</h3>
           </div>
         </div>

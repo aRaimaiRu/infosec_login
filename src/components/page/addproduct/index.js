@@ -6,8 +6,9 @@ import FileUploader from '../../FileUploadBtn';
 import Layout from '../../layout';
 import './addproduct.css';
 import { addProduct } from '../../../utils/userAPI';
-
+import { useHistory } from 'react-router-dom';
 function Addproduct(props) {
+  let history = useHistory();
   const [token, setToken] = useRecoilState(tokenState);
   const [exImg, setExImg] = useState('/images/image_test.jpg');
   const [imgFile, setImgFile] = useState('');
@@ -140,7 +141,13 @@ function Addproduct(props) {
         <div className="row ">
           <div className="col pt-30">
             <div className="d-flex justify-content-around ">
-              <button className="btn btn-danger button-custom">
+              <button
+                className="btn btn-danger button-custom"
+                onClick={(e) => {
+                  e.preventDefault();
+                  history.goBack();
+                }}
+              >
                 <h4>ยกเลิก</h4>
               </button>
               <button

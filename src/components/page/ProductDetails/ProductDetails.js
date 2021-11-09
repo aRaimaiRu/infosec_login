@@ -5,6 +5,7 @@ import {
   Route,
   useParams,
   Link,
+  useHistory,
 } from 'react-router-dom';
 import Layout from '../../productdetaillayout';
 import productstyle from '../../../styles/Product.module.css';
@@ -12,6 +13,7 @@ import loginstyle from '../../../styles/loginpage.module.css';
 import { getAProduct } from '../../../utils/userAPI';
 import SearchBar from '../../searchbar';
 export default function ProductDetails() {
+  let history = useHistory();
   let { id } = useParams();
   useEffect(async () => {
     const data = await getAProduct(id);
@@ -49,26 +51,56 @@ export default function ProductDetails() {
       },
     ],
   });
+  // const footer = (
+  //   <footer className={productstyle.buyproductfooter}>
+  // <p>ราคา: {product.price}</p>
+  // <p>บาท</p>
+  // <p className={productstyle.cancelfooterbtn}>
+  //   <button className={productstyle.roundbutton}>ยกเลิก</button>
+  // </p>
+  // <p className={productstyle.buyfooterbtn}>
+  //   <Link to={`/order/${id}`}>
+  //     <button
+  //       className={productstyle.roundbutton}
+  //       style={{ backgroundColor: 'green' }}
+  //     >
+  //       สั่งซื้อ
+  //     </button>
+  //   </Link>
+  //     </p>
+  //     <p>ค่าส่ง: XXXX</p>
+  //     <p>บาท</p>
+  //   </footer>
+  // );
   const footer = (
-    <footer className={productstyle.buyproductfooter}>
-      <p>ราคา: {product.price}</p>
-      <p>บาท</p>
-      <p className={productstyle.cancelfooterbtn}>
-        <button className={productstyle.roundbutton}>ยกเลิก</button>
-      </p>
-      <p className={productstyle.buyfooterbtn}>
-        <Link to={`/order/${id}`}>
-          <button
-            className={productstyle.roundbutton}
-            style={{ backgroundColor: 'green' }}
-          >
-            สั่งซื้อ
-          </button>
-        </Link>
-      </p>
-      <p>ค่าส่ง: XXXX</p>
-      <p>บาท</p>
-    </footer>
+    <div className="homefooter ">
+      <div className="row align-items-center h-100 ">
+        <div className="col d-flex justify-content-around align-items-center">
+          <p className="colorwhite">ราคา: {product.price}</p>
+          <p className="colorwhite">บาท</p>
+          <p className={productstyle.cancelfooterbtn}>
+            <button
+              className={productstyle.roundbutton}
+              onClick={() => {
+                history.goBack();
+              }}
+            >
+              ยกเลิก
+            </button>
+          </p>
+          <p className={productstyle.buyfooterbtn}>
+            <Link to={`/order/${id}`}>
+              <button
+                className={productstyle.roundbutton}
+                style={{ backgroundColor: 'green' }}
+              >
+                สั่งซื้อ
+              </button>
+            </Link>
+          </p>
+        </div>
+      </div>
+    </div>
   );
   return (
     <Layout footer={footer}>
@@ -119,16 +151,18 @@ export default function ProductDetails() {
               {product.shopName}
             </h3>
             <p>{product.shopdescription}</p>
-            <button
-              className={productstyle.roundbutton}
-              style={{
-                width: '100px',
-                height: 'fit-content',
-                backgroundColor: 'var(--pink)',
-              }}
-            >
-              ติดต่อร้านค้า
-            </button>
+            <Link to={`/shopprofile/${product.shopId}`}>
+              <button
+                className={productstyle.roundbutton}
+                style={{
+                  width: '100px',
+                  height: 'fit-content',
+                  backgroundColor: 'var(--pink)',
+                }}
+              >
+                ติดต่อร้านค้า
+              </button>
+            </Link>
           </div>
         </div>
       </div>

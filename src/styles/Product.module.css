@@ -1,66 +1,64 @@
-.mainimage{
-    width: 100%;
-    border-radius: 30px;
-    margin: 20px 0;
+.mainimage {
+  width: 100%;
+  border-radius: 30px;
+  margin: 20px 0;
+  max-width: 500px;
 }
 
-.buyproductfooter{
-    /* 4 x 2 */
-    display: grid;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 8%;
-    width: 100%;
-    background-color: var(--pink);
-    grid-template-columns: 2fr 1fr 2fr 2fr;
-    grid-template-rows: repeat(2,1fr);
-    justify-items: center;
-    align-items: center;
-    color: white;
+.buyproductfooter {
+  /* 4 x 2 */
+  display: grid;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 8%;
+  width: 100%;
+  background-color: var(--pink);
+  grid-template-columns: 2fr 1fr 2fr 2fr;
+  grid-template-rows: repeat(2, 1fr);
+  justify-items: center;
+  align-items: center;
+  color: white;
 }
 
-.cancelfooterbtn{
-    grid-column: 3;
-    grid-row: 1 / -1;
-
+.cancelfooterbtn {
+  grid-column: 3;
+  grid-row: 1 / -1;
 }
-.buyfooterbtn{
-    grid-column: 4;
-    grid-row: 1 / -1;
-}
-
-.roundbutton{
-    background-color: red;
-    border-radius: 30px;
-    width: 150px;
-    height: 40px;
-    font-size: 16;
-    border: 0;
-    color: white;
-    cursor: pointer;
+.buyfooterbtn {
+  grid-column: 4;
+  grid-row: 1 / -1;
 }
 
-.productdetailcontainer{
-    width: 100%;
-    align-self: flex-start;
+.roundbutton {
+  background-color: red;
+  border-radius: 30px;
+  width: 150px;
+  height: 40px;
+  font-size: 16;
+  border: 0;
+  color: white;
+  cursor: pointer;
 }
 
-.productattributecontainer{
-    width: 100%;
-    border-top: 3px solid #bbb;
-    border-bottom: 3px solid #bbb;
+.productdetailcontainer {
+  width: 100%;
+  align-self: flex-start;
 }
 
-.flexrowleft{
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
-    column-gap: 1em;
-
+.productattributecontainer {
+  width: 100%;
+  border-top: 3px solid #bbb;
+  border-bottom: 3px solid #bbb;
 }
 
+.flexrowleft {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  column-gap: 1em;
+}
 
-.colorpink{
-    color: var(--pink);
+.colorpink {
+  color: var(--pink);
 }

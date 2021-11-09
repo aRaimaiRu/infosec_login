@@ -38,7 +38,12 @@ const ShopApproveProcess = (props) => {
             <h3>โปรไฟล์ร้านค้า</h3>
           </div>
           <div className="col-4"></div>
-          <div className="col-4 text-right">
+          <div
+            className="col-4 text-right pointer"
+            onClick={() => {
+              history.goBack();
+            }}
+          >
             <h3>ย้อนกลับ</h3>
           </div>
         </div>
@@ -72,7 +77,12 @@ const ShopApproveProcess = (props) => {
         <div className="row ">
           <div className="col pt-30">
             <div className="d-flex justify-content-around ">
-              <button className="btn btn-danger button-custom">
+              <button
+                className="btn btn-danger button-custom"
+                onClick={() => {
+                  history.goBack();
+                }}
+              >
                 <h4>ไม่ผ่าน</h4>
               </button>
               <button

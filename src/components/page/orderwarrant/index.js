@@ -1,21 +1,23 @@
-import React, { useState } from "react";
-import Layout from "../../layout";
-import "./orderwarrant.css";
+import React, { useState } from 'react';
+import { useHistory } from 'react-router';
+import Layout from '../../layout';
+import './orderwarrant.css';
 const orderData = {
   size: 42,
-  type: "แบบสวม",
-  from: "somewhere",
+  type: 'แบบสวม',
+  from: 'somewhere',
 };
 
 const profileData = {
-  name: "ยินดี จ่ายเงิน",
-  address: "อะไรก็ไม่รู้ สมมุติว่ายาวมาก ยาวมากกกกกกกกก 112112112",
-  tel: "0123456789",
+  name: 'ยินดี จ่ายเงิน',
+  address: 'อะไรก็ไม่รู้ สมมุติว่ายาวมาก ยาวมากกกกกกกกก 112112112',
+  tel: '0123456789',
 };
 const OrderWarrant = (props) => {
+  let history = useHistory();
   return (
     <Layout>
-      <div style={{ width: "100%" }} className="p-3 mt-3 order">
+      <div style={{ width: '100%' }} className="p-3 mt-3 order">
         <div className="row">
           <div className="col-md-6 pt-5">
             <div className="d-flex justify-content-center">
@@ -55,7 +57,12 @@ const OrderWarrant = (props) => {
         <div className="row ">
           <div className="col pt-30">
             <div className="d-flex justify-content-around ">
-              <button className="btn btn-danger button-custom">
+              <button
+                className="btn btn-danger button-custom"
+                onClick={() => {
+                  history.goBack();
+                }}
+              >
                 <h4>ยกเลิก</h4>
               </button>
               <button className="btn btn-success button-custom">

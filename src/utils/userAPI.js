@@ -67,7 +67,7 @@ async function getIsContact(shopid, token) {
   );
 }
 // http://localhost:3002:3002/api/shop/contact/2(:shopid)
-async function UserContact(shopid, token) {
+async function UserContact(shopid, token, like) {
   return fetch(
     `http://${HOSTAPI || 'localhost:3002'}/api/shop/contact/${shopid}`,
     {
@@ -76,8 +76,20 @@ async function UserContact(shopid, token) {
         Authorization: 'Bearer ' + token.replace(/"/g, ''),
         'Content-Type': 'application/json',
       },
+      body: JSON.stringify({
+        like,
+      }),
     }
-  );
+  )
+    .then((data) => data.json())
+    .then((data) => {
+      if (data.message) {
+        alert(data.message);
+      } else {
+        return data;
+      }
+    })
+    .catch((e) => alert(e));
 }
 // http://localhost:3002:3002/api/shop/approve
 async function changeShopStatus(shopid, status, token) {

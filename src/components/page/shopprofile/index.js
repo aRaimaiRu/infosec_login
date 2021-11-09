@@ -14,7 +14,11 @@ import {
 } from 'react-router-dom';
 import { tokenState } from '../../../store';
 
-import { getAShop, changeShopStatus } from '../../../utils/userAPI';
+import {
+  getAShop,
+  changeShopStatus,
+  UserContact,
+} from '../../../utils/userAPI';
 const ShopProfile = (props) => {
   const admin = true;
   const [token, setToken] = useRecoilState(tokenState);
@@ -48,6 +52,11 @@ const ShopProfile = (props) => {
     console.log('try to close shop');
     let result = await changeShopStatus(id, 'closed', token.token);
   };
+  const likeshop = async (like) => {
+    let res = await UserContact(id, token.token, like);
+    alert(res);
+  };
+
   return (
     <Layout>
       <div style={{ width: '100%' }} className="shopprofile p-3">
@@ -56,7 +65,12 @@ const ShopProfile = (props) => {
             <h3>โปรไฟล์ร้านค้า</h3>
           </div>
           <div className="col-4"></div>
-          <div className="col-4 text-right">
+          <div
+            className="col-4 text-right pointer"
+            onClick={() => {
+              history.goBack();
+            }}
+          >
             <h3>ย้อนกลับ</h3>
           </div>
         </div>
@@ -93,7 +107,7 @@ const ShopProfile = (props) => {
         </div>
         <hr />
         <div className="row mb-2">
-          <div className="col-6 text-center">
+          <div className="col-6 text-center" onClick={() => likeshop('1')}>
             <i class="fa fa-thumbs-up like"></i>
             <h4>{shopProfile.like}</h4>
             {token
@@ -105,7 +119,7 @@ const ShopProfile = (props) => {
               : ''}
           </div>
 
-          <div className="col-6 text-center">
+          <div className="col-6 text-center" onClick={() => likeshop('-1')}>
             <i className="fa fa-thumbs-down dislike"></i>
             <h4>{shopProfile.dislike}</h4>
             {token
