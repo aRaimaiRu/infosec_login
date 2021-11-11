@@ -64,7 +64,7 @@ function HomeContent(props) {
   }, []);
   return (
     <Productdetaillayout>
-      <div className="p-2" style={{ width: '100%' }}>
+      <div className="" style={{ width: '100%' }}>
         <SearchBar></SearchBar>
         <div className={homestyle.homenavbar}>
           {/* Name User */}

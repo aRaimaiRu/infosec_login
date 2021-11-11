@@ -82,7 +82,7 @@ export default function ProductDetails() {
             <button
               className={productstyle.roundbutton}
               onClick={() => {
-                history.goBack();
+                history.push('/');
               }}
             >
               ยกเลิก

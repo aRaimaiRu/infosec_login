@@ -32,10 +32,12 @@ function RegisterContent(props) {
       username: data.email,
       password: sha256(data.password),
       address: data.address,
+      tel: data.tel,
     })
       .then((res) => res.json())
       .then((res) => {
         alert(res.message);
+        window.location.replace('/login');
       })
       .catch((e) => {
         console.log(e);

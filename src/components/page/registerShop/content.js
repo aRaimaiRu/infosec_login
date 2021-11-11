@@ -19,13 +19,21 @@ function Content() {
     console.log(data);
     realRegisterShop(token.token, data);
     alert('submit');
+    window.location.replace('/OwnShop');
   };
   return (
     <Layout>
       <div className={PageDetails.Gridheader}>
         <h1></h1>
         <h1>เปิดร้าน</h1>
-        <h1>ย้อนกลับ {'>'}</h1>
+        <h1
+          className="pointer"
+          onClick={() => {
+            window.history.back();
+          }}
+        >
+          ย้อนกลับ {'>'}
+        </h1>
       </div>
       <form
         className={loginstyle.inputcontainer}
