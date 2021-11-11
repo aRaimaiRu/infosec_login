@@ -49,7 +49,12 @@ const ShopApprove = (props) => {
         <div className="row">
           <div className="col-sm-12 text-center">
             <h1>อนุมัติร้าน</h1>
-            <div className="text-right">
+            <div
+              className="col-4 text-right pointer"
+              onClick={() => {
+                history.goBack();
+              }}
+            >
               <h3>ย้อนกลับ</h3>
             </div>
           </div>
