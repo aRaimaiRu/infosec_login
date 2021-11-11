@@ -9,19 +9,17 @@ import sha256 from 'sha256';
 import { Controller, useForm } from 'react-hook-form';
 import Layout from '../../loginlayout';
 import loginstyle from '../../../styles/loginpage.module.css';
+import toast from 'react-hot-toast';
 function LoginContent(props) {
   const { register, handleSubmit } = useForm();
   const [token, setToken] = useRecoilState(tokenState);
 
-  const [errortxt, setErrortxt] = useState('');
-
   const submit = (data) => {
     if (!(valEmail(data.email) && valPassword(data.password))) {
-      setErrortxt('Invalid Email or Password!');
+      toast.error('Invalid Email or Password!');
       return;
     }
 
-    setErrortxt('');
     //send api
     login({ username: data.email, password: sha256(data.password) })
       .then((res) => res.json())
@@ -30,11 +28,11 @@ function LoginContent(props) {
           console.log('login res=', res);
           setToken(res);
         } else {
-          alert(res.message);
+          toast.error(res.message);
         }
       })
       .catch((e) => {
-        alert(e);
+        toast.error(e);
       });
   };
   return (
@@ -93,7 +91,6 @@ function LoginContent(props) {
           <Link to="/forgotpassword">
             <p className={loginstyle.font12}>ลืมรหัสผ่าน</p>
           </Link>
-          <p style={{ color: 'red' }}>{errortxt}</p>
         </div>
       </form>
     </Layout>

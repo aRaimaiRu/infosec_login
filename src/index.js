@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { useRecoilState,RecoilRoot } from 'recoil';
+import { useRecoilState, RecoilRoot } from 'recoil';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import { Toaster } from 'react-hot-toast';
 ReactDOM.render(
   <React.StrictMode>
     <RecoilRoot>
-      <App /> 
+      <Toaster />
+      <App />
     </RecoilRoot>
   </React.StrictMode>,
   document.getElementById('root')

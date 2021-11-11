@@ -10,19 +10,19 @@ import loginstyle from '../../../styles/loginpage.module.css';
 import PageDetails from '../../../styles/PageDetails.module.css';
 import FileUploader from '../../FileUploadBtn';
 import { valImage } from '../../../utils/validate';
+import toast from 'react-hot-toast';
 // Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
 
 function Content() {
   const [token, setToken] = useRecoilState(tokenState);
   const { register, handleSubmit } = useForm();
-  const [errortxt, setErrortxt] = useState('');
   const submit = (data) => {
     valImage(data.IDcardImage);
     valImage(data.promptPayImg);
     valImage(data.logo);
     console.log(data);
     realRegisterShop(token.token, data);
-    alert('submit');
+    toast.success('submit');
     window.location.replace('/OwnShop');
   };
   return (
