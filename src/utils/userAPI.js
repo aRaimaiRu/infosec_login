@@ -50,7 +50,7 @@ async function getShop(shopid) {
         return data;
       }
     })
-    .catch((e) => toast.error);
+    .catch((e) => toast.error('failed to fetch'));
 }
 
 // http://localhost:3002:3002/api/shop/contact/1
@@ -89,7 +89,7 @@ async function UserContact(shopid, token, like) {
         return data;
       }
     })
-    .catch((e) => toast.error);
+    .catch((e) => toast.error('failed to fetch'));
 }
 // http://localhost:3002:3002/api/shop/approve
 async function changeShopStatus(shopid, status, token) {
@@ -112,7 +112,7 @@ async function changeShopStatus(shopid, status, token) {
         return data;
       }
     })
-    .catch((e) => toast.error);
+    .catch((e) => toast.error('failed to fetch'));
 }
 // http://localhost:3002:3002/api/user/register/shop
 async function registerShop({ name, address }, token) {
@@ -151,7 +151,7 @@ async function callrefreshToken(setToken) {
       }
       return res;
     })
-    .catch((e) => toast.error);
+    .catch((e) => toast.error('failed to fetch'));
 }
 
 // http://localhost:3002:3002/api/user/refreshToken
@@ -167,10 +167,10 @@ async function logout(setToken) {
     .then((res) => {
       setToken({});
       console.log('res  logout=', res);
-      toast.success('logout', res);
+      toast.error('logout', res);
       return res;
     })
-    .catch((e) => toast.error);
+    .catch((e) => toast.error('failed to fetch'));
 }
 
 // http://localhost:3002:3002/api/role/
@@ -191,7 +191,7 @@ async function getAllRole(token) {
         return data;
       }
     })
-    .catch((e) => toast.error);
+    .catch((e) => toast.error('failed to fetch'));
 }
 // http://localhost:3002:3002/api/role/update
 async function updateRolePermission(token, data) {
@@ -212,7 +212,7 @@ async function updateRolePermission(token, data) {
         return data;
       }
     })
-    .catch((e) => toast.error);
+    .catch((e) => toast.error('failed to fetch'));
 }
 // http://localhost:3002:3002/api/user/sendforgetpasswordemail
 async function forgotpassword(username) {
@@ -235,7 +235,7 @@ async function forgotpassword(username) {
         return data;
       }
     })
-    .catch((e) => toast.error);
+    .catch((e) => toast.error('failed to fetch'));
 }
 // http://localhost:3002:3002/api/user/repassword
 async function resetpassword(token, data) {
@@ -256,7 +256,7 @@ async function resetpassword(token, data) {
         return data;
       }
     })
-    .catch((e) => toast.error);
+    .catch((e) => toast.error('failed to fetch'));
 }
 
 // http://localhost:3002:3002/api/shop/register
@@ -284,7 +284,7 @@ async function realRegisterShop(token, data) {
         return data;
       }
     })
-    .catch((e) => toast.error);
+    .catch((e) => toast.error('failed to fetch'));
 }
 async function getOwnShop(token) {
   return fetch(`http://${HOSTAPI || 'localhost:3002'}/api/shop/OwnShop`, {
@@ -301,7 +301,7 @@ async function getOwnShop(token) {
         return data;
       }
     })
-    .catch((e) => toast.error);
+    .catch((e) => toast.error('failed to fetch'));
 }
 
 async function addProduct(token, data) {
@@ -328,7 +328,7 @@ async function addProduct(token, data) {
         return data;
       }
     })
-    .catch((e) => toast.error);
+    .catch((e) => toast.error('failed to fetch'));
 }
 
 // http://localhost:3002/api/product/4
@@ -345,7 +345,7 @@ async function getAShop(id) {
         return data;
       }
     })
-    .catch((e) => toast.error);
+    .catch((e) => toast.error('failed to fetch'));
 }
 
 // http://localhost:3002/api/product/4
@@ -367,7 +367,7 @@ async function getOrderProduct(token, id) {
         return data;
       }
     })
-    .catch((e) => toast.error);
+    .catch((e) => toast.error('failed to fetch'));
 }
 
 // http://localhost:3002/api/shop/getShopStatus/:shopstatus
@@ -391,7 +391,7 @@ async function getShopStatus(token, shopstatus) {
         return data;
       }
     })
-    .catch((e) => toast.error);
+    .catch((e) => toast.error('failed to fetch'));
 }
 
 // http://localhost:3002/api/shop/updateShop
@@ -416,7 +416,7 @@ async function changeOwnShopLogo(token, data) {
         return data;
       }
     })
-    .catch((e) => toast.error);
+    .catch((e) => toast.error('failed to fetch'));
 }
 // http://localhost:3002/api/product/4
 async function getAProduct(id) {
@@ -432,7 +432,7 @@ async function getAProduct(id) {
         return data;
       }
     })
-    .catch((e) => toast.error);
+    .catch((e) => toast.error('failed to fetch'));
 }
 // http://localhost:3002/api/user/4
 async function getUser(id) {
@@ -448,7 +448,7 @@ async function getUser(id) {
         return data;
       }
     })
-    .catch((e) => toast.error);
+    .catch((e) => toast.error('failed to fetch'));
 }
 
 // http://localhost:3002/api/shop/getReportShop
@@ -465,7 +465,7 @@ async function getReportShop(id) {
         return data;
       }
     })
-    .catch((e) => toast.error);
+    .catch((e) => toast.error('failed to fetch'));
 }
 // http://localhost:3002/api/product/search/inallproduct
 async function searchproduct(body) {
@@ -487,7 +487,7 @@ async function searchproduct(body) {
         return data;
       }
     })
-    .catch((e) => toast.error);
+    .catch((e) => toast.error('failed to fetch'));
 }
 
 // http://localhost:3002/api/product/search/inallproduct
@@ -509,7 +509,7 @@ async function getLastestProduct() {
         return data;
       }
     })
-    .catch((e) => toast.error);
+    .catch((e) => toast.error('failed to fetch'));
 }
 // http://localhost:3002/api/product/search/inallproduct
 async function searchInAllProduct(body) {
@@ -531,7 +531,7 @@ async function searchInAllProduct(body) {
         return data;
       }
     })
-    .catch((e) => toast.error);
+    .catch((e) => toast.error('failed to fetch'));
 }
 export {
   login,

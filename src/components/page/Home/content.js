@@ -60,7 +60,10 @@ function HomeContent(props) {
 
   useEffect(async () => {
     let result = await getLastestProduct();
-    if (result) setShowProduct(result);
+    if (Array.isArray(result)) {
+      console.log('home result = ', result);
+      setShowProduct(result);
+    }
   }, []);
   return (
     <Productdetaillayout>
