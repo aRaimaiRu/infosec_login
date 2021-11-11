@@ -1,6 +1,6 @@
 // import { useRecoilState } from 'recoil';
 // import { tokenState } from '../store';
-
+import toast from 'react-hot-toast';
 const HOSTAPI = '159.138.252.91';
 
 async function registerapi(data) {
@@ -45,12 +45,12 @@ async function getShop(shopid) {
     .then((data) => data.json())
     .then((data) => {
       if (data.message) {
-        alert(data.message);
+        toast.success(data.message);
       } else {
         return data;
       }
     })
-    .catch((e) => alert(e));
+    .catch((e) => toast.error);
 }
 
 // http://localhost:3002:3002/api/shop/contact/1
@@ -84,12 +84,12 @@ async function UserContact(shopid, token, like) {
     .then((data) => data.json())
     .then((data) => {
       if (data.message) {
-        alert(data.message);
+        toast.success(data.message);
       } else {
         return data;
       }
     })
-    .catch((e) => alert(e));
+    .catch((e) => toast.error);
 }
 // http://localhost:3002:3002/api/shop/approve
 async function changeShopStatus(shopid, status, token) {
@@ -107,12 +107,12 @@ async function changeShopStatus(shopid, status, token) {
     .then((data) => data.json())
     .then((data) => {
       if (data.message) {
-        alert(data.message);
+        toast.success(data.message);
       } else {
         return data;
       }
     })
-    .catch((e) => alert(e));
+    .catch((e) => toast.error);
 }
 // http://localhost:3002:3002/api/user/register/shop
 async function registerShop({ name, address }, token) {
@@ -151,7 +151,7 @@ async function callrefreshToken(setToken) {
       }
       return res;
     })
-    .catch((e) => alert(e));
+    .catch((e) => toast.error);
 }
 
 // http://localhost:3002:3002/api/user/refreshToken
@@ -167,10 +167,10 @@ async function logout(setToken) {
     .then((res) => {
       setToken({});
       console.log('res  logout=', res);
-      alert('logout', res);
+      toast.success('logout', res);
       return res;
     })
-    .catch((e) => alert(e));
+    .catch((e) => toast.error);
 }
 
 // http://localhost:3002:3002/api/role/
@@ -186,12 +186,12 @@ async function getAllRole(token) {
     .then((data) => data.json())
     .then((data) => {
       if (data.message) {
-        alert(data.message);
+        toast.success(data.message);
       } else {
         return data;
       }
     })
-    .catch((e) => alert(e));
+    .catch((e) => toast.error);
 }
 // http://localhost:3002:3002/api/role/update
 async function updateRolePermission(token, data) {
@@ -207,12 +207,12 @@ async function updateRolePermission(token, data) {
     .then((data) => data.json())
     .then((data) => {
       if (data.message) {
-        alert(data.message);
+        toast.success(data.message);
       } else {
         return data;
       }
     })
-    .catch((e) => alert(e));
+    .catch((e) => toast.error);
 }
 // http://localhost:3002:3002/api/user/sendforgetpasswordemail
 async function forgotpassword(username) {
@@ -230,12 +230,12 @@ async function forgotpassword(username) {
     .then((data) => data.json())
     .then((data) => {
       if (data.message) {
-        alert(data.message);
+        toast.success(data.message);
       } else {
         return data;
       }
     })
-    .catch((e) => alert(e));
+    .catch((e) => toast.error);
 }
 // http://localhost:3002:3002/api/user/repassword
 async function resetpassword(token, data) {
@@ -251,12 +251,12 @@ async function resetpassword(token, data) {
     .then((data) => data.json())
     .then((data) => {
       if (data.message) {
-        alert(data.message);
+        toast.success(data.message);
       } else {
         return data;
       }
     })
-    .catch((e) => alert(e));
+    .catch((e) => toast.error);
 }
 
 // http://localhost:3002:3002/api/shop/register
@@ -279,12 +279,12 @@ async function realRegisterShop(token, data) {
     .then((data) => data.json())
     .then((data) => {
       if (data.message) {
-        alert(data.message);
+        toast.success(data.message);
       } else {
         return data;
       }
     })
-    .catch((e) => alert(e));
+    .catch((e) => toast.error);
 }
 async function getOwnShop(token) {
   return fetch(`http://${HOSTAPI || 'localhost:3002'}/api/shop/OwnShop`, {
@@ -296,12 +296,12 @@ async function getOwnShop(token) {
     .then((data) => data.json())
     .then((data) => {
       if (data.message) {
-        alert(data.message);
+        toast.success(data.message);
       } else {
         return data;
       }
     })
-    .catch((e) => alert(e));
+    .catch((e) => toast.error);
 }
 
 async function addProduct(token, data) {
@@ -323,12 +323,12 @@ async function addProduct(token, data) {
     .then((data) => data.json())
     .then((data) => {
       if (data.message) {
-        alert(data.message);
+        toast.success(data.message);
       } else {
         return data;
       }
     })
-    .catch((e) => alert(e));
+    .catch((e) => toast.error);
 }
 
 // http://localhost:3002/api/product/4
@@ -340,12 +340,12 @@ async function getAShop(id) {
     .then((data) => data.json())
     .then((data) => {
       if (data.message) {
-        alert(data.message);
+        toast.success(data.message);
       } else {
         return data;
       }
     })
-    .catch((e) => alert(e));
+    .catch((e) => toast.error);
 }
 
 // http://localhost:3002/api/product/4
@@ -362,12 +362,12 @@ async function getOrderProduct(token, id) {
     .then((data) => data.json())
     .then((data) => {
       if (data.message) {
-        alert(data.message);
+        toast.success(data.message);
       } else {
         return data;
       }
     })
-    .catch((e) => alert(e));
+    .catch((e) => toast.error);
 }
 
 // http://localhost:3002/api/shop/getShopStatus/:shopstatus
@@ -386,12 +386,12 @@ async function getShopStatus(token, shopstatus) {
     .then((data) => data.json())
     .then((data) => {
       if (data.message) {
-        alert(data.message);
+        toast.success(data.message);
       } else {
         return data;
       }
     })
-    .catch((e) => alert(e));
+    .catch((e) => toast.error);
 }
 
 // http://localhost:3002/api/shop/updateShop
@@ -411,12 +411,12 @@ async function changeOwnShopLogo(token, data) {
     .then((data) => data.json())
     .then((data) => {
       if (data.message) {
-        alert(data.message);
+        toast.success(data.message);
       } else {
         return data;
       }
     })
-    .catch((e) => alert(e));
+    .catch((e) => toast.error);
 }
 // http://localhost:3002/api/product/4
 async function getAProduct(id) {
@@ -427,12 +427,12 @@ async function getAProduct(id) {
     .then((data) => data.json())
     .then((data) => {
       if (data.message) {
-        alert(data.message);
+        toast.success(data.message);
       } else {
         return data;
       }
     })
-    .catch((e) => alert(e));
+    .catch((e) => toast.error);
 }
 // http://localhost:3002/api/user/4
 async function getUser(id) {
@@ -443,12 +443,12 @@ async function getUser(id) {
     .then((data) => data.json())
     .then((data) => {
       if (data.message) {
-        alert(data.message);
+        toast.success(data.message);
       } else {
         return data;
       }
     })
-    .catch((e) => alert(e));
+    .catch((e) => toast.error);
 }
 
 // http://localhost:3002/api/shop/getReportShop
@@ -460,12 +460,12 @@ async function getReportShop(id) {
     .then((data) => data.json())
     .then((data) => {
       if (data.message) {
-        alert(data.message);
+        toast.success(data.message);
       } else {
         return data;
       }
     })
-    .catch((e) => alert(e));
+    .catch((e) => toast.error);
 }
 // http://localhost:3002/api/product/search/inallproduct
 async function searchproduct(body) {
@@ -482,12 +482,12 @@ async function searchproduct(body) {
     .then((data) => data.json())
     .then((data) => {
       if (data.message) {
-        alert(data.message);
+        toast.success(data.message);
       } else {
         return data;
       }
     })
-    .catch((e) => alert(e));
+    .catch((e) => toast.error);
 }
 
 // http://localhost:3002/api/product/search/inallproduct
@@ -504,12 +504,12 @@ async function getLastestProduct() {
     .then((data) => data.json())
     .then((data) => {
       if (data.message) {
-        alert(data.message);
+        toast.success(data.message);
       } else {
         return data;
       }
     })
-    .catch((e) => alert(e));
+    .catch((e) => toast.error);
 }
 // http://localhost:3002/api/product/search/inallproduct
 async function searchInAllProduct(body) {
@@ -526,12 +526,12 @@ async function searchInAllProduct(body) {
     .then((data) => data.json())
     .then((data) => {
       if (data.message) {
-        alert(data.message);
+        toast.success(data.message);
       } else {
         return data;
       }
     })
-    .catch((e) => alert(e));
+    .catch((e) => toast.error);
 }
 export {
   login,

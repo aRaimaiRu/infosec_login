@@ -8,6 +8,7 @@ import './addproduct.css';
 import { addProduct } from '../../../utils/userAPI';
 import { useHistory } from 'react-router-dom';
 import { valName } from '../../../utils/validate';
+import toast from 'react-hot-toast';
 function Addproduct(props) {
   let history = useHistory();
   const [token, setToken] = useRecoilState(tokenState);
@@ -30,7 +31,7 @@ function Addproduct(props) {
     const fileType = thisfile['type'];
     const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
     if (!validImageTypes.includes(fileType)) {
-      alert('please input image file jpg or png');
+      toast.error('please input image file jpg or png');
       return;
     }
     setImgFile(thisfile);
@@ -49,7 +50,7 @@ function Addproduct(props) {
         imgFile
       )
     ) {
-      alert('require data on product');
+      toast.error('require data on product');
       return;
     }
 

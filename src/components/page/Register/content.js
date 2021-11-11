@@ -7,25 +7,24 @@ import { registerapi } from '../../../utils/userAPI';
 import { Link } from 'react-router-dom';
 import Layout from '../../loginlayout';
 import loginstyle from '../../../styles/loginpage.module.css';
+import toast from 'react-hot-toast';
 function RegisterContent(props) {
   const { register, handleSubmit } = useForm();
-
-  const [errortxt, setErrortxt] = useState('');
 
   const submit = async (data) => {
     console.log('submit data =', data);
     if (!(valEmail(data.email) && valPassword(data.password))) {
-      setErrortxt('Invalid Email or Password!');
+      toast.error('Invalid Email or Password!');
       return;
     }
     if (
       !(valName(data.name) && valName(data.lastname) && valName(data.address))
     ) {
-      setErrortxt('Invalid name or address');
+      toast.error('Invalid name or address');
       return;
     }
-    alert('submit');
-    setErrortxt('');
+    toast.success('submit');
+
     registerapi({
       firstName: data.name,
       lastName: data.lastname,
@@ -36,7 +35,7 @@ function RegisterContent(props) {
     })
       .then((res) => res.json())
       .then((res) => {
-        alert(res.message);
+        toast.success(res.message);
         window.location.replace('/login');
       })
       .catch((e) => {
@@ -111,7 +110,6 @@ function RegisterContent(props) {
           {...register('tel')}
           required
         />
-        <p className="colorRed">{errortxt}</p>
         <div
           className={loginstyle.loginwithcontainer}
           style={{ margin: '10px 0' }}

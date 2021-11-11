@@ -7,6 +7,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Controller, useForm } from 'react-hook-form';
 import loginstyle from '../../../styles/loginpage.module.css';
 import Layout from '../../loginlayout';
+import toast from 'react-hot-toast';
 function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
@@ -14,21 +15,19 @@ function useQuery() {
 function RegisterContent(props) {
   const { register, handleSubmit } = useForm();
   const query = useQuery();
-  const [errortxt, setErrortxt] = useState('');
 
   const submit = async (data) => {
     if (!valPassword(data.password)) {
-      setErrortxt('Invalid  Password!');
+      toast.error('Invalid  Password!');
       return;
     }
     if (data.password != data.repassword) {
-      setErrortxt('Password != repassword');
+      toast.error('Password != repassword');
       return;
     }
-    setErrortxt('');
     resetpassword(query.get('token'), { password: sha256(data.password) })
       .then((res) => {
-        alert('Reset Password Successful');
+        toast.success('Reset Password Successful');
         window.location.replace('/login');
       })
       .catch((e) => {
@@ -67,7 +66,6 @@ function RegisterContent(props) {
           >
             เปลี่ยนรหัสผ่าน
           </button>
-          <p className="colorRed">{errortxt}</p>
           {/* </Link> */}
         </div>
       </form>

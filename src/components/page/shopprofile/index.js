@@ -19,6 +19,7 @@ import {
   changeShopStatus,
   UserContact,
 } from '../../../utils/userAPI';
+import toast from 'react-hot-toast';
 const ShopProfile = (props) => {
   const admin = true;
   const [token, setToken] = useRecoilState(tokenState);
@@ -54,11 +55,11 @@ const ShopProfile = (props) => {
   };
   const likeshop = async (like) => {
     if (token.token == undefined) {
-      alert('need to login');
+      toast.error('need to login');
       return;
     } else {
       let res = await UserContact(id, token.token, like);
-      alert(res);
+      toast.success(res);
     }
   };
 

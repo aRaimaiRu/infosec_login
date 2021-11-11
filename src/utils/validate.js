@@ -1,3 +1,4 @@
+import toast from 'react-hot-toast';
 const emailPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 const namePattern = /^[a-zA-Z]*$/;
 const passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
@@ -29,7 +30,7 @@ const valImage = (files) => {
   const fileType = file['type'];
   const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
   if (!validImageTypes.includes(fileType)) {
-    alert('please input image file jpg or png');
+    toast.error('please input image file jpg or png');
     return;
   }
 };

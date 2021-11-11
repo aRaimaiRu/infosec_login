@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-
+import toast from 'react-hot-toast';
 import sha256 from 'sha256';
 import { valEmail, valPassword, valName } from '../../../utils/validate';
 import { forgotpassword } from '../../../utils/userAPI';
@@ -11,14 +11,12 @@ import Layout from '../../loginlayout';
 
 function RegisterContent(props) {
   const { register, handleSubmit } = useForm();
-  const [errortxt, setErrortxt] = useState('');
 
   const submit = async (data) => {
     if (!valEmail(data.email)) {
-      setErrortxt('Invalid Email or Password!');
+      toast.error('Invalid Email ');
       return;
     }
-    setErrortxt('');
     let res = await forgotpassword(data.email);
   };
 
@@ -46,7 +44,6 @@ function RegisterContent(props) {
           >
             สมัครสมาชิก
           </button>
-          <p className="colorRed">{errortxt}</p>
           {/* </Link> */}
         </div>
       </form>
