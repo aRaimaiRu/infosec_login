@@ -50,7 +50,7 @@ const ShopApprove = (props) => {
           <div className="col-sm-12 text-center">
             <h1>ReportShop</h1>
             <div
-              className="col-4 text-right pointer"
+              className="text-right pointer"
               onClick={() => {
                 history.goBack();
               }}

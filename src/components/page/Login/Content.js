@@ -32,7 +32,7 @@ function LoginContent(props) {
         }
       })
       .catch((e) => {
-        toast.error(e);
+        toast.error('failed to fetch');
       });
   };
   return (
