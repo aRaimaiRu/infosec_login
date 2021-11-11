@@ -9,6 +9,7 @@ import { Controller, useForm } from 'react-hook-form';
 import loginstyle from '../../../styles/loginpage.module.css';
 import PageDetails from '../../../styles/PageDetails.module.css';
 import FileUploader from '../../FileUploadBtn';
+import { valImage } from '../../../utils/validate';
 // Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
 
 function Content() {
@@ -16,6 +17,9 @@ function Content() {
   const { register, handleSubmit } = useForm();
   const [errortxt, setErrortxt] = useState('');
   const submit = (data) => {
+    valImage(data.IDcardImage);
+    valImage(data.promptPayImg);
+    valImage(data.logo);
     console.log(data);
     realRegisterShop(token.token, data);
     alert('submit');

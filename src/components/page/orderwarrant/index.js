@@ -43,12 +43,17 @@ const OrderWarrant = (props) => {
           <div className="col">
             <h4 className="ascend">เงื่อนไขในการรับประกันสินค้า</h4>
             <h4>
-              A long time ago, a group of special girls known as ‘mahou shoujos’
-              saved the world after a fierce battle where blood and tears were
-              shed and prayers were made. It was an overly common battle tale.
-              However, no one thanked or praised them for their victory. In
-              fact, no one even knew them at all. Even so, the future of
-              humanity was protected and it came to a happy end.
+              {`เงื่อนไขการรับประกันสินค้า 1.) สินค้าเสียหายจากการผลิตเปลี่ยนให้ฟรี
+              2.) การประกันนี้ไม่ครอบคลุมถึงความ เสียหาย ในกรณีดังต่อไปนี้ 2.1.)
+              การดัดแปลง แก้ไข โดยบุคคลอื่น โดย ไม่ใช่ทางบริษัท 2.2.)
+              การใช้สินค้าผิดประเภท หรืออุบัติเหตุ การขนส่ง ความประมาท
+              เกี่ยวกับการรักษาผิดวิธี 2.3) ใช้งานผิดวัตถุประสงค์ 3.)
+              การรับประกันนี้ไม่รวมค่าขนส่งและค่า เดินทาง 4.) บริษัทฯ
+              จะยกเลิกการรับประกันทันที เมื่อ บัตรรับประกันถูกขีดฆ่าหรือ
+              แก้ไขอันท าให้บัตรรับประกันนี้มีข้อความไม่
+              ครบหรือข้อมูลที่เปลี่ยนแปลง ไม่สมบูรณ์ 5.)
+              บัตรรับประกันนี้ใช้เฉพาะกับผู้ซื้อที่ระบุ
+              อยู่ในบัตรเท่านั้นไม่สามารถโอน สิทธิ์เปล่ียนมือใหผ้อู้่ืนได้`}
             </h4>
           </div>
         </div>

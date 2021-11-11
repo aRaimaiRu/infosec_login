@@ -76,7 +76,11 @@ export default function ProductDetails() {
     <div className="homefooter ">
       <div className="row align-items-center h-100 ">
         <div className="col d-flex justify-content-around align-items-center">
-          <p className="colorwhite">ราคา: {product.price}</p>
+          <p className="colorwhite">
+            ราคา: &nbsp;
+            {product.price}
+          </p>
+          <p></p>
           <p className="colorwhite">บาท</p>
           <p className={productstyle.cancelfooterbtn}>
             <button

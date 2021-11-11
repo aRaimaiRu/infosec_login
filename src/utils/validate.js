@@ -24,4 +24,13 @@ const valSurname = (surname) => {
   return true;
 };
 
-export { valEmail, valPassword, valName, valSurname };
+const valImage = (files) => {
+  const file = files[0];
+  const fileType = file['type'];
+  const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
+  if (!validImageTypes.includes(fileType)) {
+    alert('please input image file jpg or png');
+    return;
+  }
+};
+export { valEmail, valPassword, valName, valSurname, valImage };

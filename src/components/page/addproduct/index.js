@@ -7,6 +7,7 @@ import Layout from '../../layout';
 import './addproduct.css';
 import { addProduct } from '../../../utils/userAPI';
 import { useHistory } from 'react-router-dom';
+import { valName } from '../../../utils/validate';
 function Addproduct(props) {
   let history = useHistory();
   const [token, setToken] = useRecoilState(tokenState);
@@ -24,13 +25,36 @@ function Addproduct(props) {
       // keyName: 'size', //default to "id", you can change the key name
     }
   );
-  const handleFile = (file) => {
-    setImgFile(file);
-    setExImg(URL.createObjectURL(file));
+  const handleFile = (files) => {
+    const thisfile = files;
+    const fileType = thisfile['type'];
+    const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
+    if (!validImageTypes.includes(fileType)) {
+      alert('please input image file jpg or png');
+      return;
+    }
+    setImgFile(thisfile);
+    setExImg(URL.createObjectURL(thisfile));
   };
   const submit = async (data) => {
-    console.log('submit add product', data);
+    console.log('addproduct data =', data);
+    if (
+      !(
+        valName(data.brand) &&
+        valName(data.description) &&
+        valName(data.price) &&
+        valName(data.productfrom) &&
+        valName(data.tag) &&
+        data.allsize.length > 1 &&
+        imgFile
+      )
+    ) {
+      alert('require data on product');
+      return;
+    }
+
     const res = await addProduct(token.token, { ...data, previewurl: imgFile });
+    window.history.back();
   };
   return (
     <Layout>
@@ -79,6 +103,7 @@ function Addproduct(props) {
                     key={field.id}
                     name={`allsize.${ind}.size`}
                     {...register(`allsize.${ind}.size`)}
+                    required
                   />
                 ))}
                 <div class="col-sm-10">
@@ -100,6 +125,7 @@ function Addproduct(props) {
                     class="form-control"
                     placeholder="ประเภท"
                     {...register('tag')}
+                    required
                   />
                 </div>
               </div>
@@ -111,6 +137,7 @@ function Addproduct(props) {
                     class="form-control"
                     placeholder="ผลิตจาก"
                     {...register('productfrom')}
+                    required
                   />
                 </div>
               </div>
@@ -121,6 +148,7 @@ function Addproduct(props) {
                     class="form-control"
                     placeholder="ราคา"
                     {...register('price')}
+                    required
                   />
                 </div>
               </div>
@@ -131,6 +159,7 @@ function Addproduct(props) {
                     class="form-control"
                     placeholder="รายละเอียด"
                     {...register('description')}
+                    required
                   />
                 </div>
               </div>

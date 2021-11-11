@@ -18,7 +18,7 @@ function RegisterContent(props) {
 
   const submit = async (data) => {
     if (!valPassword(data.password)) {
-      setErrortxt('Invalid Email or Password!');
+      setErrortxt('Invalid  Password!');
       return;
     }
     if (data.password != data.repassword) {
@@ -29,6 +29,7 @@ function RegisterContent(props) {
     resetpassword(query.get('token'), { password: sha256(data.password) })
       .then((res) => {
         alert('Reset Password Successful');
+        window.location.replace('/login');
       })
       .catch((e) => {
         console.log(e);

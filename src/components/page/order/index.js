@@ -58,12 +58,32 @@ const Order = (props) => {
         <div className="col">
           <h4 className="ascend">เงื่อนไขในการรับประกันสินค้า</h4>
           <h4>
-            A long time ago, a group of special girls known as ‘mahou shoujos’
-            saved the world after a fierce battle where blood and tears were
-            shed and prayers were made. It was an overly common battle tale.
-            However, no one thanked or praised them for their victory. In fact,
-            no one even knew them at all. Even so, the future of humanity was
-            protected and it came to a happy end.
+            เงื่อนไขการรับประกันสินค้า
+            <ol>
+              <li>สินค้าเสียหายจากการผลิตเปลี่ยนให้ฟรี</li>
+              <li>
+                การประกันนี้ไม่ครอบคลุมถึงความ เสียหาย ในกรณีดังต่อไปนี้
+                <ol>
+                  <li>การดัดแปลง แก้ไข โดยบุคคลอื่น โดย ไม่ใช่ทางบริษัท </li>
+                  <li>
+                    การใช้สินค้าผิดประเภท หรืออุบัติเหตุ การขนส่ง ความประมาท
+                    เกี่ยวกับการรักษาผิดวิธี{' '}
+                  </li>
+                  <li>ใช้งานผิดวัตถุประสงค์ </li>
+                </ol>
+              </li>
+              <li>การรับประกันนี้ไม่รวมค่าขนส่งและค่า เดินทาง </li>
+              <li>
+                บริษัทฯ จะยกเลิกการรับประกันทันที เมื่อ
+                บัตรรับประกันถูกขีดฆ่าหรือ
+                แก้ไขอันทำให้บัตรรับประกันนี้มีข้อความไม่
+                ครบหรือข้อมูลที่เปลี่ยนแปลง ไม่สมบูรณ์{' '}
+              </li>
+              <li>
+                บัตรรับประกันนี้ใช้เฉพาะกับผู้ซื้อที่ระบุ
+                อยู่ในบัตรเท่านั้นไม่สามารถโอน สิทธิ์เปลี่ยนมือให้ผู้อื่นได้ได้{' '}
+              </li>
+            </ol>
           </h4>
         </div>
       </div>
@@ -133,8 +153,11 @@ const Order = (props) => {
               <div className="col">
                 <h4 className="ascend">รายละเอียดคำสั่งซื้อ</h4>
                 <h4>รวมการสั่งซื้อ: {product.product.price} บาท</h4>
-                <h4>ค่าส่ง: {product.product.price} บาท</h4>
-                <h4>ยอดเงินที่กำหนด: {product.product.price} บาท</h4>
+                <h4>ค่าส่ง: {50} บาท</h4>
+                <h4>
+                  ยอดเงินที่กำหนด: {Number(product.product.price) + Number(50)}{' '}
+                  บาท
+                </h4>
               </div>
             </div>
             <div className="row ">

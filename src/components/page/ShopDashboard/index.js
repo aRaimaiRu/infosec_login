@@ -145,7 +145,7 @@ const ShopProfile = (props) => {
         </div>
       </div>
 
-      {
+      {token?.id == shopProfile?.ownerId && (
         <div className="shopfooter">
           <div className="row align-items-center h-100 ">
             <div className="col d-flex justify-content-around">
@@ -155,7 +155,7 @@ const ShopProfile = (props) => {
             </div>
           </div>
         </div>
-      }
+      )}
     </Layout>
   );
 };
