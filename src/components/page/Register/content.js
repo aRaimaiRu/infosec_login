@@ -13,11 +13,11 @@ function RegisterContent(props) {
   const [errortxt, setErrortxt] = useState('');
 
   const submit = async (data) => {
-    // console.log('submit data =', data);
-    // if (!(valEmail(data.email) && valPassword(data.password))) {
-    //   setErrortxt('Invalid Email or Password!');
-    //   return;
-    // }
+    console.log('submit data =', data);
+    if (!(valEmail(data.email) && valPassword(data.password))) {
+      setErrortxt('Invalid Email or Password!');
+      return;
+    }
     if (
       !(valName(data.name) && valName(data.lastname) && valName(data.address))
     ) {
@@ -56,18 +56,21 @@ function RegisterContent(props) {
           type="text"
           className={loginstyle.inputwidth100}
           {...register('email')}
+          placeholder="abc@email.com"
         />
         <label>รหัสผ่าน</label>
         <input
           type="password"
           className={loginstyle.inputwidth100}
           {...register('password')}
+          placeholder="ตัวอักษร A-Z,a-z,0-9"
         />
         <label>ยืนยันรหัสผ่าน</label>
         <input
           type="password"
           className={loginstyle.inputwidth100}
           {...register('repassword')}
+          placeholder="ตัวอักษร A-Z,a-z,0-9"
         />
         {/* name lastname */}
         <div className={loginstyle.loginwithcontainer}>
@@ -106,6 +109,7 @@ function RegisterContent(props) {
           type="text"
           className={loginstyle.inputwidth100}
           {...register('tel')}
+          required
         />
         <p className="colorRed">{errortxt}</p>
         <div
