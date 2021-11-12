@@ -31,7 +31,7 @@ const valImage = (files) => {
   const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
   if (!validImageTypes.includes(fileType)) {
     toast.error('please input image file jpg or png');
-    return;
+    return false;
   }
 };
 export { valEmail, valPassword, valName, valSurname, valImage };
