@@ -5,7 +5,7 @@ export default function Loginlayout({ children }) {
       <div
         className={style.background}
         style={{
-          backgroundImage: `url(${process.env.PUBLIC_URL + '/loginBG.jpg'}`,
+          backgroundImage: `url(${process.env.PUBLIC_URL + '/loginBG.png'}`,
         }}
       >
         <div className={style.logincontainer}>{children}</div>

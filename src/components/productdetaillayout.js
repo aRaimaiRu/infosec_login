@@ -6,7 +6,7 @@ export default function Productdetaillayout({ children, footer }) {
       <div
         className={style.webcontainer}
         style={{
-          backgroundImage: `url(${process.env.PUBLIC_URL + '/loginBG.jpg'}`,
+          backgroundImage: `url(${process.env.PUBLIC_URL + '/loginBG.png'}`,
         }}
       >
         <div className={style.container}>
