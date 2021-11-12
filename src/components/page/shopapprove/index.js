@@ -76,10 +76,7 @@ const ShopApprove = (props) => {
                     height={50}
                     className="center-cropped img-logo"
                   />
-                  <h4>
-                    {l.shopName}
-                    {ind}
-                  </h4>
+                  <h4>{l.shopName}</h4>
                 </span>
               </button>
             </div>
