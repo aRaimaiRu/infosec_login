@@ -42,7 +42,7 @@ function RegisterContent(props) {
             type="submit"
             value="submit"
           >
-            สมัครสมาชิก
+            ยืนยัน
           </button>
           {/* </Link> */}
         </div>
