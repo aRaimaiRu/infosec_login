@@ -46,6 +46,7 @@ const Order = (props) => {
   });
   useEffect(async () => {
     const data = await getOrderProduct(token.token, id);
+    console.log('order product = ', data);
     if (data) {
       setProduct(data);
     }
@@ -145,7 +146,7 @@ const Order = (props) => {
                   {product.user.firstName} {product.user.lastName}{' '}
                   {product.user.tel}
                 </h4>
-                <h4>{product.address}</h4>
+                <h4>{product.user.address}</h4>
               </div>
             </div>
             <hr />
