@@ -33,5 +33,6 @@ const valImage = (files) => {
     toast.error('please input image file jpg or png');
     return false;
   }
+  return true;
 };
 export { valEmail, valPassword, valName, valSurname, valImage };
