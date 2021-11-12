@@ -16,12 +16,18 @@ import toast from 'react-hot-toast';
 function Content() {
   const [token, setToken] = useRecoilState(tokenState);
   const { register, handleSubmit } = useForm();
-  const submit = (data) => {
-    valImage(data.IDcardImage);
-    valImage(data.promptPayImg);
-    valImage(data.logo);
+  const submit = async (data) => {
+    if (
+      !(
+        valImage(data.IDcardImage) &&
+        valImage(data.promptPayImg) &&
+        valImage(data.logo)
+      )
+    ) {
+      return;
+    }
     console.log(data);
-    realRegisterShop(token.token, data);
+    await realRegisterShop(token.token, data);
     toast.success('submit');
     window.location.replace('/OwnShop');
   };
