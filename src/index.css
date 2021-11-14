@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
 }
 
 code {
@@ -164,4 +165,16 @@ h6 {
   font-family: 'Kanit' !important;
   font-weight: 400;
   margin: 10px 0;
+}
+
+p {
+  font-size: 16px;
+}
+h1 {
+  font-size: 38px;
+}
+h2,
+h3,
+h4 {
+  font-size: 20px !important;
 }

@@ -64,7 +64,7 @@ export default function ProductDetails() {
   return (
     <Layout>
       <SearchBar></SearchBar>
-      <h1 style={{ alignSelf: 'start' }}>
+      <h2 style={{ alignSelf: 'start' }}>
         คำที่ค้นหา :{' '}
         <span className="colorpink">
           {query.get('brand') ? `brand=${query.get('brand')}` : ''}
@@ -77,7 +77,7 @@ export default function ProductDetails() {
             ? `productfrom=${query.get('productfrom')}`
             : ''}
         </span>
-      </h1>
+      </h2>
       <div className="flexproductcontainer">
         {showProduct.map((obj) => (
           <Link to={`/product/${obj.id}`}>

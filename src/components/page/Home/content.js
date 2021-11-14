@@ -29,7 +29,7 @@ function HomeContent(props) {
           history.push('/ShopRegister');
         }}
       >
-        <h1>เปิดร้าน</h1>
+        <h2>เปิดร้าน</h2>
       </div>
     )) ||
     // if Role ShopOwner
@@ -40,7 +40,7 @@ function HomeContent(props) {
           history.push('/OwnShop');
         }}
       >
-        <h1>ดูร้าน</h1>
+        <h2>ดูร้าน</h2>
       </div>
     ));
   const [showProduct, setShowProduct] = useState([
@@ -75,7 +75,7 @@ function HomeContent(props) {
           {token.firstName !== undefined && (
             <div className={homestyle.divider} style={{ cursor: 'pointer' }}>
               <Link to={`/profile/${token.id}`}>
-                <h1>{token.firstName}</h1>
+                <h2>{token.firstName}</h2>
               </Link>
             </div>
           )}
@@ -87,7 +87,7 @@ function HomeContent(props) {
           <div className={homestyle.divider}>
             {' '}
             <Link to="/search">
-              <h1>รายการสินค้า</h1>
+              <h2>รายการสินค้า</h2>
             </Link>
           </div>
 
@@ -100,7 +100,7 @@ function HomeContent(props) {
                 history.push('/login');
               }}
             >
-              <h1>login</h1>
+              <h2>login</h2>
             </div>
           ) : (
             <div
@@ -108,15 +108,15 @@ function HomeContent(props) {
               style={{ border: 'none', cursor: 'pointer' }}
               onClick={() => logout(setToken)}
             >
-              <h1>logout</h1>
+              <h2>logout</h2>
             </div>
           )}
           {/* END  */}
         </div>
         <div style={{ width: '100%' }}>
-          <h1 style={{ alignSelf: 'start' }}>ข่าวสาร</h1>
+          <h2 style={{ alignSelf: 'start' }}>ข่าวสาร</h2>
           <EmblaCarousel slides={slides}></EmblaCarousel>
-          <h1>รายการสินค้า</h1>
+          <h2>รายการสินค้า</h2>
           <div
             // className={searchstyle.searchresultcontainer}
             className="flexproductcontainer"
