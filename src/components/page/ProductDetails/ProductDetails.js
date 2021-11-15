@@ -122,7 +122,7 @@ export default function ProductDetails() {
             <h3>รายละเอียดสินค้า</h3>
             {product.description}
           </div>
-          <div className={productstyle.productattributecontainer}>
+          <div className={`${productstyle.productattributecontainer} my-2`}>
             <table>
               <tr>
                 <td>Size:</td>
