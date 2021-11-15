@@ -1,7 +1,7 @@
 // import { useRecoilState } from 'recoil';
 // import { tokenState } from '../store';
 import toast from 'react-hot-toast';
-const HOSTAPI = '';
+const HOSTAPI = '159.138.252.91';
 
 async function registerapi(data) {
   return fetch(`http://${HOSTAPI || 'localhost:3002'}/api/user/register`, {
