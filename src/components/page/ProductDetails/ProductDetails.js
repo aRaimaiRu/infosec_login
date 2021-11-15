@@ -126,7 +126,7 @@ export default function ProductDetails() {
             <table>
               <tr>
                 <td>Size:</td>
-                {/* <td>{product.sizestocks.map((obj) => `  ${obj.size}  `)}</td> */}
+                <td>{product.sizestocks.map((obj) => `  ${obj.size}  `)}</td>
               </tr>
               <tr>
                 <td>ประเภท:</td>
