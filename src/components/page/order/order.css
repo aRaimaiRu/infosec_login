@@ -49,3 +49,7 @@ li:before {
   content: counters(item, '.') ' ';
   counter-increment: item;
 }
+
+p {
+  color: black;
+}

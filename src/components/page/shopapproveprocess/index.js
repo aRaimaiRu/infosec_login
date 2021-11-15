@@ -64,8 +64,8 @@ const ShopApproveProcess = (props) => {
           <div className="col">
             <h3>รายละเอียดร้านค้า</h3>
             <hr />
-            <h4>ชื่อผู้ใช้ : {ShopApproveProcessData.shopName}</h4>
-            <h4>ที่อยู่ร้าน : {ShopApproveProcessData.shopAddress}</h4>
+            <p>ชื่อผู้ใช้ : {ShopApproveProcessData.shopName}</p>
+            <p>ที่อยู่ร้าน : {ShopApproveProcessData.shopAddress}</p>
             {/* <h4>รองเท้ายี่ห้อ : {ShopApproveProcessData.brand}</h4>
             <h4>Size : {ShopApproveProcessData.size}</h4>
             <h4>ประเภท : {ShopApproveProcessData.type}</h4>

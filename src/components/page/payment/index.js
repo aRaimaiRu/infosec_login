@@ -63,12 +63,16 @@ const Payment = (props) => {
       <div style={{ width: '100%' }} className="p-3 payment">
         <div className="row">
           <div className="col-md-12 pt-5">
-            <div className="d-flex justify-content-center">
+            <div
+              className="d-flex justify-content-center"
+              style={{ flexDirection: 'column', alignItems: 'center' }}
+            >
               <img
                 src={product.shop.promptPayImg}
                 className="img-payment m-1 "
                 alt="payment"
               />
+              <h4>ชื่อเจ้าของร้าน : {product.shop.shopName}</h4>
             </div>
           </div>
         </div>
@@ -77,7 +81,7 @@ const Payment = (props) => {
         <div className="row">
           <div className="col-md-12">
             {/* <h4 className="ascend">เลือกธนาคารในการชำระ</h4> */}
-            <h4>ชื่อเจ้าของร้าน : {product.shop.shopName}</h4>
+            {/* <h4>ชื่อเจ้าของร้าน : {product.shop.shopName}</h4> */}
             {/* <div className="kbank row align-items-center justify-content-center">
               KBANK XXXXXXXXXXX
             </div>

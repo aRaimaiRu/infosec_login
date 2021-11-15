@@ -26,6 +26,10 @@ const FileUploader = (props) => {
       <div
         class="file btn-img btn btn-lg btn-primary"
         onClick={handleClick}
+        style={{
+          backgroundImage: `url(${process.env.PUBLIC_URL + '/addPhoto.png'}`,
+          backgroundSize: 'cover',
+        }}
       ></div>
       {/* <button onClick={handleClick}>Upload a file</button> */}
       <input

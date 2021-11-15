@@ -40,7 +40,10 @@ const Profile = (props) => {
       <div style={{ width: '100%' }} className="profile p-3">
         <div className="row">
           <div className="col-4">
-            <h3>โปรไฟล์</h3>
+            <h3>
+              โปรไฟล์
+              <img src="/account_circle.png" />
+            </h3>
           </div>
           <div className="col-4"></div>
           <div
@@ -71,7 +74,10 @@ const Profile = (props) => {
         </div>
         <div className="row">
           <div className="col">
-            <h3>รายละเอียดโปรไฟล์</h3>
+            <h3>
+              รายละเอียดโปรไฟล์ &nbsp;
+              <img src="/ProfileDetailIcon.png" />
+            </h3>
             <hr />
             <h4>
               ชื่อผู้ใช้ : {userProfile.firstName + '' + userProfile.lastName}

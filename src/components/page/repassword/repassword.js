@@ -41,6 +41,7 @@ function RegisterContent(props) {
         className={loginstyle.inputcontainer}
         onSubmit={handleSubmit(submit)}
       >
+        <h1 style={{ textAlign: 'center' }}>รีเซ็ตรหัสผ่าน</h1>
         <label>รหัสผ่าน</label>
         <input
           type="password"
@@ -54,6 +55,7 @@ function RegisterContent(props) {
           className={loginstyle.inputwidth100}
           {...register('repassword')}
           placeholder="ตัวอักษร A-Z,a-z,0-9"
+          style={{ marginBottom: '30px' }}
         />
 
         <div className={loginstyle.flexcolumncenter}>

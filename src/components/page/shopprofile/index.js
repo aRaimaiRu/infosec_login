@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Layout from '../../layout';
 import { useRecoilState, RecoilRoot } from 'recoil';
-
+// import logo from '../../../../public/shopping_basket.png';
 import FileUploader from '../../FileUploadBtn';
 import './shopprofile.css';
 import {
@@ -68,7 +68,9 @@ const ShopProfile = (props) => {
       <div style={{ width: '100%' }} className="shopprofile p-3">
         <div className="row">
           <div className="col-4">
-            <h3>โปรไฟล์ร้านค้า</h3>
+            <h3>
+              โปรไฟล์ร้านค้า <img src="/shopping_basket.png" />
+            </h3>
           </div>
           <div className="col-4"></div>
           <div
@@ -96,7 +98,7 @@ const ShopProfile = (props) => {
         <div className="row mb-0">
           <div className="col mb-0">
             <div className="d-flex">
-              <h3 className="mr-auto">รายละเอียดร้านค้า</h3>
+              <h3 className="mr-auto">รายละเอียดร้านค้า &nbsp;</h3>
 
               <h4 className="">ADD LINE :</h4>
               <a href={shopProfile.LinkIDLine}>
@@ -106,9 +108,9 @@ const ShopProfile = (props) => {
               </a>
             </div>
             <hr />
-            <h4>ชื่อผู้ใช้ : {shopProfile.name}</h4>
-            <h4>ที่อยู่ร้าน : {shopProfile.shopAddress}</h4>
-            <h4>เบอร์โทร : {shopProfile.shopTel}</h4>
+            <p>ชื่อผู้ใช้ : {shopProfile.name}</p>
+            <p>ที่อยู่ร้าน : {shopProfile.shopAddress}</p>
+            <p>เบอร์โทร : {shopProfile.shopTel}</p>
           </div>
         </div>
         <hr />

@@ -58,8 +58,7 @@ const Order = (props) => {
       <div className="row pt-3">
         <div className="col">
           <h4 className="ascend">เงื่อนไขในการรับประกันสินค้า</h4>
-          <h4>
-            เงื่อนไขการรับประกันสินค้า
+          <p>
             <ol>
               <li>สินค้าเสียหายจากการผลิตเปลี่ยนให้ฟรี</li>
               <li>
@@ -85,7 +84,7 @@ const Order = (props) => {
                 อยู่ในบัตรเท่านั้นไม่สามารถโอน สิทธิ์เปลี่ยนมือให้ผู้อื่นได้ได้{' '}
               </li>
             </ol>
-          </h4>
+          </p>
         </div>
       </div>
       <hr />
@@ -126,13 +125,13 @@ const Order = (props) => {
           <div className="col-md-6">
             <h4 className="ascend">รายละเอียดสินค้า</h4>
             <hr />
-            <h4>
+            <p>
               size: {product.product.sizestocks.map((c) => `  ${c.size}  `)}
-            </h4>
+            </p>
 
-            <h4>ประเภท: {product.product.tag}</h4>
+            <p>ประเภท: {product.product.tag}</p>
 
-            <h4>ส่งจาก: {product.product.productfrom}</h4>
+            <p>ส่งจาก: {product.product.productfrom}</p>
           </div>
         </div>
         <hr />
@@ -141,11 +140,14 @@ const Order = (props) => {
           <>
             <div className="row pt-3">
               <div className="col">
-                <h4 className="ascend">ที่อยู่สำหรับจัดส่ง</h4>
-                <h4>
+                <h4 className="ascend">
+                  ที่อยู่สำหรับจัดส่ง &nbsp;
+                  <img src="/addressIcon.png" />
+                </h4>
+                <p>
                   {product.user.firstName} {product.user.lastName}{' '}
                   {product.user.tel}
-                </h4>
+                </p>
                 <h4>{product.user.address}</h4>
               </div>
             </div>
@@ -153,12 +155,12 @@ const Order = (props) => {
             <div className="row pt-3">
               <div className="col">
                 <h4 className="ascend">รายละเอียดคำสั่งซื้อ</h4>
-                <h4>รวมการสั่งซื้อ: {product.product.price} บาท</h4>
-                <h4>ค่าส่ง: {50} บาท</h4>
-                <h4>
+                <p>รวมการสั่งซื้อ: {product.product.price} บาท</p>
+                <p>ค่าส่ง: {50} บาท</p>
+                <p>
                   ยอดเงินที่กำหนด: {Number(product.product.price) + Number(50)}{' '}
                   บาท
-                </h4>
+                </p>
               </div>
             </div>
             <div className="row ">

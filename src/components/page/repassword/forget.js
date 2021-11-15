@@ -26,7 +26,7 @@ function RegisterContent(props) {
         className={loginstyle.inputcontainer}
         onSubmit={handleSubmit(submit)}
       >
-        <h1> ลืมรหัสผ่าน</h1>
+        <h1 style={{ textAlign: 'center' }}>รีเซ็ตรหัสผ่าน</h1>
         <label>อีเมลล์</label>
         <input
           type="text"
@@ -38,7 +38,7 @@ function RegisterContent(props) {
           {/* <Link href="/register"> */}
           <button
             className={loginstyle.roundbutton}
-            style={{ margin: '5px 0' }}
+            style={{ margin: '5px 0', marginBottom: '30px' }}
             type="submit"
             value="submit"
           >

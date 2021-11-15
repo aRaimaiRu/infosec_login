@@ -84,7 +84,7 @@ export default function ProductDetails() {
             <img src={obj.previewurl} className="imageresult m-2" alt="img" />
             <br />
             <h3 className="m-0">{obj.brand}</h3>
-            <h3 className="m-0">{obj.Shop.shopName}</h3>
+            <p className="m-0">{obj.Shop.shopName}</p>
           </Link>
         ))}
       </div>
