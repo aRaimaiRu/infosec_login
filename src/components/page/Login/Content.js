@@ -37,7 +37,14 @@ function LoginContent(props) {
   };
   return (
     <Layout>
-      <div className={loginstyle.legoimage}>LEGO</div>
+      <div
+        className={loginstyle.legoimage}
+        style={{
+          backgroundImage: `url(${process.env.PUBLIC_URL + '/logoweb.png'}`,
+          backgroundSize: 'cover',
+        }}
+      ></div>
+
       <form
         className={loginstyle.inputcontainer}
         onSubmit={handleSubmit(submit)}

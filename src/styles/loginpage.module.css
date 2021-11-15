@@ -1,5 +1,6 @@
 .legoimage {
-  background-color: yellow;
+  /* background-color: yellow; */
+  /* background-image: url(env(PUBLIC_URL) + '/loginBG.png}'); */
   border-radius: 50%;
   font-size: 64px;
   padding: 100px;
