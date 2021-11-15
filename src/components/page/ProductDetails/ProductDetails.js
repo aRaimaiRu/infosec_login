@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -6,12 +6,15 @@ import {
   useParams,
   Link,
   useHistory,
-} from 'react-router-dom';
-import Layout from '../../productdetaillayout';
-import productstyle from '../../../styles/Product.module.css';
-import loginstyle from '../../../styles/loginpage.module.css';
-import { getAProduct } from '../../../utils/userAPI';
-import SearchBar from '../../searchbar';
+} from "react-router-dom";
+import Layout from "../../productdetaillayout";
+import productstyle from "../../../styles/Product.module.css";
+import loginstyle from "../../../styles/loginpage.module.css";
+import { getAProduct } from "../../../utils/userAPI";
+import SearchBar from "../../searchbar";
+
+import "./ProductDetails2.css";
+
 export default function ProductDetails() {
   let history = useHistory();
   let { id } = useParams();
@@ -22,31 +25,31 @@ export default function ProductDetails() {
     }
   }, []);
   const [product, setProduct] = useState({
-    shopName: 'ร้าน LEGO การรองเท้า',
-    logo: 'http://localhost:3002/uploads/A.jpg',
+    shopName: "ร้าน LEGO การรองเท้า",
+    logo: "http://localhost:3002/uploads/A.jpg",
     shopId: 2,
-    shopdescription: 'ร้านรองเท้าสำหรับทุกเพศทุกวัยจ้า',
-    previewurl: 'http://localhost:3002/uploads/A.jpg',
-    productname: 'รองเท้ายี่ห้อ XYZ',
-    tag: 'แบบสวม',
-    productfrom: 'ที่ไหนสักแห่ง',
-    description: 'discription',
+    shopdescription: "ร้านรองเท้าสำหรับทุกเพศทุกวัยจ้า",
+    previewurl: "http://localhost:3002/uploads/A.jpg",
+    productname: "รองเท้ายี่ห้อ XYZ",
+    tag: "แบบสวม",
+    productfrom: "ที่ไหนสักแห่ง",
+    description: "discription",
     price: 1000,
     releasedate: Date.now(),
     sizestocks: [
       {
         productId: 1,
-        size: '40',
+        size: "40",
         stock: 1,
       },
       {
         productId: 1,
-        size: '42',
+        size: "42",
         stock: 1,
       },
       {
         productId: 1,
-        size: '44',
+        size: "44",
         stock: 1,
       },
     ],
@@ -78,15 +81,16 @@ export default function ProductDetails() {
         <div className="col d-flex justify-content-around align-items-center">
           <p className="colorwhite">
             ราคา: &nbsp;
-            {product.price}
+            {/* {product.price} */}
+            200000
           </p>
           <p></p>
           <p className="colorwhite">บาท</p>
           <p className={productstyle.cancelfooterbtn}>
             <button
-              className={productstyle.roundbutton}
+              className="roundbutton_custom"
               onClick={() => {
-                history.push('/');
+                history.push("/");
               }}
             >
               ยกเลิก
@@ -95,8 +99,8 @@ export default function ProductDetails() {
           <p className={productstyle.buyfooterbtn}>
             <Link to={`/order/${id}`}>
               <button
-                className={productstyle.roundbutton}
-                style={{ backgroundColor: 'green' }}
+                className="roundbutton_custom"
+                style={{ backgroundColor: "green" }}
               >
                 สั่งซื้อ
               </button>
@@ -110,63 +114,66 @@ export default function ProductDetails() {
     <Layout footer={footer}>
       <SearchBar></SearchBar>
       <img src={product.previewurl} className={productstyle.mainimage}></img>
+
       <div className={productstyle.productdetailcontainer}>
-        <div>
-          <h2 className={productstyle.colorpink}>{product.productname}</h2>
-          <h3>รายละเอียดสินค้า</h3>
-          {product.description}
-        </div>
-        <div className={productstyle.productattributecontainer}>
-          <table>
-            <tr>
-              <td>Size:</td>
-              <td>{product.sizestocks.map((obj) => `  ${obj.size}  `)}</td>
-            </tr>
-            <tr>
-              <td>ประเภท:</td>
-              <td>{product.tag}</td>
-            </tr>
-            <tr>
-              <td>ส่งจาก:</td>
-              <td>{product.productfrom}</td>
-            </tr>
-          </table>
-        </div>
-        {/* Shop Preview */}
-        <div className={productstyle.flexrowleft}>
-          {' '}
-          {/* row*/}
-          <div
-            className={loginstyle.legoimage}
-            style={{
-              width: '60px',
-              height: '60px',
-              fontSize: '20px',
-              padding: '15px',
-              backgroundImage: `url(${product.logo})`,
-              backgroundSize: 'cover',
-            }}
-          ></div>
-          <div className={productstyle.columngap1}>
-            <h3
-              className={productstyle.colorpink}
-              style={{ padding: 0, margin: 0 }}
-            >
-              {product.shopName}
-            </h3>
-            <p>{product.shopdescription}</p>
-            <Link to={`/shopprofile/${product.shopId}`}>
-              <button
-                className={productstyle.roundbutton}
-                style={{
-                  width: '100px',
-                  height: 'fit-content',
-                  backgroundColor: 'var(--pink)',
-                }}
+        <div className="p-2">
+          <div>
+            <h2 className={productstyle.colorpink}>{product.productname}</h2>
+            <h3>รายละเอียดสินค้า</h3>
+            {product.description}
+          </div>
+          <div className={productstyle.productattributecontainer}>
+            <table>
+              <tr>
+                <td>Size:</td>
+                {/* <td>{product.sizestocks.map((obj) => `  ${obj.size}  `)}</td> */}
+              </tr>
+              <tr>
+                <td>ประเภท:</td>
+                <td>{product.tag}</td>
+              </tr>
+              <tr>
+                <td>ส่งจาก:</td>
+                <td>{product.productfrom}</td>
+              </tr>
+            </table>
+          </div>
+          {/* Shop Preview */}
+          <div className={productstyle.flexrowleft}>
+            {" "}
+            {/* row*/}
+            <div
+              className={loginstyle.legoimage}
+              style={{
+                width: "60px",
+                height: "60px",
+                fontSize: "20px",
+                padding: "15px",
+                backgroundImage: `url(${product.logo})`,
+                backgroundSize: "cover",
+              }}
+            ></div>
+            <div className={productstyle.columngap1}>
+              <h3
+                className={productstyle.colorpink}
+                style={{ padding: 0, margin: 0 }}
               >
-                ติดต่อร้านค้า
-              </button>
-            </Link>
+                {product.shopName}
+              </h3>
+              <p>{product.shopdescription}</p>
+              <Link to={`/shopprofile/${product.shopId}`}>
+                <button
+                  className={productstyle.roundbutton}
+                  style={{
+                    width: "100px",
+                    height: "fit-content",
+                    backgroundColor: "var(--pink)",
+                  }}
+                >
+                  ติดต่อร้านค้า
+                </button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>

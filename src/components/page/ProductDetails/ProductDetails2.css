@@ -1,0 +1,23 @@
+.roundbutton_custom {
+  background-color: red;
+  border-radius: 30px;
+  width: 150px;
+  height: 40px;
+  font-size: 16;
+  border: 0;
+  color: white;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  .roundbutton_custom {
+    background-color: red;
+    border-radius: 30px;
+    width: 80px;
+    height: 40px;
+    font-size: 16;
+    border: 0;
+    color: white;
+    cursor: pointer;
+  }
+}
