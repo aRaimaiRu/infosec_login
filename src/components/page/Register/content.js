@@ -49,7 +49,7 @@ function RegisterContent(props) {
         className={loginstyle.inputcontainer}
         onSubmit={handleSubmit(submit)}
       >
-        <h1> สมัครสมาชิก</h1>
+        <h1 style={{ textAlign: 'center' }}> สมัครสมาชิก</h1>
         <label>อีเมลล์</label>
         <input
           type="text"
@@ -115,7 +115,7 @@ function RegisterContent(props) {
           style={{ margin: '10px 0' }}
         >
           <input type="checkbox" required />
-          <span className={loginstyle.font12}> ข้าพเจ้ายอมรับเงื่อนไข</span>
+          <span className={loginstyle.font16}> ข้าพเจ้ายอมรับเงื่อนไข</span>
         </div>
         <div className={loginstyle.flexcolumncenter}>
           {/* <Link href="/register"> */}
