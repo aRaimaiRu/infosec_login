@@ -96,7 +96,9 @@ function LoginContent(props) {
             </button>
           </Link>
           <Link to="/forgotpassword">
-            <p className={loginstyle.font12}>ลืมรหัสผ่าน</p>
+            <p className={loginstyle.font12} style={{ color: 'white' }}>
+              ลืมรหัสผ่าน
+            </p>
           </Link>
         </div>
       </form>
