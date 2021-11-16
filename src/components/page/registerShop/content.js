@@ -11,10 +11,14 @@ import PageDetails from '../../../styles/PageDetails.module.css';
 import FileUploader from '../../FileUploadBtn';
 import { valImage } from '../../../utils/validate';
 import toast from 'react-hot-toast';
+import './content.css';
 // Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
 
 function Content() {
   const [token, setToken] = useRecoilState(tokenState);
+  const [fileQRCode, setFileQRCode] = useState('');
+  const [filelogo, setFileLogo] = useState('');
+  const [fileIDCard, setFileIDCard] = useState('');
   const { register, handleSubmit } = useForm();
   const submit = async (data) => {
     if (
@@ -31,19 +35,20 @@ function Content() {
     toast.success('submit');
     window.location.replace('/OwnShop');
   };
+  const handleQRCodeFileName = (event) => {};
   return (
     <Layout>
       <div className={PageDetails.Gridheader}>
         <h1></h1>
         <h1>เปิดร้าน</h1>
-        <h1
+        <h3
           className="pointer"
           onClick={() => {
             window.history.back();
           }}
         >
           ย้อนกลับ {'>'}
-        </h1>
+        </h3>
       </div>
       <form
         className={loginstyle.inputcontainer}
@@ -134,11 +139,27 @@ function Content() {
         </div>
         {/* END */}
         <label>แนบ QR CODE(Promp pay)</label>
-        <input type="file" {...register('promptPayImg')} required />
+        <input
+          type="file"
+          id="promtPayImgUpload"
+          {...register('promptPayImg')}
+          onChange={handleQRCodeFileName}
+          required
+        />
         <label>Logo</label>
-        <input type="file" {...register('logo')} required />
+        <input
+          type="file"
+          id="logoImageUpload"
+          {...register('logo')}
+          required
+        />
         <label>แนบรูปบัตรประชาชน</label>
-        <input type="file" {...register('IDcardImage')} required />
+        <input
+          type="file"
+          id="IDCardImageUpload"
+          {...register('IDcardImage')}
+          required
+        />
         <div
           className={loginstyle.loginwithcontainer}
           style={{ margin: '10px 0' }}

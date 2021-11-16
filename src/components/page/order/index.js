@@ -148,7 +148,7 @@ const Order = (props) => {
                   {product.user.firstName} {product.user.lastName}{' '}
                   {product.user.tel}
                 </p>
-                <h4>{product.user.address}</h4>
+                <p>{product.user.address}</p>
               </div>
             </div>
             <hr />
