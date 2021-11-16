@@ -2,3 +2,13 @@ input[type='text'] {
   font-size: 20px;
   height: 30px;
 }
+::-webkit-file-upload-button {
+  background: var(--pink);
+  color: white;
+  font-size: 20px;
+  border-radius: 20px;
+  border: 2px solid white;
+}
+input[type='file'] {
+  font-size: 20px;
+}
