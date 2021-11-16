@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import Layout from '../../loginlayout';
 import loginstyle from '../../../styles/loginpage.module.css';
 import toast from 'react-hot-toast';
+import './Content.css';
 function RegisterContent(props) {
   const { register, handleSubmit } = useForm();
 
@@ -133,5 +134,5 @@ function RegisterContent(props) {
     </Layout>
   );
 }
-
+//stackoverflow.com/questions/60151566/display-file-name-for-custom-input-file-using-reactjs
 export default RegisterContent;

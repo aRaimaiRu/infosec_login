@@ -25,6 +25,9 @@
   height: 100%;
   font-size: 26px;
 }
+.inputcontainer > label {
+  margin-top: 10px;
+}
 .inputwidth100 {
   border-radius: 30px;
   width: 100%;

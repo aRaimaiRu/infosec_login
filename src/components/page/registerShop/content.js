@@ -11,6 +11,7 @@ import PageDetails from '../../../styles/PageDetails.module.css';
 import FileUploader from '../../FileUploadBtn';
 import { valImage } from '../../../utils/validate';
 import toast from 'react-hot-toast';
+import './content.css';
 // Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
 
 function Content() {
@@ -36,14 +37,14 @@ function Content() {
       <div className={PageDetails.Gridheader}>
         <h1></h1>
         <h1>เปิดร้าน</h1>
-        <h1
+        <h3
           className="pointer"
           onClick={() => {
             window.history.back();
           }}
         >
           ย้อนกลับ {'>'}
-        </h1>
+        </h3>
       </div>
       <form
         className={loginstyle.inputcontainer}
