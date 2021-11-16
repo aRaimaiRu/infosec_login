@@ -166,7 +166,7 @@ export default function ProductDetails() {
                   style={{
                     height: 'fit-content',
                     backgroundColor: 'var(--pink)',
-                    fontSize: '16px',
+                    fontSize: '16px!important',
                   }}
                 >
                   ติดต่อร้านค้า
