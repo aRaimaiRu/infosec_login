@@ -14,6 +14,10 @@ function RegisterContent(props) {
 
   const submit = async (data) => {
     console.log('submit data =', data);
+    if (data.password != data.repassword) {
+      toast.error('password must equal to repassword');
+      return;
+    }
     if (!(valEmail(data.email) && valPassword(data.password))) {
       toast.error('Invalid Email or Password!');
       return;

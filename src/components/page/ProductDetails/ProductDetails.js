@@ -81,8 +81,7 @@ export default function ProductDetails() {
         <div className="col d-flex justify-content-around align-items-center">
           <p className="colorwhite">
             ราคา: &nbsp;
-            {/* {product.price} */}
-            200000
+            {product.price}
           </p>
           <p></p>
           <p className="colorwhite">บาท</p>
@@ -167,6 +166,7 @@ export default function ProductDetails() {
                   style={{
                     height: 'fit-content',
                     backgroundColor: 'var(--pink)',
+                    fontSize: '16px',
                   }}
                 >
                   ติดต่อร้านค้า
